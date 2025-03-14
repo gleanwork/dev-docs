@@ -1,15 +1,4 @@
-# Glean Help Center
-
-> [!NOTE]
-> This project is currently in preview.
-
-Glean Help Center & Public Documentation Portal.
-
-Core pillars:
-- Speed and UX
-- Single source of truth for Glean customers
-- Easy to contribute to for all Glean departments (Eng, Marketing, Support, etc)
-- Easy to integrate into Glean products (e.g. Connector setup instructions in the Glean UI)
+# Glean Developer Docs
 
 ### Development
 
