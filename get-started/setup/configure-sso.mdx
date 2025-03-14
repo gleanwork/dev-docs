@@ -1,0 +1,109 @@
+---
+title: Configure SSO
+icon: "fingerprint"
+description: "In this section, you will learn how to configure Single Sign-On (SSO) to provide seamless and secure employee access to Glean"
+---
+
+import { SettingsAuthentication } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/sso-banner.webp)
+
+SSO is mandatory for all Glean deployments. By integrating your directory service with Glean, user information will be automatically synchronized, ensuring that your organization's document access controls are accurately reflected in search results within Glean.
+
+
+## Understanding Glean SSO
+
+Glean leverages OpenID Connect (OIDC) for implementing SSO and synchronizing directory information.
+
+OIDC is a robust protocol that provides detailed control over user permissions. It is widely supported by leading Identity Providers (IdPs) such as Okta, Microsoft Entra ID (Azure AD), and Google, ensuring compatibility and ease of integration with your existing identity management infrastructure.
+
+
+## Select your Identity Provider (IdP)
+
+In the admin Workspace Settings, navigate to <SettingsAuthentication /> and select your IdP from the list.
+
+<Frame caption="Select your Identity Provider (IdP)">
+    <img src="/images/get-started/sso-select-idp.webp" alt="Select your Identity Provider (IdP)" />
+</Frame>
+
+Glean also supports the use of SAML in cases where your SSO provider or company company Standard Operating Procedure does not support using OIDC.
+
+To configure SAML, please choose **Okta SAML** from the SSO provider list, and paste a link to your IdP metadata XML file when prompted.
+
+
+### OIDC vs SAML
+
+Glean strongly recommends the use of OIDC over SAML for integrating SSO. It is crucial that your employee directory is asynchronously pushed to Glean to ensure correct functionality. SAML tokens do not provide the comprehensive identity data required for Glean's operation, and in addition, can only be updated upon employee re-authentication.
+
+Should you choose to implement SAML, you will be responsible for maintaining your directory information.
+
+
+## Configure SSO
+
+Detailed instructions for configuring SSO with common IdPs are linked below:
+
+- [Entra ID (Azure AD)](https://example.com)
+- [Google Workspace](https://example.com)
+- [Okta](https://example.com)
+- [Okta SAML](https://example.com)
+- [AD FS](https://example.com)
+- [Generic SAML](https://example.com)
+
+## Enable SSO
+
+Once you have configured SSO, you will need to tell Glean to switch from using Magic Links to SSO for user and administrator sign-in.
+
+Under the section **Switch to logging into Glean with SSO**, click the **Switch to ...** button.
+
+<Frame caption="Switch to logging into Glean with SSO">
+    <img src="/images/get-started/sso-switch-sso.webp" alt="Switch to logging into Glean with SSO" />
+</Frame>
+
+<Check>
+Your page will refresh, and you will see your IdP listed as Connected and Active.
+</Check>
+
+<Frame caption="Successfully switched to logging into Glean with SSO">
+    <img src="/images/get-started/sso-success.webp" alt="Successfully switched to logging into Glean with SSO" />
+</Frame>
+
+<Note>
+If you don't see the **Switch to ...** button, it means that your Glean tenant is still provisioning and you will not be able to make the switch just yet.
+
+You can skip ahead to the Connect Datasources step and return to this point later.
+</Note>
+
+
+## Test the SSO Configuration
+
+There are two key phases of SSO to test: The Glean (SP) to IdP redirect, and the IdP back to Glean (SP) redirect.
+
+### Glean to IdP
+
+To test your SSO configuration, open a new Incognito or Private Browsing window and navigate to [https://app.glean.com](https://app.glean.com). Enter your work email and click Log In.
+
+You should be redirected to your SSO platform successfully.
+
+<Warning>
+If redirection to your SSO platform fails, ensure you have notified Glean of all authentication domains that will be used to log in. Glean uses the domain(s) to:
+
+1. Redirect the user from the central login page to your backend Glean tenancy.
+2. Only permit users from the domains you have notified Glean of to log in.
+
+If you are using SAML, this indicates that the metadata provided to Glean (such as the Login URL) is incorrect. Please check your metadata and if the issue persists, contact Glean support.
+</Warning>
+
+
+### IdP to Glean
+
+When you have been redirected to your SSO platform, attempt to sign in. You should be redirected back to Glean and successfully signed in.
+
+<Warning>
+If you can sign in, but redirection back to Glean fails, check whether BOTH of the Authentication URLs provided by Glean for you to enter into your IdP have been set correctly. For OIDC these are:
+
+* https://[tenant_name]-be.glean.com/authorization-code/callback?isExtension=1
+* https://[tenant_name]-be.glean.com/authorization-code/callback
+
+If this does not fix the issue, change the order of the URLs and try again: Some IdPs can be specific about the order of the URLs specified. If your issue persists, contact Glean Support.
+</Warning>
+

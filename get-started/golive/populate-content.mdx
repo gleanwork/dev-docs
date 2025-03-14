@@ -1,0 +1,199 @@
+---
+title: Populate Content
+icon: "file-circle-plus"
+description: "In this step you will learn how to add Announcements, Answers, Go Links, Collections, and Document Verifications to ensure that your users get the most out of Glean"
+---
+
+import { KnowledgeAnnouncements, KnowledgeAnswers, KnowledgeGoLinks, KnowledgeCollections, KnowledgeVerificationTasks, KnowledgeVerificationDocuments, KnowledgePins } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/populate-content-banner.webp)
+
+To create an engaging first experience with Glean, it's essential to populate the platform with various types of content; other than what is being crawled from your datasources.
+
+Glean has several features to assist in the discovery and management of knowledge within your organization, including:
+
+- Announcements
+- Answers
+- Go Links
+- Collections
+- Document Verifications/Deprecations
+- Pins
+
+---
+
+## Announcements
+
+![announcements](/images/get-started/populate-content-announcements.webp)
+
+Announcements are a great way to promote updates on Glean's home page for your teammates to see, especially if they are using Glean as their new tab page.
+
+Announcements can be posted organization-wide or targeted to a limited set of teammates for whatever duration you choose.
+
+To create an Announcement, navigate to <KnowledgeAnnouncements />, then click the **New Announcement** button at the top-right. Once posted, you will see the announcement on the Glean home page.
+
+<Frame caption="Announcements are a great way to promote updates for your teammates to see">
+    <img src="/images/get-started/populate-content-announcements-create.webp" alt="Announcements are a great way to promote updates for your teammates to see" />
+</Frame>
+
+    
+
+
+---
+
+## Answers
+
+![answers](/images/get-started/populate-content-answers.webp)
+
+Answers allow your users to provide authoritative responses to frequently asked questions or important information: No more copying / pasting or rewriting the same Q&A for everyone.
+
+Answers are automatically surfaced in search results in response to relevant queries. They can also be grouped together using the Collections feature (more on that below).
+
+To create an Answer, navigate to <KnowledgeAnswers />, then click the **New Answer** button at the top-right.
+
+<Frame caption="Answers are automatically surfaced in search results in response to relevant queries">
+    <img src="/images/get-started/populate-content-answers-create.webp" alt="Answers are automatically surfaced in search results in response to relevant queries" />
+</Frame>
+
+* More information: [Using Answers](https://example.com)
+
+You should aim to populate Glean with **ten** Answers to questions that are frequently asked by your users. Here are some ideas to get you started:
+
+1. What is our Work From Home (WFH) policy?
+2. What benefits are available to me?
+3. What is the process for taking annual leave?
+4. What do I do if I (or a family member) is sick?
+5. How do I get access to Jira?
+6. How do I submit a feature request?
+7. How do I get a new laptop?
+8. Can I request a specific laptop model or brand?
+9. How do I get a new office badge?
+10. What are the 2024 holidays?
+11. What is our time off policy?
+12. What is our parental leave policy?
+13. What are our company values?
+14. Who is the best person to talk to about XYZ?
+15. When do we get paid?
+16. How do I book travel?
+
+---
+
+## Go Links
+
+![go-links](/images/get-started/populate-content-golinks.webp)
+
+Go Links are memorable shortcuts that quickly redirect users to frequently used sites, documents, or internal resources. Go Links act like a mental bookmark: once you see it or hear it, you immediately know how to access it, both now and in the future.
+
+To create a Go Link, navigate to <KnowledgeGoLinks />, then click the **New Go Link** button at the top-right.
+
+<Frame caption="Go Links are shortcuts that quickly redirect users to frequently used resources">
+    <img src="/images/get-started/populate-content-golinks-create.webp" alt="Go Links are shortcuts that quickly redirect users to frequently used resources" />
+</Frame>
+
+* More information: [Using Go Links](https://example.com)
+
+You should aim to populate Glean with **five** Go Links to frequently accessed resources. Here are some ideas to get you started:
+
+| Go Link | Destination |
+|---------|-------------|
+| `go/benefits` | Company benefits portal. |
+| `go/help` | IT help desk. |
+| `go/deals` | Salesforce Dashboard showing the current numbers for the quarter. |
+| `go/sprint` | Specific Jira project for your engineering team. |
+| `go/dashboard/<customer>` | Internal dashboard to monitor `<customer>` (This is a variable Go Link) |
+| `go/it/setup` | Setup instructions for a new laptop. |
+| `go/it/wifi` | Wifi access details for employees. |
+| `go/pitch` | Your company sales presentation. |
+| `go/pto` | New annual leave request. |
+| `go/git` | Your main internal Git repository. |
+| `go/allhands` | A folder containing recordings from previous company All Hands. |
+| `go/fast` | Internet speedtest, e.g. `https://fast.com` |
+| `go/docs` | Documentation hub. |
+| `go/support` | Agent view in Zendesk. |
+| `go/mail` | Outlook Email |
+| `go/cal` | Work calendar |
+| `go/roadmap` | Company roadmap presentation |
+
+
+---
+
+## Collections
+
+![collections](/images/get-started/populate-content-collections.webp)
+
+Collections are curated groups of documents or resources that are relevant to specific projects or topics. Think of them like a folder whose contents can span multiple different sources of data or apps.
+
+Organize a set of links, write useful descriptions about them, and share the whole package with the rest of the organization. Collections can be featured on the Glean home page and targeted at different audiences; providing a single source of truth for useful resources.
+
+To create a Collection, navigate to <KnowledgeCollections />, then click the **New Collection** button at the top-right.
+
+<Frame caption="Collections are curated groups of documents or resources that are relevant to specific projects or topics">
+    <img src="/images/get-started/populate-content-collections-create.webp" alt="Collections are curated groups of documents or resources that are relevant to specific projects or topics" />
+</Frame>
+
+* More information: [Using Collections](https://example.com)
+
+You should aim to populate Glean with at least two Collections to aggregate useful information together. Here are some ideas to get you started:
+
+| Collection Name | Description |
+|----------------|-------------|
+| **New Employee Onboarding** | All resources and checklists that a new employee needs to follow during their first week at the company. |
+| **Life @ [COMPANY]** | Links to policy documents relating to benefits, annual leave, travel, and technology at the company. |
+| **Using Glean** | Documents, answers, and links related to Glean to help employees use the platform. |
+| **Legal Helpdesk** | FAQs and documents related to anything legal related at the company. |
+| **T&E Hub** | All documents, apps, and resources that employees need to book travel and manage expenses. |
+| **[LOCATION] Office** | Information relating to a specific company office, e.g. Sydney |
+| **[TEAM NAME]** | Contact details, Slack/Teams channels, and key documents managed by a specific team or department within the company, e.g. Solution Engineering. |
+| **Project [NAME]** | All key resources relating to a specific internal project. |
+
+---
+
+## Document Verification
+
+![document-verification](/images/get-started/populate-content-verification.webp)
+
+Document Verification allows content owners and moderators to mark content in Glean's Search Results as **Verified** or **Deprecated**. This is useful to indicate to your users whether a piece of information or document is up-to-date and reliable.
+
+- **Verified** documents receive a green checkmark ✅ next to them in the search results.
+- **Deprecated** documents receive a red cross ❌ next to them in the search results.
+
+To Verify or Deprecate a document:
+
+1. Search for the document you wish to Verify or Deprecate.
+2. Click the 3 dots to the right of the search result to open a menu.
+3. Select **Verify or deprecate**, then the relevant option.
+4. Your page will refresh, and the document will now have a green checkmark or red cross visible next to it.
+
+* More information: [Verifying Content](https://example.com)
+
+You should aim to verify key documents that are relied on by your employees, such as your Employee Handbook or Travel & Expense policy.
+
+
+---
+
+## Pins
+
+![pins](/images/get-started/populate-content-pins.webp)
+
+Pins allow you to push content to the top of search results based on specific keywords. Think of them as Google Ads (without the exchange of money!)
+
+There are two types of Pins:
+
+1. **Private Pins** are only visible to the user who created them.
+2. **Public Pins** are visible to all users in the organization.
+
+Pins are useful for promoting content that is important to your users, such as a new policy or a key document.
+
+To create a Pin, navigate to <KnowledgePins />, then click the **New Pin** button at the top-right. You can also pin content directly from the search results page.
+
+<Frame caption="Pins allow you to push content to the top of search results based on specific keywords">
+    <img src="/images/get-started/populate-content-pins-create.webp" alt="Pins allow you to push content to the top of search results based on specific keywords" />
+</Frame>
+
+* More information: [Using Pins](https://example.com)
+
+You should aim to create at least two Pins to promote key content to your users. For example:
+
+* **New Employee Handbook** - Pin the new Employee Handbook to the top of search results for the keywords `handbook` and `onboarding`.
+* **New Travel & Expense Policy** - Pin the new Travel & Expense Policy to the top of search results for the keywords `travel` and `expense`.
+* **Benefits Hub** - Pin the Benefits Hub to the top of search results for the keywords `benefits` and `insurance`.
+

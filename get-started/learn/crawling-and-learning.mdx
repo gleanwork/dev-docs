@@ -1,0 +1,152 @@
+---
+title: Crawling & Learning Process
+icon: "graduation-cap"
+description: "Now that your company apps are connected to Glean, three essential background processes will take place; each crucial for Glean's functionality"
+---
+
+import { SettingsDataSources } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/learning-banner.webp)
+
+In the previous section, you successfully linked all your company apps to Glean. Now, three essential background processes will take place, each crucial for optimizing Glean's functionality:
+
+1. **Crawling** - Glean fetches data from your connected apps.
+2. **Indexing** - Glean creates a model of the data that was fetched and incorporates it into your organization's search index.
+3. **Learning** - Glean processes the data that was fetched using Machine Learning (ML) to create a search and ranking algorithm tailored to your organization's data and users.
+
+## Timelines for Completion
+
+The time required to complete all 3 processes will vary depending on the size of your organization and the volume of content that Glean needs to process. The combined crawling and indexing processes can take approximately:
+
+- 2-3 days to complete for a typical small organization, or small volume of content.
+- 10-14 days for a typical large organization, or large volume of content.
+
+The M/L process can take an additional 2-14 days, depending on:
+
+1. The GCP or AWS region that your Glean tenant was deployed to (and the tier of TPU/GPU hardware available in that region).
+2. The amount of content that needs to be processed as part of each M/L workflow.
+
+These times should be used as an **estimate** only.
+
+Your Glean engineer will advise you once all crawling, indexing, and learning processes have been completed. The remainder of this document will cover these processes in more detail.
+
+For now, you can proceed to the next step: Populate Content.
+
+---
+
+## About Crawling & Indexing
+
+When you initiate a crawl for a data source for the first time, the crawling and indexing processes are initiated. During this time, Glean will:
+
+1. **Crawl** the content (and associated permissions & activity metadata) for the selected data source.
+2. Create the **Glean Knowledge Graph** by **indexing** the crawled content, mapping it together, and creating a real-time model that can be referred to in response to a user's query.
+
+<Note>
+**Crawling** is the process in which Glean fetches data from within your organization's sources of data for the purposes of creating the search index.
+
+The **Knowledge Graph** is a real-time model of your organization's indexed information. It is a map that links all content, people, permissions, language, and activity within your organization. It is designed to provide users with the most personalized and relevant results for their queries in a matter of milliseconds.
+
+**Indexing** is the process in which Glean makes content ready for display in search results by creating (or updating) your organization's Knowledge Graph: the mapping between all content, people, permissions, language, and activity in the company.
+</Note>
+
+
+### Checking the Crawling & Indexing Status
+You can check the status of your in-progress crawls at any time by going to <SettingsDataSources /> and reviewing the table of configured apps.
+
+Here, you will see information about the progress of the crawl, including how many documents have been indexed, and any errors that may have occurred.
+
+<Frame caption="Check the status of your in-progress crawls at any time by going to Workspace Settings > Data sources">
+    <img src="/images/get-started/datasources-status.webp" alt="Check the crawl status of each app" />
+</Frame>
+
+### Crawling & Indexing FAQ
+
+<AccordionGroup>
+    <Accordion icon="circle-question" title="How long does the initial crawl and index process take to complete?">
+        **Crawling**
+
+        The initial crawl for any datasource will always take a while; the total time of which is dependent on two key factors:
+
+            The size of the datasource (eg: number of documents/messages, and the size of each).
+            The rate limit(s) of the datasource vendor's API.
+
+        If an datasource vendor's API has a low rate limit, this will affect how quickly Glean can crawl it for items. Likewise, datasources containing a large number of documents, files, or messages, will also take longer to crawl.
+
+        Some datasources share a rate limit across all integrated applications (like Glean). For these datasources, crawling time is typically slower, as Glean must be careful not to exhaust the entire rate limit threshold itself.
+
+        **Indexing**
+
+        The indexing process works in parallel with the crawling process. That is, content that has been crawled is processed by Glean's indexer while other content is still being crawled.
+
+        While the crawling speed is heavily dependent on the volume of data AND the API rate limit, the indexing speed is conversely heavily dependant on compute resources. The health of each deployment's index and compute resources dedicated to the indexing process is carefully monitored by Glean's SRE team.
+
+        **Total Time Required**
+
+        For a typical enterprise datasource, expect the complete initial crawling and indexing processes to take anywhere from 3 days, up to 14 days for large datasources with moderate API rate limits.
+    </Accordion>
+
+    <Accordion icon="circle-question" title="Can multiple data sources be crawled at the same time without impact?">
+        Yes. Each data source configured has its own unique crawler that dynamically scales based on demand. This ensures that multiple datas ources can be crawled in parallel without impact to the time required to complete each crawl.
+    </Accordion>
+
+    <Accordion icon="circle-question" title="What happens if a document is modified while a crawl is in progress?">
+        When a full (initial) crawl of a data source is initiated, it captures the state of all documents and content up to the exact timestamp when the crawl started. If any documents are modified or created after this timestamp, they will be processed and incorporated into the search index in one of two ways:
+
+        * **Webhooks**: Most datasources support webhooks, which Glean leverages to be notified of any content changes. When a webhook is received, it is processed within 1-5 minutes, depending on the datasource.
+        * **Incremental Crawls**: Glean performs an incremental crawl of each datasource every 24 hours. These crawls focus on identifying and incorporating changes that have occurred since the last crawl that were not captured via webhooks. This ensures that all recent modifications are captured.
+
+        Both webhooks and incremental crawls operate independently and run concurrently with any active full crawls. This design ensures that document updates are processed efficiently and that the system remains up-to-date with the latest changes.
+    </Accordion>
+</AccordionGroup>
+
+---
+
+## About Machine Learning (M/L)
+
+Once the crawling and indexing processes have been completed, Glean will initiate several Machine Learning (M/L) workflows that will run on all indexed content.
+
+The M/L process is critically important and is responsible for:
+
+- Optimizing search query understanding and spellcheck.
+- Understanding synonyms, acronyms, and semantics used in documents and between employees within your organization.
+- Enhancing relevance rankings for search results and people suggestions.
+- Enabling query suggestions, predictive text, and autocomplete.
+- Training the unique language model for your organization; which is essential for operation of Glean Chat and Glean Assistant.
+
+<Warning>
+Usage of Glean is not supported until the M/L process has completed successfully. You should not allow users access to Glean until all M/L has completed.
+</Warning>
+
+### Checking the Machine Learning (M/L) Status
+
+The M/L workflows are background processes - it is not currently possible to check the status of these inside the Glean UI.
+
+<Check>
+Your Glean engineer will notify you on the progress of these workflows and when they complete successfully.
+</Check>
+
+
+### Machine Learning (M/L) FAQ
+
+<AccordionGroup>
+    <Accordion icon="circle-question" title="How long does the M/L process take to complete?">
+        Completing all required M/L workflows can take 2-14 days in total, depending on:
+
+        - The amount of content that needs to be processed as part of each M/L workflow.
+        - The GCP or AWS region that your Glean tenant was deployed to (and the tier of TPU/GPU hardware available in that region).
+            - For example, using an Nvidia T4 GPU (if that is all that is supported in your elected deployment region) instead of a dedicated TPU typically increases the time required to run all M/L workflows by a factor of 4-6x.
+
+    </Accordion>
+
+    <Accordion icon="circle-question" title="Does the M/L process run in parallel with the crawl/index processes?">
+        No. The M/L workflows must be run on a complete dataset. Hence, Glean cannot initiate the M/L process until all of your data sources have been crawled and indexed.
+    </Accordion>
+
+    <Accordion icon="circle-question" title="What is the impact if the M/L process is not completed?">
+        - Search results will be significantly degraded.
+        - Glean Assistant and Glean Chat will not respond correctly.
+        - Spellcheck will be errornous.
+        - Autocomplete will not function.
+        - Any synonyms or acronyms used within the organization will not be understood if included in a search query.
+    </Accordion>
+</AccordionGroup>

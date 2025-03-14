@@ -1,0 +1,111 @@
+---
+title: "Glean Chat"
+description: "Implement AI-powered chat functionality that leverages your company's content and user relationships"
+icon: "message-bot"
+---
+
+Glean Chat delivers personalized answers by integrating deep understanding of your company's content, employees, activities, and their interconnections. The system automatically tailors responses to each individual user's context and needs.
+
+<Frame>
+  <img src="./images/introduction/chat-preview-3.gif" alt="Glean Chat Preview" />
+</Frame>
+
+## Implementation Guide
+
+### Adding the JavaScript Client
+
+First, include the JavaScript library in the `<head>` section of your page. Replace `GLEAN_APP_DOMAIN` with your company's Glean web app domain (typically `app.glean.com` or `your-company.glean.com` if you use a custom subdomain).
+
+<Info>
+  The Glean web app domain differs from your company's Glean backend domain (which typically follows the format `your-company-be.glean.com`).
+</Info>
+
+<CodeGroup>
+```html HTML
+<script defer src="https://{GLEAN_APP_DOMAIN}/embedded-search-latest.min.js"></script>
+```
+</CodeGroup>
+
+### Configuration and Setup
+
+1. Create a container element with the following required CSS properties:
+   - `position: relative`
+   - `display: block`
+   - Defined `width` and `height`
+
+2. Render Glean Chat into your container:
+
+<CodeGroup>
+```javascript
+window.EmbeddedSearch.renderChat(containerElement)
+```
+</CodeGroup>
+
+For detailed configuration options and customizations, refer to our [renderChat API documentation]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/GleanWebSDK.html#renderChat).
+
+## Authentication
+
+<Note>
+  Authentication involves two default steps that users must complete upon first usage. However, both steps can be optimized for a smoother user experience.
+</Note>
+
+### Default Authentication Flow
+1. Email Address Entry
+2. SSO Authentication
+
+### Optimizing Authentication
+
+You can streamline the authentication process in two ways:
+
+1. **Skip Email Entry**: Implement the [backend](https://app.glean.com/meta/browser_api/interfaces/SearchOptions.html#backend) parameter to bypass the email entry step.
+
+2. **Skip SSO Authentication**: Configure a [server-to-server handshake](https://docs.google.com/document/d/12q1oQWwhkLQyIHXKE7OF6XtvJZ5av50Wd_NKUbRh5u4/edit) and provide the user's auth token via [Options.authToken](https://app.glean.com/meta/browser_api/interfaces/Options.html#authToken).
+
+<Warning>
+  When implementing auth token authentication:
+  - You must configure an [onAuthTokenRequired](https://app.glean.com/meta/browser_api/interfaces/Options.html#onAuthTokenRequired) callback
+  - This callback handles token refresh when expiration approaches
+  - Server-to-server authentication becomes mandatory if third-party cookies are blocked in the user's browser
+</Warning>
+
+## Implementation Recipes
+
+<Info>
+  AI Applications created using AI App Builder can be integrated into chat using the `applicationId` parameter.
+</Info>
+
+### Basic Implementation (Vanilla JavaScript)
+
+<Frame>
+  <iframe
+    src="https://codepen.io/GleanWork/embed/BaMxWpd?default-tab=js%2Cresult&editable=true&zoom=0.5&defaultTab=js"
+    style={{width: '100%', height: '500px'}}
+    title="Chat | Vanilla JS"
+  />
+</Frame>
+
+### Separate Pages for Chat and Search
+
+This implementation creates dedicated routes for Search and Chat functionality:
+
+- Search page: `https://example.net/search`
+- Chat page: `https://example.net/chat`
+
+<Card title="Implementation Details" icon="code">
+The implementation consists of separate components:
+- A Search page with the Glean Search component
+- A Chat page with the Glean Chat component
+- Automatic redirection to the Chat page when initiating new conversations
+</Card>
+
+View a complete demo of this implementation in our [CodeSandbox example](https://codesandbox.io/s/github/askscio/glean-browser-api/tree/main/examples/search-chat-separate-routes).
+
+### Unified Page Implementation
+
+This approach combines Search and Chat functionality on a single route:
+
+- Single unified route: `https://example.net/search`
+- Toggle between views using a `mode` query parameter (`search` or `chat`)
+- Maintains both interfaces in one location for seamless user experience
+
+View a complete demo of this implementation in our [CodeSandbox example](https://codesandbox.io/s/github/askscio/glean-browser-api/tree/main/examples/search-chat-unified).

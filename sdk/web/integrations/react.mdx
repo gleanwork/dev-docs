@@ -1,0 +1,140 @@
+---
+title: "React"
+description: "Integrate Glean Search into your React application"
+---
+
+# Usage from React
+
+The following is an example usage of the inline components from within React.
+The imports used are custom, but should be self-explanatory in context.
+
+## GleanWebSDKGallery.tsx
+```tsx
+import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+
+import injectScript from 'core/lib/injectScript'
+import { QueryParam } from 'core/lib/QueryParam'
+import { useLazyThunk } from 'core/redux/hooks'
+import { selectBasePath } from 'core/redux/selectors/auth'
+import { CreateAuthTokenResponse } from 'core/services/query_endpoint/models'
+import { Theme } from 'embedded_search/Theme'
+import { useQueryParam } from 'web/common/lib/hooks'
+import { getWebAppUrl } from 'web/routing/lib/paths'
+
+import styles from './styles/GleanWebSDKStyles'
+
+const loginThunks = () => import('web/login/lib/thunks')
+
+const light: Theme = {
+  borderLight: '#eaebed',
+  hover: '#f5fcfc',
+  primaryHighlight: '#087d76',
+  primaryHover: '#1ca99e',
+  selected: '#e8fcfb',
+  textPrimary: '#1b2126',
+  textSecondary: '#71747d',
+  visited: '#7400be'
+}
+
+interface GleanWebSDKProps {
+  authToken?: CreateAuthTokenResponse
+}
+
+const GleanSearch = ({ authToken }: GleanWebSDKProps) => {
+  const [query, setQuery] = useQueryParam(QueryParam.QUERY)
+  const [datasource] = useQueryParam(QueryParam.TAB)
+  const elementRef = useRef<HTMLDivElement>(null)
+  const basePath = useSelector(selectBasePath)
+
+  useEffect(() => {
+    if (!elementRef.current) return
+
+    window.GleanWebSDK.renderSearchBox(elementRef.current, {
+      authToken,
+      backend: basePath,
+      datasource,
+      onSearch: setQuery,
+      query,
+      searchBoxCustomizations: {
+        borderRadius: 10,
+        boxShadow: 'none',
+        horizontalMargin: 0,
+        placeholderText: 'Search for anything (Beta)',
+        verticalMargin: 0
+      },
+      theme: { light }
+    })
+  }, [authToken, basePath, datasource, query, setQuery])
+
+  return <div ref={elementRef} style={styles.searchBox} />
+}
+
+const GleanSearchResultsPage = ({ authToken }: GleanWebSDKProps) => {
+  const [query, setQuery] = useQueryParam(QueryParam.QUERY)
+  const [datasource, setDatasource] = useQueryParam(QueryParam.TAB)
+  const elementRef = useRef<HTMLDivElement>(null)
+  const basePath = useSelector(selectBasePath)
+
+  useEffect(() => {
+    if (!elementRef.current) return
+
+    window.GleanWebSDK.renderSearchResults(elementRef.current, {
+      authToken,
+      backend: basePath,
+      datasource,
+      onDatasourceChange: setDatasource,
+      onSearch: setQuery,
+      query,
+      theme: { light }
+    })
+  }, [authToken, basePath, datasource, query, setDatasource, setQuery])
+
+  return <div ref={elementRef} style={styles.serp} />
+}
+
+const GleanWebSDKGallery = () => {
+  const fetchAuthTokenThunk = useLazyThunk(loginThunks, 'fetchAuthToken')
+  const [authToken, setAuthToken] = useState<CreateAuthTokenResponse | undefined>()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    ;(async () => {
+      setAuthToken(await fetchAuthTokenThunk())
+    })()
+    injectScript({ id: 'embedded_search', src: getWebAppUrl('/embedded-search-latest.min.js') }).then(() =>
+      setIsLoading(false)
+    )
+  }, [fetchAuthTokenThunk])
+
+  if (isLoading) return null
+
+  return (
+    <div style={styles.container}>
+      <GleanSearch authToken={authToken} />
+      <GleanSearchResultsPage authToken={authToken} />
+    </div>
+  )
+}
+
+export default GleanWebSDKGallery
+```
+
+## styles/GleanWebSDKGalleryStyles.ts
+```ts
+import * as Fonts from 'core/theme/Fonts.css'
+import Stylesheet from 'core/types/Stylesheet'
+
+export default Stylesheet({
+  container: {
+    padding: 40
+  },
+  group: {
+    marginBottom: 20
+  },
+  label: {
+    ...Fonts.mediumHeader
+  }
+})
+
+```

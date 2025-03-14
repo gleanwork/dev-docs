@@ -1,0 +1,150 @@
+---
+title: Sync People Data
+icon: "user-hair-long"
+description: "In this section, you will synchronize your employee directory to Glean to ensure secure and accurate search results. Glean calls this identity information 'People Data'"
+---
+
+import { SettingsPeopleData } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/people-data-banner.webp)
+
+<Note>
+You will not be able to complete this step until your Glean tenant has been provisioned. If you were not able to switch from Magic Links to SSO in the last section, you will need to return to this step later.
+</Note>
+
+## About People Data
+
+Synchronizing your employee directory to Glean is a critical part of the setup process, as it allows Glean to:
+
+- Enforce document permissions.
+- Apply role-based access controls (RBAC).
+- Deliver more relevant search results.
+
+<Tip>
+If you configured SSO using OIDC in the last step, and your directory is the same as your SSO platform (e.g. Azure AD/Entra ID, Okta), then you have already configured people data sync as part of the SSO configuration; in which case, you now simply need to enable it as a source.
+</Tip>
+
+
+## Configure a People Data Source
+
+### Initial Setup
+
+Navigate to <SettingsPeopleData />
+
+If your SSO platform supports directory synchronization, it will be listed here with a green checkmark and status Ready to sync. Click the SSO provider's icon to proceed.
+
+<Frame caption="Select your People Data Source form the list of supported apps">
+    <img src="/images/get-started/people-data-select-app.webp" alt="Select your People Data source" />
+</Frame>
+
+
+If you wish to set up an alternative source, click the appropriate service and follow the setup instructions.
+
+<Note>
+**Using a People Data source not listed?**
+
+You will need to manually upload your directory data to Glean using CSV, or leverage Glean's Indexing API to push your directory data to Glean.
+
+In some cases, Glean may also be able to pull your people data from another connected data source such as BambooHR, or Facebook Workplace. Please contact your Glean engineer or Glean support for more information.
+</Note>
+
+
+### Attribute Mapping
+
+On the next screen, and if your People Data source supports it, you will be able to map attributes from your directory to the required field in Glean. This is useful if you store user information differently than what is standard.
+
+For example, you might want to infer a user's location from their manager's location. If they have an Okta field called `managerLocation`, you could map `managerLocation` to the Glean attribute `location`.
+
+If your People Data source does not support custom mapping in the Glean interface, you will not see this option. Please contact Glean support if you require this feature but do not see it for your configured People Data source.
+
+<Frame caption="Map fields to Glean attributes if these are different to the defaults">
+    <img src="/images/get-started/people-data-map-fields.webp" alt="Map fields to Glean attributes" />
+</Frame>
+
+
+### Initiate the Sync
+
+Before you start the sync, you can preview what information will included. For example, how many users will be created, and how many departments you have. If this is different from what you expected, check that you have provided the correct permissions within the People Data source.
+
+Click **Start sync** to begin synchronization. From this point onwards, the sync is automatic: Glean will check your People Data source periodically for any changes.
+
+<Frame caption="Click Start sync to begin synchronization">
+    <img src="/images/get-started/people-data-start-sync.webp" alt="People Data Source" />
+</Frame>
+
+
+### Verification
+
+The People Data sync will start, and over the next hour, you will start to see your employee directory being populated in Glean.
+
+The synchronization is not immediate: Glean needs to crawl your people data first, and then index it so that it is usable in search.
+
+<Tip>
+It can take 2-3 hours for the initial sync to complete.
+</Tip>
+
+You can return to this page later to validate that your sync is working.
+
+<Frame caption="Your people data should be synced after 2-3 hours">
+    <img src="/images/get-started/people-data-success.webp" />
+</Frame>
+
+
+<Warning>
+If you do not see people data start to show up within a few hours, this typically points to a permissions issue.
+
+Ensure that you have provided Glean with the correct permissions within your IdP when you configured SSO.
+
+For example, for Azure AD, it is critical to have `Directory.Read.All` and `User.Read.All` as **Application permissions** NOT Delegated Permissions. If your issues persist, please contact Glean support.
+</Warning>
+
+## Manual Upload (CSV)
+
+For instances where your directory information cannot be automatically synchronized, Glean also supports the manual upload of people data as a set of comma-separated values .csv.
+
+Because this method is not asynchronous, Glean does not recommend it. Any updates to your directory (new employees, departures, or changes) will require you to re-upload a new CSV.
+
+<Accordion icon="circle-question" title="Why can't Glean get identity information from the SAML token?">
+1. The SAML Assertion Token does not contain all of the identity data required by Glean, and
+2. Changes to a user account are only reflected in the SAML token when it is refreshed on user re-authentication.
+
+This means that Glean would not be aware of any changes to a user's identity attributes or group memberships until after re-authentication occurs; which is not desirable from a permissions enforcement perspective.
+</Accordion>
+
+
+### CSV Format
+
+The following are mandatory fields:
+
+| Required Field | Description |
+|---------------|-------------|
+| `first_name` | The user's first name, eg: `Ben` |
+| `last_name` | The user's last name, eg: `Benson` |
+| `email` | The user's email, eg: `bbenson@domain.com` |
+| `title` | The user's job title, eg: `Software Engineer` |
+| `department` | The user's department, eg: `Engineering` |
+
+The following are not mandatory, but **highly recommended** fields to enhance the Glean experience for your organization:
+
+| Recommended Field | Description |
+|------------------|-------------|
+| `manager_email` | The email of the user's manager. Used heavily in search ranking signals. Required for the org chart to be populated correctly. |
+| `location` | The working location of the user. Required for location-based personalization. |
+| `start_date` | The start date of the user. To show tenure in the user's profile page. |
+
+
+A sample CSV is included below:
+
+```csv
+name,email,first_name,last_name,nickname,title,department,business_unit,manager_email,location,city,country,desk_location,start_date,status,photo_url
+Samuel Sample,s.sample@company.com,Sam,Sample,Sam,CEO,Leadership,Leadership Team,,"Sydney, Australia",Sydney,Australia,"Desk 1/25",27/09/22,active,https://i.postimg.cc/rp2Qfkz6/WFH-2.jpg
+Ellie Example,e.example@company.com,Ellie,Example,,CFO,Leadership,Leadership Team,s.sample@company.com,"Palo Alto, California",California,USA,,26/10/22,active,https://i.postimg.cc/rp2Qfkz6/WFH-2.jpg
+Steve Smith,s.smith@company.com,Steve,Smith,Steve,CTO,Leadership,Leadership Team,s.sample@company.com,"Auckland, New Zealand",Auckland,"New Zealand","Table 1",27/10/22,active,https://i.postimg.cc/rp2Qfkz6/WFH-2.jpg
+Benjamin Benson,b.benson@company.com,Benjamin,Benson,Ben,"Software Engineer",Engineering,Engineering,s.smith@company.com,"Tokyo, Japan",Tokyo,Japan,"Level 6, 1/6",03/12/22,deactivated,
+```
+
+### Upload the Data
+
+Select **CSV** as a People Data source and select your CSV file when prompted.
+
+If you do not see this as an option or are having difficulties with the upload, please contact Glean support.

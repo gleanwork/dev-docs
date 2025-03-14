@@ -1,0 +1,54 @@
+---
+title: "Glean Deployment Models"
+icon: "cloud"
+description: "Glean offers two deployment models for our customers: Glean hosted (SaaS) and Customer-hosted (Cloud-Prem)."
+---
+
+ All deployments leverage a single-tenant architecture, regardless of SaaS or Cloud-Prem, meaning that each customer's data is isolated from other customers' data.
+
+SaaS is the default deployment model where all customer tenants are hosted by Glean. 
+
+Cloud-Prem allows customers to host the entire Glean architecture within their own GCP or AWS tenancy. This setup is appealing for customers that have strict controls or requirements around where their data resides, but does come with some additional considerations that need to be taken into account.
+
+
+## Glean Hosted (SaaS)
+
+In the SaaS deployment model, the infrastructure for your Glean tenant is deployed into Glean's GCP tenancy; specifically into a dedicated GCP project for your organization. All customer environments are deployed from scratch to ensure resiliency and isolation from all other customers.
+
+This provides several advantages for you:
+
+- Simplified setup process.
+- Full auto-scaling as the corpus and users grow.
+- Rely on Glean's security controls and guarantees to protect your data.
+- Simpler licensing and pricing model. Lower cost due to amortization of maintenance cost on Glean's side. Pay a fixed fee per active user per month.
+
+In terms of access to your tenant:
+
+- No employee at Glean retains access to any customer data.
+- Glean support teams only have access to sanitized system logs (all PII removed) - all actual data that Glean has indexed remains inside your isolated tenant and cannot be accessed by our employees.
+- To debug production issues or provide support where access to sensitive logs/components is required, our engineers are required to:
+  - Justify access.
+  - Obtain approval from your organization.
+  - Obtain approval from the Glean security team.
+  - All granted access is audited and time-bound for 1-hour.
+
+## Customer-Hosted (Cloud-Prem)
+
+In the Cloud-prem model, your Glean tenant is deployed run by Glean **as a managed service** in isolation within your own cloud environment (i.e. GCP, AWS). 
+
+This has a few advantages for organizations with strict data security or regulatory requirements:
+
+- Data Security and Control: Know exactly where your data is and the fact that the data never leaves your environment. Control GCP/AWS IAM policies yourself and retain direct access to logs.
+- Retire Spend Against Your Commit: Retire the costs of hosting Glean against your spend commitment with GCP or AWS.
+- Lower Glean Pricing: Receive a discount on your Glean subscription cost as we no longer need to host the infrastructure for your tenant ourselves.
+
+
+Unlike traditional "self-hosted" options, Glean still fully manages your deployment; including upgrades, patching, and monitoring - the same as the Glean-hosted option.
+
+This is possible, without having access to any of your company data within your tenant, due to restricted IAM controls that are put in place during the build of your tenant. These controls restrict Glean access to only project management with no access to underlying data stored in the project.
+
+<Warning>
+Glean does not support manually deploying/patching the Glean services, or altering any part of the Glean architecture. Glean's architecture is not just a set of containerized services: It is a fully integrated system spanning different private networks, storage, databases, compute resources, and other integrated services.
+
+If your organization has significant restrictions on what can be deployed in your cloud environment, we recommend considering the Glean-hosted option instead.
+</Warning>

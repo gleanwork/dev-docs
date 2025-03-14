@@ -1,0 +1,281 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Glean Developer Portal",
+  "colors": {
+    "primary": "#343CED",
+    "light": "#d8fd49",
+    "dark": "#343CED"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Home",
+        "groups": [
+          {
+            "group": "Home",
+            "pages": [
+              "home"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Get Started",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "get-started/welcome"
+            ]
+          },
+          {
+            "group": "Stage 1: Prepare",
+            "pages": [
+              "get-started/prepare/items-to-prepare",
+              "get-started/prepare/pre-deployment-checklist"
+            ]
+          },
+          {
+            "group": "Stage 2: Build",
+            "pages": [
+              "get-started/build/about-self-hosted",
+              {
+                "group": "Self-Hosted GCP",
+                "icon": "google",
+                "pages": [
+                  "get-started/build/gcp/deploy-gcp",
+                  "get-started/build/gcp/supported-gcp-regions",
+                  {
+                    "group": "Troubleshooting",
+                    "pages": [
+                      "get-started/build/gcp/troubleshooting/setup-key-1",
+                      "get-started/build/gcp/troubleshooting/setup-key-2",
+                      "get-started/build/gcp/troubleshooting/setup-key-3",
+                      "get-started/build/gcp/troubleshooting/setup-key-4"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Self-Hosted AWS",
+                "icon": "amazon",
+                "pages": [
+                  "get-started/build/aws/deploy-aws",
+                  "get-started/build/aws/supported-aws-regions"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Stage 3: Setup",
+            "pages": [
+              "get-started/setup/setup-checklist",
+              "get-started/setup/access-the-admin-ui",
+              "get-started/setup/configure-sso",
+              "get-started/setup/sync-people-data",
+              "get-started/setup/connect-data-sources"
+            ]
+          },
+          {
+            "group": "Stage 4: Learn",
+            "pages": [
+              "get-started/learn/crawling-and-learning"
+            ]
+          },
+          {
+            "group": "Stage 5: Go Live",
+            "pages": [
+              "get-started/golive/populate-content",
+              "get-started/golive/customize-branding",
+              "get-started/golive/setup-glean-assistant",
+              "get-started/golive/deploy-apps",
+              "get-started/golive/launch-preparation"
+            ]
+          },
+          {
+            "group": "Stage 6: Post-Launch",
+            "pages": [
+              "get-started/start/post-launch-tasks"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Agentic APIs",
+        "groups": [
+          {
+            "group": "General",
+            "pages": [
+              "api/agentic/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Indexing APIs",
+        "groups": [
+          {
+            "group": "General",
+            "pages": [
+              "api/indexing/index",
+              "api/indexing/getting-started"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "openapi": {
+              "source": "https://api.redoc.ly/registry/assets/glean/Glean%20Indexing%20API/v1/public/indexing.yaml?branch=main"
+            }
+          }
+        ]
+      },
+      {
+        "tab": "Client APIs",
+        "groups": [
+          {
+            "group": "Authentication",
+            "pages": [
+              "api/client/authentication/tokens",
+              "api/client/authentication/oauth",
+              "api/client/authentication/permissions",
+              "api/client/authentication/examples"
+            ]
+          },
+          {
+            "group": "Search",
+            "pages": [
+              "api/client/search/filtering-results",
+              "api/client/search/datasource-filters",
+              "api/client/search/faceted-filters"
+            ]
+          },
+          {
+            "group": "Chat",
+            "pages": [
+              "api/client/chat/overview",
+              "api/client/chat/examples"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "openapi": {
+              "source": "https://api.redoc.ly/registry/assets/glean/Glean%20Client%20API/v1/public/client_rest.yaml?branch=main"
+            }
+          }
+        ]
+      },
+      {
+        "tab": "Web SDK",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "sdk/web/overview",
+              "sdk/web/3rd-party-cookies"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "sdk/web/chat",
+              "sdk/web/autocomplete",
+              "sdk/web/modal-search",
+              "sdk/web/sidebar",
+              "sdk/web/recommendations"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "sdk/web/integrations/react",
+              "sdk/web/integrations/zendesk",
+              "sdk/web/integrations/lumapps",
+              "sdk/web/integrations/brightspot"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Actions SDK",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "sdk/actions/overview",
+              "sdk/actions/authentication",
+              "sdk/actions/create-actions",
+              "sdk/actions/faq"
+            ]
+          },
+          {
+            "group": "Example Actions",
+            "pages": [
+              "sdk/actions/examples/google-docs-update",
+              "sdk/actions/examples/google-calendar-events",
+              "sdk/actions/examples/zendesk-ticket-redirection",
+              "sdk/actions/examples/jira-issue-creation",
+              "sdk/actions/examples/jira-issue-creation-redirect"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "openapi": {
+              "source": "https://api.redocly.com/registry/assets/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main"
+            }
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+
+      ]
+    }
+  },
+  "logo": {
+    "light": "/images/brand/light.svg",
+    "dark": "/images/brand/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support Portal",
+        "href": "https://support.glean.com"
+      },
+      {
+        "label": "Customer Docs",
+        "href": "https://docs.glean.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Go to Glean",
+      "href": "https://app.glean.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://www.glean.com",
+      "x": "https://twitter.com/glean",
+      "github": "https://github.com/askscio",
+      "linkedin": "https://www.linkedin.com/company/gleanwork/about/",
+      "youtube": "https://www.youtube.com/channel/UCY0JDJWRBXrR0m1SqWPVB9A"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Polysans Neutral",
+      "weight": 400,
+      "format": "woff2",
+      "source": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66d22e2c49832621144_PolySans-Neutral.woff2"
+    },
+    "body": {
+      "family": "Polysans Neutral",
+      "weight": 400,
+      "format": "woff2",
+      "source": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66d22e2c49832621144_PolySans-Neutral.woff2"
+    }
+  }
+}

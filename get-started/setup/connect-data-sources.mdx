@@ -1,0 +1,133 @@
+---
+title: Connect Data Sources
+icon: "plug-circle-check"
+description: "In this section, you will learn how to connect the sources of data that Glean will crawl and index for search"
+---
+
+import { SettingsDataSources } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/datasources-banner.webp)
+
+## About Data Sources and Connectors
+
+You will see frequent references to the terms "data source" and "connector" in the Glean documentation.
+
+### Data Sources
+
+**Data Sources** are the platforms, services, or cloud apps where your data resides. These could be:
+
+| Category | Example Apps |
+|----------|--------------|
+| Cloud Storage | Box, OneDrive |
+| Email | Outlook, Gmail |
+| Communication | Slack, Teams |
+| Documentation | Confluence, Docusign |
+| Ticketing & Support | Jira, Zendesk |
+| Code & Engineering | GitHub, BitBucket |
+| HR | Workday, Lattice |
+| Sales & Marketing | Salesforce, Marketo |
+| Project Management | Asana, Monday |
+| [...and more!](https://www.glean.com/connectors) | |
+
+### Connectors
+
+**Connectors** are the tools/integrations that Glean uses to connect to your data sources and crawl data from them. Today, Glean has 100+ connectors already built to allow you to connect to different data sources in use at your company.
+
+Connectors typically pull data from your data sources securely over API, but may also receive data from your data sources via a webhook.
+
+
+## Select a Data Source to Connect
+
+Navigate to <SettingsDataSources /> and click the **Add app** button at the top-right.
+
+<Frame caption="Click the Add app button under Admin Console > Data sources and select a connector to configure">
+    <img src="/images/get-started/datasources-add.webp" alt="Select a Data Source to Connect" />
+</Frame>
+
+Select the data source that you want to connect Glean to and follow the instructions that are presented on-screen.
+
+<Frame caption="Follow the instructions carefully to configure the connector">
+    <img src="/images/get-started/datasources-configure.webp" alt="Configure the connector as per the Glean instructions" />
+</Frame>
+
+Connector configuration is typically achieved via OAuth and/or via installing Glean via your app's marketplace/store (e.g. Atlassian Marketplace, Box App Center, etc).
+
+As part of the setup flow for each connector, your API credentials and permissions will be validated.
+
+For each piece of data within a datasource, Glean will crawl 3 things:
+
+1. The contents of the asset itself (ie: spreadsheet, document, message, email, event, etc)
+2. Access permissions for the item (ie: which users have access to the item)
+3. Activities performed on the item (ie: when was the item created/posted/modified/viewed/etc and by which users?)
+
+Glean only asks for the most minimal permissions to perform the above, however, this varies between datasources based on the capabilities of the API provided by the cloud service.
+
+<Warning>
+You must apply any API access permissions in the setup documents exactly as referenced.
+
+Failure to set the correct API access permissions will cause your Glean crawl to fail, or for data to be missing from Glean.
+</Warning>
+
+
+## (Optional)Apply Crawling Restrictions
+
+If you would like to restrict the content that Glean crawls, DO NOT start crawling after saving the connector configuration.
+
+Crawling restrictions can be applied from <SettingsDataSources /> once the initial configuration for the datasource has been saved.
+
+The restrictions that are supported vary between apps, but most data sources support at least two of the following restrictions:
+
+1. Time-based restrictions (eg: Only crawl created or accessed in the last 6 months)
+2. User-based restrictions (eg: Only crawl content from the specified users)
+3. Group-based restrictions (eg: Only crawl content from the specified AD group)
+4. Site/channel-based restrictions (eg: Only crawl content from the specified site or channel)
+5. Folder-based restrictions (eg: Only crawl content from within the specified folders)
+
+For most apps, **greenlisting** (explicit inclusion), and **redlisting** (explicit exclusion) are typically both supported.
+
+<Tip>
+Not all crawling restrictions are available in the UI: some can only be applied by Glean. Contact your Glean account team or Glean support for additional information.
+</Tip>
+
+
+## Start Crawling
+
+Once you have connected your data source, you can initiate the crawl for it.
+
+**Crawling** is the process in which Glean sifts through the data in each of your connected apps and indexes it for search.
+
+To start the crawl, click on the **Start crawl** button after setting up the connector configuration.
+
+You can also start the crawl later by selecting the app under <SettingsDataSources />, and selecting **Start crawl**.
+
+<Frame caption="Crawling can be started once the connector configuration is saved">
+    <img src="/images/get-started/datasources-start-crawl.webp" alt="Start the crawl" />
+</Frame>
+
+
+## Checking the Crawl Status
+
+You can check the status of your crawl at any time by going to <SettingsDataSources /> and reviewing the table of configured apps.
+
+Here, you will see information about the progress of the crawl, including how many documents have been indexed and any errors that may have occurred.
+
+<Frame caption="Admin Console > Data sources will display a list of all connected apps and their crawl status">
+    <img src="/images/get-started/datasources-status.webp" alt="Check the crawl status of each app" />
+</Frame>
+
+<Note>
+For crawls of large data sources, or data sources with low rate limits, it is normal for the document count to be low initially and then exponentially increase over a few days.
+
+If the document count remains low after a few days, please check the permissions granted to the Glean connector and contact Glean support.
+</Note>
+
+<Accordion icon="circle-question" title="How long does a crawl take?">
+The initial crawl for any data source will always take a while; the total time of which is dependent on two key factors:
+
+1. The size of the data source (eg: number of documents/messages, and the size of each).
+2. The rate limit of the data source's API.
+
+If an API has a low rate limit, this will affect how quickly Glean can crawl it for items. Likewise, data sources containing a large number of documents, files, or messages, will also take longer to crawl.
+
+For a typical enterprise data source, expect the initial crawl to take anywhere from 3 days, up to 10 days for large data sources with low API rate limits.
+</Accordion>

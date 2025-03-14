@@ -1,0 +1,53 @@
+---
+title: Pre-Deployment Checklist
+icon: "list-check"
+description: "Complete these prerequisites to ensure a successful Glean deployment"
+---
+
+<Steps titleSize="h3">
+  <Step title="Phase 1 Apps Identified">
+    You have identified 4-6 "mission critical" apps that will be connected to Glean first. These should be the core applications that have the largest user footprints within your organization. E.g. OneDrive, SharePoint, Google Drive, Slack, Teams, Jira, Confluence.
+  </Step>
+  <Step title="Security & App Owner Approvals">
+    All necessary approvals to connect the above apps to Glean have been obtained from relevant internal teams and/or stakeholders. By proactively managing these approvals, you can significantly reduce the time required to get Glean up and running in your organization.
+  </Step>
+  <Step title="(Self Hosted) GCP or AWS Environment Prepared">
+    If you are deploying Glean to your own GCP or AWS environment, you have prepared the environment for the build of your Glean environment.
+
+    **Google Cloud Platform (GCP)**:
+    * The GCP Deployment Guide has been followed.
+    * A GCP project name, ID, and number have been communicated to Glean.
+    * Billing information has been correctly set for the environment.
+    * All required GCP APIs have been enabled for the project.
+    * Applicable quota increases have been submitted and approved by GCP for the project and the GCP region & zone selected.
+    * A service account owner key for the project has been provided to Glean in JSON format.
+
+    **Amazon Web Services (AWS)**:
+    * The AWS Deployment Guide has been followed.
+    * An empty AWS account owned by your organization has been created.
+    * Billing information has been correctly set for the environment.
+    * The AWS Account ID has been communicated to Glean.
+    * Applicable quota increases have been submitted and approved by AWS.
+    * The Cloud Formation template has been run to bootstrap the environment for the build.
+  </Step>
+  <Step title="Administrator Emails Provided">
+    You have provided Glean with the email addresses of the administrators who will be responsible for managing the Glean environment.
+  </Step>
+  <Step title="Email Authentication Domains Provided">
+    You have provided Glean with a list of all email domains that your users will use to sign in.
+    <Warning>
+    Glean does not allow users to sign in from domains that it is not aware of for security reasons. E.g. company.com for user@company.com
+    </Warning>
+  </Step>
+  <Step title="Deployment Region Selected">
+    You have provided Glean with the country or region where you would like to deploy your Glean environment.
+
+    By default, Glean establishes all new tenants in the USA.
+
+    <Note>
+    Hosting in certain regions may increase your Glean licensing costs (or infrastructure costs if you are self-hosting Glean) to compensate for the higher infrastructure expenses in those regions.
+    
+    For details, please reach out to your Glean account team.
+    </Note>
+  </Step>
+</Steps>

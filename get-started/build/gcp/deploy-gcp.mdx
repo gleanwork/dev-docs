@@ -1,0 +1,185 @@
+---
+title: "Deploying Glean in GCP"
+description: Deploy Glean in your own GCP environment to maintain full control over data storage and processing while leveraging your existing cloud infrastructure.
+---
+
+![banner](/images/get-started/gcp-deploy.webp)
+
+## Overview
+
+Glean provides our customers the ability to deploy Glean software inside their own Google Cloud Platform (GCP) project. This deployment requires your GCP admin to:
+
+1. Create a new GCP project.
+2. Associate a valid billing account.
+3. Enable applicable GCP APIs.
+4. Request the required quota increases from GCP.
+5. Create a Service Account with Project Owner role and associate a JSON account key.
+6. Notify Glean of the GCP zone selected, the Project Name, Project ID, Project Number, and the service account JSON key.
+
+After completing the above, Glean's systems will automatically build and deploy the required compute, workflows, and software into your GCP project.
+
+At this stage, Glean will advise you that your tenant is ready; allowing your admins to proceed with the setup process in our [Getting Started guide](../../welcome.md).
+
+This document will cover the steps required by your GCP admins to prepare a GCP project that is ready for your Glean build.
+
+---
+
+## 1. Select a GCP Region
+You must first select a supported GCP region for Glean to build your environment in.
+
+* More information: [Supported GCP Regions](gcp-regions.md)
+
+You must notify Glean of the GCP **zone** selected, e.g. `asia-northeast1-a`
+
+<Warning>
+The region selected cannot be changed once your tenant has been built. Changing region will require a complete rebuild of your tenant.
+</Warning>
+
+
+## 2. Create the GCP Project
+1. Go to the [Manage resources](https://console.cloud.google.com/cloud-resource-manager) page in the GCP console and click **Create Project**.
+
+2. In the New Project window that appears, add a project name, organization, and location.
+    * For the project name, the preferred format is `glean-{customer name}` or `glean-{customer name}-{prod/sandbox}`
+    * E.g. `glean-company` or `glean-company-prod`
+
+3. Make sure that your project is created under the same organization as your Google Workplace account, and **not** "No Organization".
+
+<Warning>
+Glean is not able to proceed with the build if the project is created under "No Organization". If you are unsure of how to resolve this, please contact your GCP account team or GCP support.
+</Warning>
+
+4. Save the Project ID (which is directly below the Project name) and Project Number.
+
+5. Click **Create**.
+
+6. Notify Glean of the following information:
+
+    a. Project name, eg `glean-company` → This was set in Step 2 above.
+    
+    b. Project ID, eg `glean-company` → This was saved in Step 4 above.
+    
+    c. Project number, eg `715000000000` → This was saved in Step 4 above.
+
+
+## 3. Configure Billing
+1. Go to [Billing](https://console.cloud.google.com/billing/linkedaccount) in the GCP console.
+
+2. Click **Link a billing account** to set up billing for this project.
+   
+<Warning>
+Ensure that the billing account has a corporate credit card attached to it. Using the "free trial billing tier" will not work.
+</Warning>
+
+
+## 4. Enable APIs
+Glean requires that the following GCP APIs are enabled for the deployment to succeed. Substitute your Project ID to the end of the URL for each API below to enable the API on the project.
+
+| API Name                                                         | URL                                                                                                           |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Cloud Resource Manager API (cloudresourcemanager.googleapis.com) | `https://console.cloud.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=[PROJECT_ID]` |
+| Service Usage API (serviceusage.googleapis.com)                  | `https://console.developers.google.com/apis/api/serviceusage.googleapis.com/overview?project=[PROJECT_ID]`    |
+| Compute Engine API (compute.googleapis.com)                      | `https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=[PROJECT_ID]`         |
+| Cloud SQL Admin API (sqladmin.googleapis.com)                    | `https://console.developers.google.com/apis/api/sqladmin.googleapis.com/overview?project=[PROJECT_ID]`        |
+
+
+
+## 5. Request Quota Changes
+
+Search for `[Quotas]` in the search box of the GCP Console and navigate to **All Quotas**, under IAM & Admin.
+
+For each of the quotas in the table below, request a quota change by completing the following:
+
+1. Click on the required quota.
+2. Select **Edit Quotas**
+3. Enter the value specified by Glean for the quota.
+4. Click **Submit Request**.
+
+<Note>
+Please note that some quota requests will require filing a ticket with GCP support. Response time is typically within 2 days.
+</Note>
+
+<Warning>
+
+You must ensure that the region/location specified in your quota request(s) match the GCP Region and Zone that you wish to deploy in. For more information, see [Supported GCP Regions](gcp-regions.md).
+
+</Warning>
+
+<Tabs>
+  <Tab title="Large >50M Documents">
+    
+  </Tab>
+  <Tab title="Medium <50M Documents>">
+    
+  </Tab>
+  <Tab title="Small (test/sandbox)">
+    
+  </Tab>
+</Tabs>
+
+## 6. Create a Service Account
+The service account is used to allow Glean's systems to access the project and perform the build. You will create the service account and provide Glean with the private JSON key required to use it.
+
+1. Go to the [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) page in the GCP console and click Select a Project.
+
+2. Click **Create Service Account**. Enter the service account name (`glean-admin`), ID, and description (optional), then click **Create**.
+
+3. Click the **Select a role** dropdown to make your service account an **Owner** of the project. Click **Continue**.
+
+4. Ignore the **Grant users access to this service account** option. It is not required.
+
+5. Click **Create Key**. In the panel that appears, select the key type **JSON**, then **Create**. This will save a private JSON key to your computer.
+
+
+## 7. Upload the Service Account Key to the Glean Admin UI
+1. If you haven't already, follow the instructions from the [Access the Admin UI](../../adminui.md) section of the Getting Started guide.
+    * Browse to [https://app.glean.com/admin](https://app.glean.com/admin)
+    * Enter your email to receive a link via email to sign in.
+
+2. On the page titled **Create a Google Cloud Platform project**, click the box under Step 2 to upload the private JSON key to Glean.
+
+3. Click **Save**. Glean will now use the JSON key to validate that all the steps above have been performed correctly.
+
+<Success>
+If the save is successful, your Glean tenant is ready to be built. Contact your Glean account team to proceed.
+</Success>
+
+<Warning>
+If the save fails, you will be presented with a red error message detailing the issues to correct. The key must be saved correctly before the build of your Glean tenant can proceed.
+</Warning>
+
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion icon="circle-question" title="I don't want to provide Glean with a service account and/or project owner role. Can I build everything myself?">
+    No. Glean utilizes Infrastructure as Code (IaC) and as such, all of our build systems are automated. This ensures consistency, reliability, and security in our deployments.
+  </Accordion>
+
+  <Accordion icon="circle-question" title="What can Glean access in my environment with the Service Account with Project Owner role?">
+    A service account that is generated with an owner role for a specific project in Google Cloud Platform (GCP) is limited to the resources and services within that specific project. It does not have permissions to access or modify resources outside of that project, even if it's within the same GCP tenant.
+    
+    The permissions of a service account are defined by the roles that are granted to it. **The owner role grants full access to all resources in the project where it is assigned, but it does not extend to other projects in the GCP tenant.**
+
+    * More information: [GCP Service Account with Owner Role](../../../architecture/cloud-prem/gcp/owner-role.md)
+  </Accordion>
+
+  <Accordion icon="circle-question" title="Can I revoke/delete the service account created and associated JSON key after the build is complete?">
+    Yes. As part of the build, Glean automatically creates a maintenance service account that is used by our systems to automatically manage, update, and patch your environment. The original JSON key and associated account that you provided Glean can be revoked.
+  </Accordion>
+
+  <Accordion icon="circle-question" title="I don't want Glean to be able to access the completed build at all for security reasons. Can I revoke the maintenance account as well?">
+    No. Glean requires this account in order to roll updates to your tenant (including new features and security fixes).
+
+    <Warning>
+    Deliberately restricting or blocking Glean's access to your tenant will void Glean's Service and Support SLAs, and will impact the ability of our support teams to assist you when troubleshooting issues.
+    </Warning>
+
+    <Info>
+    Glean is not a traditional self-hosted service: Your Glean tenant is run as a managed service by Glean and is kept up-to-date alongside our SaaS tenants and infrastructure.
+
+    We require approproate access to be able to provide ongoing management of your tenant's services and this is via the maintenance service account.
+    </Info>
+
+  </Accordion>
+</AccordionGroup>

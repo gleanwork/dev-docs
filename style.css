@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Polysans Neutral';
+    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66d22e2c49832621144_PolySans-Neutral.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Polysans Slim';
+    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66da54786325597bf31_PolySans-Slim.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Polysans Neutral Mono';
+    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b5e8b95fd9e34f78a1c7de_PolySans-NeutralMono.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Polysans Median';
+    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b5e8b9a5fb33f679d14c62_PolySans-Median.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.hero-title {
+    font-family: 'Polysans Neutral', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-family: 'Polysans Slim', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.search-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.glean-search-box--hero {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 5rem;
+    font-size: 1.125rem;
+    background: white;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    outline: none;
+    transition: box-shadow 0.2s;
+    color: #000;
+}
+
+.search-button {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.75rem;
+    color: white;
+    background: #2563eb;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+}
+
+.hero-example-search-terms {
+    font-family: 'Polysans Neutral Mono', monospace;
+    font-weight: 400 !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    background-size: cover !important;
+    background-image: linear-gradient(to right, #d8fd49, #c3ff9e) !important;
+}
+
+.hero-example-search-terms--container i {
+    display: inline-block;
+}
+
+.landing-section-title {
+    font-family: 'Polysans Neutral', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+}
+
+.landing-section-subtitle {
+    font-family: 'Polysans Neutral', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.landing-section-headings {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.landing-getting-started-card {
+    background: url('/images/get-started-bg.png') center/cover;
+}

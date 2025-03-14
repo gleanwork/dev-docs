@@ -1,0 +1,87 @@
+---
+title: Items to Prepare
+icon: "ballot-check"
+description: "Ensuring that each of the following items are completed and/or ready will help make your setup of Glean a smooth process"
+---
+
+<AccordionGroup>
+  <Accordion title="1. Identify Phase 1 Data Sources">
+    Every organization has a long list of applications that need to be connected and integrated with Glean.
+
+To speed up your time to value, you should identify 4-6 "mission critical" apps to be integrated first. For example, SharePoint, Outlook, Google Drive, Jira, Confluence, Zendesk, etc.
+
+**These should be the core applications that have the largest user footprints within your organization.** At a bare minimum you should should ensure you have in scope at least:
+
+* One document repository app (SharePoint, OneDrive, Google Drive, Box, etc)
+* One communications app (Teams, Slack, etc)
+
+Any apps outside of this core scope can be added at any time at a later stage.
+
+<Tip>
+**Why can't every app be connected upfront?**
+
+Before Glean can be used, a full fetch of data from core apps needs to be completed so that your search algorithm can be created. The algorithm cannot be created before this is complete.
+
+If the focus is on connecting **every** application in the organization upfront, you will significantly delay the point at which our training workflows can be started, and in turn, the point at which users can start using the service.
+</Tip>
+  </Accordion>
+
+  <Accordion title="2. Obtain App Owner & Security Approvals">
+    One of the biggest delays encountered by customers when setting up Glean is the internal approvals needed (both from an application owner and security perspective) to connect each app to Glean.
+
+We recommend initiating the approval process as early as possible to avoid any unnecessary delays. Start by identifying the key stakeholders within your organization who are responsible for application ownership and security. Schedule meetings or consultations with these stakeholders to discuss the integration of Glean and address any concerns they may have.
+
+Provide them with detailed documentation about Glean's security protocols, compliance certifications, and data handling practices to facilitate a smoother approval process. Additionally, consider preparing a clear and concise summary of the benefits and functionalities that Glean will bring to your organization, which can help in gaining their support.
+
+  </Accordion>
+
+
+  <Accordion title="3. (Self Hosted) Prepare Your GCP or AWS Environment">
+    If you are opting for a self-hosted deployment of Glean, it is crucial to prepare your Google Cloud Platform (GCP) or Amazon Web Services (AWS) environment in advance. by following the GCP Preparation Guide or AWS Preparation Guide respectively.
+
+As self-hosted deployments of Glean are run as a managed service by Glean Engineering, you must ensure that you have closely followed the GCP Preparation Guide or AWS Deployment Guide so that the automated build of Glean's infrastructure and services is successful.
+
+This will involve:
+
+1. Nominating a supported deployment region (e.g. USA, Singapore, Netherlands, etc)
+2. Creation of an empty AWS Account or GCP Project.
+3. Correctly setting billing information for the environment.
+4. (GCP) Enabling all required service APIs for the project.
+5. Submitting any required quota increases for approval.
+6. (GCP) Creating a service account for the project with Project Owner role.
+7. (AWS) Bootstrapping the environment for the build by running the provided CloudFormation template.
+8. Providing Glean with details of the environment including:
+
+    * (GCP) The GCP Project ID, Name, and Number.
+    * (GCP) The JSON key associated with the configured service account.
+    * (AWS) The Account ID associated with the target AWS account.
+  </Accordion>
+
+  <Accordion title="4. Identify Initial Users">
+  Your initial set of users will play a key role in testing and providing feedback on the system. Consider the following when selecting users to pilot Glean:
+
+* Diverse Representation: Choose users from different departments and roles to ensure diverse feedback and comprehensive testing.
+* Tech-Savvy Users: Select users who are comfortable with technology and can quickly adapt to new tools.
+* Key Stakeholders: Include key stakeholders who can champion the adoption of Glean within their teams.
+
+Once identified, provide these users with the necessary training and resources to get started with Glean (we can help!). Their feedback will be invaluable in fine-tuning the system before a broader rollout.
+  </Accordion>
+
+  <Accordion title="5. Ready Your People & Directory Data">
+You should verify that all employee information, including names, roles, departments, aliases, and contact details are correct in your Identity Provider (IdP) - e.g. Entra ID, Okta.
+
+Glean is dependent on accurate people information as your corporate directory is used as a mapping point and source of truth when synchronizing permissions and access controls from connected apps.
+
+Additionally, Glean uses employee metadata heavily in it's various ranking signals - that is, a user's identity has a big impact on the contents of search results and the order that results may be shown in.
+  </Accordion>
+
+
+  <Accordion title="6. Timeline Planning">
+  A well-structured timeline ensures smooth deployment and sets appropriate expectations.
+
+* **Project Plan:** Develop of a detailed project plan that outlines all the key milestones, tasks, and deadlines associated with the deployment.
+* **Resource Allocation:** Ensure that you have allocated the necessary resources, including personnel, to assist with deployment of Glean.
+* **Risk Management:** Identify potential risks and develop mitigation strategies to address any issues that may arise during the deployment process.
+* **Communication Plan:** Establish a communication plan to keep all stakeholders informed about the progress of the deployment. You should also ensure that mechanisms to collect and aggregate user feedback have been identified.
+</Accordion>
+</AccordionGroup>

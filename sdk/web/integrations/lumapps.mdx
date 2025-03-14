@@ -1,0 +1,39 @@
+---
+title: "LumApps"
+description: "Instructions for replacing LumApps' native search functionality with Glean's modal search interface"
+---
+
+To integrate Glean's modal search interface into your LumApps environment, you'll need to add custom code to your site's header. This can be done using LumApps' [custom code feature](https://docs.lumapps.com/docs/explore-l02754686794778971?contentV1Fallback=true#l02584482917705644).
+
+<Note>
+Replace `{YOUR_GLEAN_DOMAIN}` in the code below with your company's Glean domain (e.g., app.glean.com, company.glean.com)
+</Note>
+
+<CodeGroup>
+```html HTML Integration Code
+<style>
+  .searchbox__suggestions {
+    display: none !important;
+  }
+</style>
+
+<script defer src="https://{YOUR_GLEAN_DOMAIN}/embedded-search-latest.min.js"></script>
+
+<script>
+  window.addEventListener('load', async () => {
+    const getSearchBox = () => document.querySelector(".header-top__search")
+    while(!getSearchBox()) { await new Promise(r => setTimeout(r, 300)) }
+    window.GleanWebSDK.attach(getSearchBox())
+  })
+</script>
+```
+</CodeGroup>
+
+The integration code performs three key functions:
+1. Disables LumApps' native search suggestions using CSS
+2. Loads the Glean Web SDK from your company's domain
+3. Attaches Glean's search functionality to the LumApps search box once the page has fully loaded
+
+<Info>
+The script includes a polling mechanism to ensure the search box element is present before attempting to attach the Glean functionality, preventing any race conditions during page load.
+</Info>

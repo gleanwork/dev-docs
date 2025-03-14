@@ -1,0 +1,25 @@
+---
+title: Home
+description: "Glean Documentation Hub"
+mode: "custom"
+---
+
+import { Banner, MintlifySearchHero,LandingPageGettingStartedCard, LandingPageCardGroup, LandingPageHeroCards, LandingPageStandardCards } from '/snippets/landing.mdx';
+
+<Banner searchComponent={<MintlifySearchHero />} />
+
+---
+
+<LandingPageCardGroup>
+<div className="landing-section-headings">
+    <h1 className="landing-section-title">Knowledge Base</h1>
+    <h2 className="landing-section-subtitle">The Glean Help Center is your one-stop shop for answers and advice for the entire Glean platform. Welcome!</h2>
+</div>
+    <LandingPageGettingStartedCard />
+    <LandingPageHeroCards />
+
+</LandingPageCardGroup>
+
+<LandingPageCardGroup>
+    <LandingPageStandardCards />
+</LandingPageCardGroup>

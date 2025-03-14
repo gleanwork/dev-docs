@@ -1,0 +1,21 @@
+---
+title: Setup Checklist
+icon: "list-check"
+description: "Follow this checklist to ensure all necessary items, people, and resources are on-hand and to configure your Glean environment"
+---
+
+<Steps titleSize="h3">  
+    <Step title="SSO Administrator & Information">
+    You will need an administrator of your Single Sign-On (SSO) provider (e.g. Entra ID, Okta, Jumpcloud, Google Workspace, etc) on-hand to configure SSO for Glean.
+    </Step>
+    <Step title="People Data Source">
+    If you are using SAML for SSO instead of OIDC, you will need to identify a datasource that your corporate directory can be synchronized from. Glean has separate connectors for Entra ID/Azure and Okta available, as well as connectors for common HR apps like Workday BambooHR.
+    
+    If you are uncertain about this requirement, please contact your Glean account team.
+    </Step>
+    <Step title="Data source Administrators">       
+    You will need an administrator for each data source or cloud-app you wish to connect to Glean (e.g., M365, Atlassian, Slack, GitHub).
+    
+    These administrators will either authorize the installation of the Glean app within their respective data source or create a scoped API token for Glean's use.
+    </Step>
+</Steps>

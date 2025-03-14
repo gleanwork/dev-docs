@@ -1,0 +1,92 @@
+---
+title: Datasource Filters
+icon: filter-list
+---
+
+Apart from the general filters we’ve discussed, some filters are specific to one datasource- for example, Confluence has the `author` facet, and Slack has the `channel` facet. There are also custom facets that are defined for custom datasources pushed via api.
+
+To uncover these datasource-specific facets, you can use our Glean UI to filter by the datasource you’re curious about. You will be able to find a list of facets for your search results, and facet values on the sidebar of the Glean UI (see image below).
+
+![Datasource specific facets](../images/custom-operators.png)
+
+### Getting possible facets via Search API
+
+If you would like to curl to get the facets, you can use a /search request to get the values that we use to populate the sidebar with a request like this:
+
+```json
+{
+    "query":"test",
+    "pageSize":10,
+    "requestOptions": {
+        "facetBucketSize" : 3000,
+        "facetFilters": [
+            {
+                "fieldName": "app",
+                "values": [
+                    {
+                        "value": "confluence",
+                        "relationType": "EQUALS"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+This will return a top-level field, [`facetResults`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response)
+facetResults has the following relevant fields:
+
+1. [`sourceName`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - same as the facet `fieldName` in the `facetFilter`s object
+2. [`operatorName`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - not relevant
+3. [`buckets`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - a list of facet bucket objects corresponding to a facet value
+    1. The facet bucket object has the following relevant fields:
+        1. [`count`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - the number of search results that would be returned if filtering by the facet value
+        2. [`value`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - the facet value (ie “engineering” for the space facet)
+            1. [`stringValue`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - the string value
+            2. [`intValue`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response)- the integer value (not common)
+            3. [`displayLabel`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - alternative value used for display in the UI
+            4. [`iconConfig`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!c=200&path=facetResults&t=response) - optional image used to represent the facet value, such as a profile picture for people facet values.
+
+```json
+{
+    "sourceName": "space",
+    "operatorName": "SelectMultiple",
+    "buckets": [
+        {
+            "count": 3,
+            "value": {
+                "stringValue": "engineering"
+            }
+        }
+    ]
+}
+```
+
+To get all of the facets you can use with a particular datasource, you can look at all of the `sourceName`s in the `facetsResult`s returned.
+
+If latency is a concern, and you only want to receive `facetResults`, you can send a request with [`pageSize`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!path=pageSize&t=request) = 0, and add "FACET_RESULTS" within the [`responseHints`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!path=requestOptions/responseHints&t=request) field in [`requestOptions`](https://developers.glean.com/client/operation/search/#tag/Search/operation/search!path=requestOptions&t=request) to not retrieve any documents and only retrieve facetResults. See sample request body below, which would gather `facetResults` for all confluence specific facets:
+
+```json
+{
+    "query":"test",
+    "pageSize":0,
+    "requestOptions": {
+        "facetBucketSize":3000,
+        "facetFilters": [
+            {
+                "fieldName": "app",
+                "values": [
+                    {
+                        "value": "confluence",
+                        "relationType": "EQUALS"
+                    }
+                ]
+            }
+        ],
+        "responseHints": [
+            "FACET_RESULTS"
+        ]
+    }
+}
+```

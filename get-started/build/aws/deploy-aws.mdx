@@ -1,0 +1,143 @@
+---
+title: "Deploying Glean in AWS"
+description: Deploy Glean in your own AWS environment to maintain full control over data storage and processing while leveraging your existing cloud infrastructure.
+---
+
+## Overview
+
+Glean provides customers the ability to deploy Glean software inside their own Amazon Web Services (AWS) account. This deployment requires your AWS admin to:
+
+1. Create a new empty AWS account.
+2. Associate a valid billing account.
+3. Notify Glean of any tags that need to be added to any resources that are created.
+4. Execute the provided Glean CloudFormation template to bootstrap the AWS environment.
+5. Notify Glean of the AWS account ID, AWS account name, and AWS region selected.
+
+After completing the above, Glean's systems will automatically build and deploy the required compute, workflows, and software into your AWS account.
+
+At this stage, Glean will advise you that your tenant is ready; allowing your admins to proceed with the setup process in the Getting Started guide.
+
+This document will cover the steps required by your AWS admins to prepare an AWS account that is ready for your Glean build.
+
+---
+
+## 1. Create a New AWS Account
+
+Glean deploys to an empty AWS instance to provide layer of isolation from any other services you have running in AWS. This also simplifies the deployment process as it eliminates potential conflicts with existing services.
+
+- Select a supported AWS region for Glean to build your environment in.
+- Create a new AWS account in the selected region.
+
+You must notify Glean of the following information:
+
+- AWS Account ID (e.g. `182333000101`)
+- AWS Account Name (e.g. `aws-glean-companyname`)
+- AWS Region (e.g. `us-east-1`)
+
+<Warning>
+The region selected cannot be changed once your tenant has been built. Changing region will require a complete rebuild of your tenant.
+</Warning>
+
+
+## 2. Company Tag Policy
+
+You must notify Glean if your company policy enforces the use of specific tags on AWS resources.
+
+Glean can add these tags to nearly all resources that we create, but **we must be notified in advance** before commencing the build of your Glean tenant so that the tags can be seeded in the initial deployment.
+
+You should provide your Glean engineer a list of any and all tags that are required in the following format:
+
+```
+tag1:value1--tag2:value2--tag3:value3--...
+```
+
+## 3. Run the SCP Check Tool
+
+Glean provides a [SCP Checker script](https://docs.google.com/document/d/17sbOPZqbiuom97fto-ZEpA4me8pOw52dSstt_lyHWVw/edit?tab=t.0#heading=h.53ahq745jvs4) that can be used to check if you have any SCPs that can conflict with the build of Glean.
+
+If a conflict is detected, please notify your Glean deployment engineer who can provide further guidance.
+
+
+## 4. Deploy the Glean CloudFormation Template
+
+A Glean provided CloudFormation template is used to bootstrap the AWS account so that the Glean build system can access and deploy Glean services. This process is automated.
+
+1. Log in to your new AWS account as an Administrator.
+
+2. Navigate to the AWS CloudFormation console at https://console.aws.amazon.com/cloudformation/
+
+    - Ensure that the correct region is selected before proceeding!
+    - If the CF template is installed to an incorrect region, you can delete it and re-install it to the correct one.
+
+3. Click **Create stack**.
+
+    ![create-stack](/images/get-started/aws-deploy-cfstack.webp)
+
+4. On the **Specify template** page, select **Amazon S3 URL** and paste the following URL for Glean's CloudFormation template. Click **Next** to proceed.
+
+    ```
+    https://glean-public-marketplace-resources.s3.amazonaws.com/glean-cloudformation-template.yaml
+    ```
+
+5. Specify a name for the stack, e.g. `glean-bootstrap`. Click **Next** to proceed.
+
+6. When prompted, provide an email address to which Glean will send a magic link post-setup.
+
+7. Skip all other fields on the options page and click **Next** again at the bottom.
+
+8. On the final review page, scroll to the bottom, agree to the capabilities acknowledgment, and click **Submit** to deploy the template.
+
+    - More information: [Selecting a Stack Template (docs.aws.amazon.com)](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-console-create-stack-template.html)
+
+
+## 5. Create the Admin Service Role
+
+For deployment, Glean requires an Admin Service role be created to allow Glean on-call engineers to triage any issues with the build (and the environment once deployed).
+
+This access is short-lived, auditable, and only used to triage issues. Glean engineers require approval from Glean Senior Leadership to access this role.
+
+Once your environment is in steady-state, this admin role can be disabled - however you must have an established process in place where Glean can request access 24/7 in response to service issues. Without this process, Glean will not be able to honor any Service or Support SLAs.
+
+1. Following the CloudFormation process above, deploy the following template which defines the Admin Service role:
+
+    ```
+    https://drive.google.com/file/d/134mvNzg24ZyhjvBhgUUPXttOIH9xWxU-/view?usp=drive_link
+    ```
+
+2. You will need to specify the **External ID** in the above template script. This is unique for each environment and will need to be provided by your Glean deployment engineer. Please notify them when you are up to this step.
+
+
+## 6. Request Quota Changes
+
+The resource quotas that Glean requires are detailed below.
+
+| Quota Type | Service | Quota name | Location | New Value | Justification |
+|------------|---------|------------|-----------|------------|---------------|
+| All Quotas | SageMaker | ml.p3.16xlarge for training job usage | primary deployment region | 1 | The Glean search system trains a custom AI language model on the corpus, enabling features such as semantic search, synonyms, and more. we use these NVIDIA V100 Multi gpu machines to power the training. |
+| All Quotas | SageMaker | ml.g4dn.xlarge for training job usage | primary deployment region | 4 | These are the standard machine types used for our general training jobs, which can have multiple running in parallel. We want to increase the quota to alleviate this contention. |
+| All Quotas | SageMaker | (For Small and Medium sized deployments) ml.m5.2xlarge for training job usage<br/>(For Large and Extra Large sized deployments) ml.m5.4xlarge for training job usage | primary deployment region | 1 | Used for cpu based ml training jobs |
+
+You will only need to request quota increases for the AWS region that you have selected for your deployment.
+
+
+## 7. Review Cost Reduction Recommendations
+
+Glean makes several recommendations available on how your AWS resource costs can be constrained/reduced.
+
+    Link: [AWS Hosting Cost & Reduction Recommendations](https://docs.google.com/document/d/1SvYnLzBZEEuDQRQbqH7EQ0zhpLNnx20XZgFAw1WGnIA/edit?tab=t.0#heading=h.5gvhgco1v47z)
+
+We recommend that you review the recommendations and apply any that you believe are relevant.
+
+For example: Purchasing Reserved Instances for EC2 and RDS instead of relying on On-Demand.
+
+
+## 8. Notify Glean to Begin the Build
+
+Once the above steps have been completed, notify your Glean deployment engineer who will initiate the build process for your environment.
+
+
+---
+
+## FAQ
+
+* [Glean on AWS FAQ](https://example.com)

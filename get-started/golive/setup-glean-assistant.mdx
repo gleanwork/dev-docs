@@ -1,0 +1,187 @@
+---
+title: Setup Glean Assistant
+icon: "comment-check"
+description: "In this section, you will configure and activate Glean Assistant: a suite of enterprise-grade Generative AI capabilities for your organization"
+---
+
+import { SettingsAssistant, SettingsAssistantSetup, SettingsAssistantSettings, SettingsAssistantAdvanced, SettingsHelp, AssistantChat } from "/snippets/navigation.mdx";
+
+![banner](/images/get-started/assistant-banner.webp)
+
+<Note>
+Before proceeding with this step, you should ensure that all of your initial data source crawls are complete and that your M/L workflows have run. Glean Assistant will not respond correctly until these steps have completed.
+</Note>
+
+---
+
+## About Glean Assistant
+
+Glean Assistant is a secure, enterprise-ready digital workplace assistant that respects data access permissions and delivers personalized answers based on your organization’s data. Think of it like ChatGPT, but with secure access to your company’s information.
+
+Glean Assistant is designed to enhance your workplace experience by providing you with the information you need, when you need it, in a secure and personalized manner. It understands your company’s content, internal language, people, and relationships, enabling Glean Assistant to deliver more relevant and accurate information than publicly available generative AI tools.
+
+
+## Setting Up Glean Assistant
+
+### Activate Glean Assistant
+
+You can activate Glean Assistant by navigating to <SettingsAssistantSetup />, then selecting **Activate**.
+
+If the Assistant menu option is greyed out or not visible, this means that either:
+
+- Your People Data sync has not been completed.
+- The initial crawling/indexing tasks for all data sources has not yet completed, OR
+- The M/L workflows for your environment have not yet completed.
+
+Once you have completed these steps, the Assistant menu option will become visible and you can activate Glean Assistant.
+
+<Frame caption="Activate Glean Assistant from the Admin Console once your crawling and M/L has completed">
+    <img src="/images/get-started/assistant-activate.webp" alt="Activate Glean Assistant" />
+</Frame>
+
+
+### Assign Users
+
+Glean Assistant can be enabled for the entire organization or for a selected test group of users. Glean recommends enabling Assistant for a test group first before proceeding with the rollout to the broader organization.
+
+To assign users to Glean Assistant, navigate to <SettingsAssistantSetup />, then click to open the **User Access** dropdown menu. Here you can select either:
+
+- Enabled for all teammates
+- Enabled for test group only
+
+If you select **Enabled for test group only**, you can click the **Add teammates** button to specify the users who will have access.
+
+<Frame caption="Assign users to Glean Assistant">
+    <img src="/images/get-started/assistant-teammates.webp" alt="Assign users to Glean Assistant" />
+</Frame>
+
+
+### Enable Glean Assistant
+
+Once you have specified the users that Assistant should be enabled for, click the **Enable Glean Assistant**, button to turn on Assistant for those users.
+
+Alternatively, you can also follow any of the applicable optional steps below to customize Assistant and its behavior.
+
+<Frame caption="When you are ready, click the **Enable Glean Assistant** button to turn on Assistant for your users">
+    <img src="/images/get-started/assistant-enable.webp" alt="Enable Glean Assistant" />
+</Frame>
+
+---
+
+## Customizing Glean Assistant
+
+There are a number of optional settings you can configure for Glean Assistant.
+
+
+### Select Your LLM
+
+Glean supports a range of LLMs including:
+
+- GPT
+- Claude
+- Gemini
+
+In addition, Glean supports accessing your selected LLM via a variety of methods depending on the needs of your organization. For example, BYOK, AWS Bedrock, GCP Vertex AI, etc.
+
+You can select the LLM provider by navigating to <SettingsAssistantSetup />, then expanding the **LLM Provider** section.
+
+
+### Bring Your Own Key (BYOK)
+
+Using Glean's API key for the Large Language Model (LLM) that powers Glean Assistant is strongly recommended, however, you may also choose to use your own API key (eg: OpenAI, Azure OpenAI, or Anthropic).
+
+To use your own API key, navigate to <SettingsAssistantSetup />, then expand the **LLM Provider** section. Here you can select **Bring Your Own Key (BYOK)** and enter your API key.
+
+* More information: [Bring Your Own Key (BYOK)](https://example.com)
+
+
+### Receive User feedback
+Users can provide feedback to Glean Assistant responses as positive (👍) or negative (👎) with accompanying comments. You can opt to have this feedback sent to a company email alias for review.
+
+To configure settings related to user feedback, navigate to <SettingsHelp />, expand the **Feedback** section, and click the **Advanced preferences** button.
+
+More information: [Receive User Feedback](https://example.com)
+
+
+### Set Exclusion Rules
+You can exclude certain content from ever being sent to an LLM across all Glean Assistant interfaces.
+
+For example, if you exclude a document, Glean Assistant will not use any data from that document to generate responses; even if a user is permitted to access the document content.
+
+To set explicit exclusion (or inclusion) rules, navigate to <SettingsAssistantAdvanced />, then expand the **Exclusion rules** and **Inclusion rules** sections.
+
+More information: [Exclusion Rules](https://example.com)
+
+
+### Provide Custom instructions
+
+You can optionally provide Glean Assistant with up to 5 custom instructions to better align its behavior with your enterprise requirements.
+
+For example:
+
+- Ensure that you remind users that their answers may not be accurate.
+- Do not respond to any queries regarding salary.
+- Only respond in German.
+
+To set a custom instruction, navigate to <SettingsAssistantAdvanced />, then expand the **Custom instructions** section.
+
+<Warning>
+    Custom instructions do not alter Glean Assistant's retrieval capabilities. They control the response generated by the LLM and are sent alongside data retrieved by Glean as deemed relevant to the user's query.
+</Warning>
+
+More information: [Custom Instructions](https://example.com)
+
+
+### Set a Disclaimer
+
+You can set a disclaimer that will be displayed to users when they interact with Glean Assistant. This can be used to inform users about the limitations of Generative AI or to provide them with important information.
+
+To set a disclaimer, navigate to <SettingsAssistantAdvanced />, then expand the **Disclaimers** section.
+
+
+---
+
+## Using Glean Assistant
+
+### Chat
+
+**Glean Chat** is the dedicated entry point for the Assistant and can be accessed by clicking on the message bubble icon from the left-side menu of the Glean UI: <AssistantChat />
+
+More information: [Glean Chat](https://example.com)
+
+
+### AI Answers
+
+**AI Answers** are typically used in the context of search results, providing direct answers to user queries based on the content of your documents when a user makes a relevant search query.
+
+More information: [AI Answers](https://example.com)
+
+
+### AI Summaries
+
+The AI Summarization feature of Glean Assistant provides concise summaries of documents. This feature is designed to enhance your productivity by providing a quick overview of a document’s content without having to read the entire document.
+
+To summarize a document, hover over a search result and click the **Summarize** button that appears at the top-right of the result.
+
+More information: [AI Summaries](https://example.com)
+
+
+### Slackbot
+
+If your organization uses Slack, you can configure Glean Assistant as a bot within your Slack workspace to automatically answer questions as employees post them.
+
+More information: [Slackbot](https://example.com)
+
+
+### Teamsbot
+
+If your organization uses Microsoft Teams, you can configure Glean Assistant as a bot within your Teams workspace to automatically answer questions as employees post them.
+
+More information: [Teamsbot](https://example.com)
+
+
+### Prompt Library
+
+The Prompt Library allows you and/or your users to curate and save frequently used queries as prompts. These can be incredibly useful for performing repetitive Generative AI tasks, or for assisting less technical users make use of Generative AI.
+
+More information: [Prompt Library](https://example.com)

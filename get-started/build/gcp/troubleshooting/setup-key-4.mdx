@@ -1,0 +1,31 @@
+---
+title: SETUP-KEY-4
+description: SETUP-KEY-4 Error Code
+---
+
+## Issue
+
+- The org constraint doesn't match the policy specification required by Glean
+
+## Resolution
+
+- From the error message on the validation page, note the constraint name and the required spec. From the example error message below, we can infer the constraint name to be constraints/iam.disableServiceAccountKeyCreation and the required policy spec to be `{"rules":[{"enforce": false}]}`
+
+<Frame><img src="https://support.glean.com/hc/article_attachments/25233868651547"/></Frame>
+
+- Create a yaml (say its located at /tmp/policy.yaml) file with the below configuration:
+    ```yaml
+    name: projects/PROJECT_ID/policies/iam.disableServiceAccountKeyCreation
+    spec:
+    rules:
+        - enforce: false
+    ```
+
+- Execute the below command with credentials sufficient to modify org constraints in your organizations:
+```bash
+gcloud org-policies set-policy /tmp/policy.yaml
+```
+
+- Reupload the owner key
+
+For additional assistance, please contact Glean Support at [https://support.glean.com](https://support.glean.com)

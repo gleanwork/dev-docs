@@ -1,0 +1,52 @@
+---
+title: Access the Admin UI
+icon: "sidebar"
+description: "Learn how to access the Glean Administrator User Interface (UI), known as Workspace Settings, and begin set up for your organization"
+---
+
+The Glean Admin UI ([app.glean.com/admin](https://app.glean.com/admin)), known as the **Admin Console**, is where you will manage the Glean workspace for your organization, including setting up Single Sign-On (SSO), configuring data sources, and syncing people data.
+
+## Sign In to Workspace Settings
+
+To access the Workspace Settings for your tenant, navigate to [https://app.glean.com/admin](https://app.glean.com/admin) in your web browser. If you are not already logged in, you will be prompted to do so.
+
+<Frame caption="Enter your company email address to log in.">
+  <img src="/images/get-started/adminui-login.webp" />
+</Frame>
+
+Because Single Sign-On (SSO) has not been configured yet, you will be prompted to check your email for a link to log in. This is called a **Magic Link**.
+
+Click the Magic Link in your inbox to log in.
+
+<Frame caption="Check your email for a Magic Link to log in.">
+  <img src="/images/get-started/adminui-magiclink.webp" />
+</Frame>
+
+## Add Additional Administrators
+
+When you sign in for the first time, you will be prompted to add additional administrators before proceeding.
+
+<Frame caption="Optionally, add additional administrators to your workspace.">
+  <img src="/images/get-started/adminui-add-admins.webp" />
+</Frame>
+
+There are two types of administrator roles, **Admin** and **Setup Admin**:
+
+* The **Admin** role (also known as the **Full Admin** role) has full read/write privileges across all Workspace Settings. This role can add/remove other administrators, manage user permissions, configure data sources, start crawls, and customize the Glean workspace for the organization.
+* The **Setup Admin** role has restricted permissions and can only configure data sources and start crawls. This is the perfect role to give to the administrators of any cloud applications that you wish to connect to Glean.
+
+<Warning>
+    Only select individuals within your organization should be granted provided with the Admin role.
+</Warning>
+
+To proceed, enter the emails of any additional administrators that you wish to add, or simply skip to the next step.
+
+
+<Note>
+Are you hosting Glean in your own GCP or AWS environment?
+
+    You will need to follow the appropriate cloud-prem guide for deploying Glean in GCP or AWS before you can proceed with the rest of this guide.
+
+    * [Deploying Glean in GCP](cloud-prem/gcp/deploy-gcp.md)
+    * [Deploying Glean in AWS](cloud-prem/aws/deploy-aws.md)
+</Note>

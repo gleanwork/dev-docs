@@ -1,0 +1,73 @@
+---
+title: "Brightspot"
+description: "Guide for implementing Glean's modal search functionality within Brightspot sites"
+---
+
+The following steps will guide you through replacing your Brightspot site's native search with Glean's modal search interface.
+
+<Steps>
+  <Step title="Access Site Settings">
+    Navigate to **Admin > Sites & Settings** in your Brightspot dashboard and select the site(s) where you want to implement Glean search.
+  </Step>
+
+  <Step title="Navigate to Front-end Settings">
+    In the **Edit Site** view:
+    1. Select the **Front-end** tab
+    2. Expand the **Advanced** section
+  </Step>
+
+  <Step title="Add Custom Head Elements Container">
+    1. Click **Add Custom Head Elements**
+    2. Set **Internal Name** to `Glean`
+  </Step>
+
+  <Step title="Configure Web SDK Script">
+    Under **Elements**, add a Script Element with the following configuration:
+
+    <ResponseField name="Internal Name" type="string" required>
+      Glean Web SDK
+    </ResponseField>
+
+    <ResponseField name="Type" type="string" required>
+      Link
+    </ResponseField>
+
+    <ResponseField name="Script URL" type="string" required>
+      https://app.glean.com/embedded-search-latest.min.js
+    </ResponseField>
+
+    <ResponseField name="Defer" type="boolean" required>
+      true
+    </ResponseField>
+  </Step>
+
+  <Step title="Add Integration Script">
+    Add another Script Element with these settings:
+
+    <ResponseField name="Internal Name" type="string" required>
+      Glean Search Replace
+    </ResponseField>
+
+    <ResponseField name="Type" type="string" required>
+      Inline
+    </ResponseField>
+
+    <ResponseField name="Body" type="string" required>
+      ```javascript
+      addEventListener('DOMContentLoaded', () => {
+        // If you've customized the page header, you'll need to adjust these selectors.
+        GleanWebSDK.attach(document.querySelector('.Page-header-search-open'))
+        GleanWebSDK.attach(document.querySelector('.Page-header-search-input'))
+      })
+      ```
+    </ResponseField>
+  </Step>
+
+  <Step title="Save Changes">
+    Click **Save** to apply your configuration changes.
+  </Step>
+</Steps>
+
+<Note>
+If you have customized your page header, you may need to modify the CSS selectors in the integration script to match your specific implementation.
+</Note>

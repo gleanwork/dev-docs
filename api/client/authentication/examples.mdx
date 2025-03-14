@@ -1,0 +1,84 @@
+---
+title: Examples
+icon: "code"
+---
+
+## User Token
+<Steps>
+
+<Step title="Ensuring accurate token information">
+- The permissions for the token should be set to `USER`, the user email should be set to a valid user email (say, `john.doe@yourdomain.com`) while creating the token.
+- The scope list for the token should contain the `COLLECTIONS` scope.
+</Step>
+
+<Step title="Making the request">
+Use the following cURL command to create a collection.
+
+```bash cURL
+curl -X POST https://customer-be.glean.com/rest/api/v1/createcollection \
+-H 'Authorization: Bearer <token>' \
+-d '{
+     "name": "Sample Collection - '$(date +"%Y-%m-%d %H:%M:%S")'",
+     "description": "A brief summary of the collection\'s contents."
+}'
+```
+
+<Warning>
+If you get a response with a status code other that `200`, use the error response to figure out what might have gone wrong. For example, the token may have expired, causing the request to fail.
+</Warning>
+</Step>
+
+<Step title="Verifying the collection">
+Go to the [Collections tab](https://app.glean.com/knowledge/collections) to verify that your collection has been created! Don't forget to delete the test collection once you're done!
+
+<Tip>
+As seen in the screenshot below, the email provided was identical to that of the user-logged in. If that is not the case, the `Created By` field will reflect the appropriate creator, based on the inferred email.
+</Tip>
+
+![collection_creation_success.png](https://user-images.githubusercontent.com/109058340/233598765-7982662c-e4cf-4727-ae06-92fc1b041ab4.png)
+</Step>
+</Steps>
+
+## Global Token
+
+<Steps>
+
+<Step title="Ensuring accurate token information">
+- The user email would not be set.
+- The permissions for the token should be set to `GLOBAL`
+- The scope list for the token should contain the `COLLECTIONS` scope.
+</Step>
+
+<Step title="Making the request">
+
+- Use the following cURL command to create a collection
+- Replace `<User email>` in the `X-Scio-Actas` header with a valid email address of a user on whose behalf the request is intended to be made.
+
+```bash cURL
+curl -X POST https://customer-be.glean.com/rest/api/v1/createcollection \
+-H 'Authorization: Bearer <token>' \
+-H 'X-Scio-Actas: <User email>' \
+-d '{
+     "name": "Sample Collection - '$(date +"%Y-%m-%d %H:%M:%S")'",
+     "description": "A brief summary of the collection\'s contents."
+}'
+```
+
+<Warning>
+If you get a response with a status code other that `200`, use the error response to figure out what might have gone wrong. For example, the token may have expired, causing the request to fail.
+</Warning>
+</Step>
+
+<Step title="Verifying the collection">
+
+- Go to the [Collections tab](https://app.glean.com/knowledge/collections) to verify that your collection has been created! Don't forget to delete the test collection once you're done!
+
+<Tip>
+
+As seen in the screenshot below, the email provided was identical to that of the user-logged in. If that is not the case, the `Created By` field will reflect the appropriate creator, based on the inferred email.
+
+</Tip>
+
+![collection_creation_success.png](https://user-images.githubusercontent.com/109058340/233598765-7982662c-e4cf-4727-ae06-92fc1b041ab4.png)
+</Step>
+</Steps>

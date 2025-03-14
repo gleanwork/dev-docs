@@ -1,0 +1,60 @@
+---
+title: "Supported AWS Regions"
+description: The infrastructure and services required by Glean are not available in every AWS region. This document covers the AWS services required by Glean for successful deployment in each region.
+---
+
+<Note>
+Glean does not currently support GovCloud regions.
+</Note>
+
+## Required AWS Services
+
+When deciding on deployment region for your Glean deployment, you must ensure that all AWS services required by Glean are present.
+
+| Service | Required |
+|---------|----------|
+| Amazon Bedrock | No - Required only if Claude is the selected LLM |
+| AWS Certificate Manager (ACM) | Yes |
+| AWS CloudFormation | Yes |
+| AWS CloudTrail | Yes |
+| AWS CodeBuild | Yes |
+| Amazon Elastic Block Store (Amazon EBS) | Yes |
+| Amazon Elastic Compute Cloud (Amazon EC2) | Yes |
+| Amazon Elastic Container Registry (Amazon ECR) | Yes |
+| Amazon Elastic Kubernetes Service (Amazon EKS) | Yes |
+| Amazon ElastiCache | Yes |
+| Elastic Load Balancing (ELB) | Yes |
+| Amazon EventBridge (CloudWatch Events) | Yes |
+| AWS Key Management Service (AWS KMS) | Yes |
+| AWS Lambda | Yes |
+| Amazon CloudWatch Logs | Yes |
+| Amazon Relational Database Service (Amazon RDS) | Yes |
+| Amazon Simple Storage Service (Amazon S3) | Yes |
+| Amazon SageMaker | Yes (see below for specifics) |
+| AWS Secrets Manager | Yes |
+| AWS Signer | Yes |
+| Amazon Simple Notification Service (Amazon SNS) | Yes |
+| Amazon Simple Queue Service (Amazon SQS) | Yes |
+| AWS Systems Manager | Yes |
+| Amazon Virtual Private Cloud (Amazon VPC) | Yes |
+| AWS WAF | Yes |
+
+### Amazon Bedrock
+Amazon Bedrock is only required if you wish to use Anthropic's Claude models for your organization's selected LLM. If so, you must ensure that the following models are present in Bedrock for your selected region (Glean does not support the region if these models are not available):
+
+* Claude 3.5 Sonnet (V1)
+* Claude 3 Haiku
+* Amazon Titan Embeddings G1 - Text
+
+More information: [Model Support by AWS Region (docs.aws.amazon.com)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html)
+
+### Amazon SageMaker
+
+For Amazon Sagemaker, Glean requires that the following resource types be available in region:
+
+* ml.p3.16xlarge (NVIDIA V100 Multi GPU machines)
+* ml.g4dn.xlarge
+* ml.m5.2xlarge (deployments under 50M documents)
+* ml.m5.4xlarge (deployments over 50M documents)
+
+
