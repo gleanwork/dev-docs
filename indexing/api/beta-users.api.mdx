@@ -1,0 +1,71 @@
+---
+id: beta-users
+title: "Beta users"
+description: "Allow the datasource be visible to the specified beta users. The default behaviour is datasource being visible to all users if it is enabled and not visible to any user if it is not enabled."
+sidebar_label: "Beta users"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVttu2zgQ/RWCfWkBX9KiWKB+arNbLIoF2iCXpyRAx9LYYkuRWpKy4xr+954hlVpOiv2ALYJaIocznHNmzmiva45VMF0y3umF/mCt36rUsKopUfR9qFgtWW1MNEvLKvm8GTuuzMpwjb1Eqo8c4kxdyzFeUW8T1hvaGJxXJp76Mm49dkfWlvPKrJRJYs6OsFkrcrVyPp1Yu122PhqLwXBgpic60Trqxa2+4NCaGJFV1PcTHfjfnmM69/VOL/a68i6xS/JIXWdNRZL//FsUEPY6Vg23JE9p1zFg8ctvXCW4P0Xrr/y25JhBGWKoJYIov8prc8GnpPfh4pOqkC28dMF3HJLhKDGO6IwixhQA1POIRyS3jaka5ZjrKMiApJbqE6ZK3CNXxuU7fUVuxsavCosWoB0muqyMwlMItHsWXQgupo/5HemHsUncxt/lsPKhJaBd4ujD4VAYMYFrIWuEwK+7gLRkkhU/fwdmZ01MNxLossD81EsKPU/0w5QfOh/SBQVqP1P7H8flcOxQH4WFN2dnmYyThL/8I3Zvf7d1TrUa+Xp79vq5zWfU5oc+NT6YH7hjNnv33OxP71aoQUlpoluGPfLRnY9ScR2lBm/HQsIafjbytLjd6z5YbDcpdXExn+9rD/jcYbrk2doyuVnl2zl1Zm5czQ/zzWsc31Aw0jCl+vKBcqncuvA2rD2l/6Mwo8qmerk1uGiP5ntAK0mjvUJFUIICJOk9N3RFzZ31uxbdppZUfWcnFXc43EsWVR9M2uU0zpkCBwELr/fj7StpxnLXsdHQpULwMi9L85e6EzAyltLPl8fO//hAbWf5ac8d6/SxDW61IP2ei71AqO/hzriVl8OCfUHkbPZudqZHlSqQq08CtcgcWh6bIjZUZbEp9Y+IfSdV+v4XRVIbp2C/gJsUfN1XsnDnPjlFdW3k5VGFJQlVsogF+xK/oaiWvbFpCp6GUAo9OBn2yUavoEEbg5CK1OXHq+ssT9lHEdOoqj4m34qCIFwHoiksTQoUdmqQz0dBicAfUpQrTKYAVBl/gHDV24kEVgOS5aX2gk13FOgpbUHgoxsPeMcRDJ6CI4treDvkic7F3ZV30y5wq5DvljFH8CsBiiMJkn2NFP4EptpzGR+os4BgdncEywQIeWUpYqydIN9wZMEqyuAaRuUjUgWoiBTCmpz5kUMWll527AGAkhKanO6j+sBxDwA4Va8kXV8uOLsD7S/UTaQ1q3WPhK101Z3LCAtfMis33m4k1RXFNBsy2xqAMRCMu2/IYV4gU4MfCLcM0c6SczK/0ZNAHzPEONQh1CZPj6oht5bisN6t75z0Ogrlj2kLXhrABNVMQqHxdYYcLlNGfKAnqzIGP2/YyqzLRUS171JGzPFWDV0UkaYW4bZ+nbvrVNBA3kjITAss4jwvTBOU580sbta510UuW8pC5orun49n00lzjT4A/gdfPEX0BI05WIVuA40M4n4YHrf6ODwgrI0MFizu90uKfBPs4SDLkMkgWnx/HBBZinGA8WERskx/510ZWILe9FpCi7nt80fD008pkfFf8+ziy9U1jJfDJ1jrazkTaItF+X+h8eAzQ1ns89peo07XPVjHfvEp/34CNwTMFA==
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Beta users"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/betausers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Allow the datasource be visible to the specified beta users. The default behaviour is datasource being visible to all users if it is enabled and not visible to any user if it is not enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Describes the request body of the /betausers API call","properties":{"datasource":{"type":"string","description":"Datasource which needs to be made visible to users specified in the `emails` field."},"emails":{"type":"array","description":"The emails of the beta users","items":{"type":"string","format":"email"}}},"required":["datasource","emails"],"title":"GreenlistUsersRequest"}}},"required":true,"x-exportParamName":"GreenlistUsersRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"},"409":{"description":"Conflict"}}}
+>
+  
+</StatusCodes>
+
+
+      

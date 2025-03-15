@@ -1,126 +1,76 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Glean Developer Portal",
   "colors": {
     "primary": "#343CED",
     "light": "#d8fd49",
     "dark": "#343CED"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/brand/images/favicon.png",
   "navigation": {
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Home",
+        "dropdown": "Getting Started",
+        "icon": "book",
         "groups": [
           {
             "group": "Home",
             "pages": [
-              "home"
+              "home",
+              "getting-started/changelog"
             ]
           }
         ]
       },
       {
-        "tab": "Get Started",
+        "dropdown": "Indexing APIs",
+        "icon": "file-import",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "get-started/welcome"
+              "indexing/overview",
+              "indexing/rendering-search-results",
+              "indexing/people-teams-identity",
+              "indexing/examples"
             ]
           },
           {
-            "group": "Stage 1: Prepare",
+            "group": "Authentication",
             "pages": [
-              "get-started/prepare/items-to-prepare",
-              "get-started/prepare/pre-deployment-checklist"
+              "indexing/authentication/managing-tokens",
+              "indexing/authentication/token-rotation"
             ]
           },
           {
-            "group": "Stage 2: Build",
+            "group": "Datasources",
             "pages": [
-              "get-started/build/about-self-hosted",
-              {
-                "group": "Self-Hosted GCP",
-                "icon": "google",
-                "pages": [
-                  "get-started/build/gcp/deploy-gcp",
-                  "get-started/build/gcp/supported-gcp-regions",
-                  {
-                    "group": "Troubleshooting",
-                    "pages": [
-                      "get-started/build/gcp/troubleshooting/setup-key-1",
-                      "get-started/build/gcp/troubleshooting/setup-key-2",
-                      "get-started/build/gcp/troubleshooting/setup-key-3",
-                      "get-started/build/gcp/troubleshooting/setup-key-4"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Self-Hosted AWS",
-                "icon": "amazon",
-                "pages": [
-                  "get-started/build/aws/deploy-aws",
-                  "get-started/build/aws/supported-aws-regions"
-                ]
-              }
+              "indexing/datasource/custom-properties",
+              "indexing/datasource/test-datasource",
+              "indexing/datasource/category"
             ]
           },
           {
-            "group": "Stage 3: Setup",
+            "group": "Documents",
             "pages": [
-              "get-started/setup/setup-checklist",
-              "get-started/setup/access-the-admin-ui",
-              "get-started/setup/configure-sso",
-              "get-started/setup/sync-people-data",
-              "get-started/setup/connect-data-sources"
+              "indexing/documents/activity",
+              "indexing/documents/permissions",
+              "indexing/documents/bulk-indexing",
+              "indexing/documents/bulk-upload-model",
+              "indexing/documents/document-model",
+              "indexing/documents/supported-mimetypes"
             ]
           },
           {
-            "group": "Stage 4: Learn",
+            "group": "Debugging",
             "pages": [
-              "get-started/learn/crawling-and-learning"
-            ]
-          },
-          {
-            "group": "Stage 5: Go Live",
-            "pages": [
-              "get-started/golive/populate-content",
-              "get-started/golive/customize-branding",
-              "get-started/golive/setup-glean-assistant",
-              "get-started/golive/deploy-apps",
-              "get-started/golive/launch-preparation"
-            ]
-          },
-          {
-            "group": "Stage 6: Post-Launch",
-            "pages": [
-              "get-started/start/post-launch-tasks"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Agentic APIs",
-        "groups": [
-          {
-            "group": "General",
-            "pages": [
-              "api/agentic/index"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Indexing APIs",
-        "groups": [
-          {
-            "group": "General",
-            "pages": [
-              "api/indexing/index",
-              "api/indexing/getting-started"
+              "indexing/debugging/datasource-config",
+              "indexing/debugging/datasource-status",
+              "indexing/debugging/datasource-document",
+              "indexing/debugging/datasource-user",
+              "indexing/debugging/document-access",
+              "indexing/debugging/document-count"
             ]
           },
           {
@@ -132,30 +82,30 @@
         ]
       },
       {
-        "tab": "Client APIs",
+        "dropdown": "Client APIs",
         "groups": [
           {
             "group": "Authentication",
             "pages": [
-              "api/client/authentication/tokens",
-              "api/client/authentication/oauth",
-              "api/client/authentication/permissions",
-              "api/client/authentication/examples"
+              "client/authentication/tokens",
+              "client/authentication/oauth",
+              "client/authentication/permissions",
+              "client/authentication/examples"
             ]
           },
           {
             "group": "Search",
             "pages": [
-              "api/client/search/filtering-results",
-              "api/client/search/datasource-filters",
-              "api/client/search/faceted-filters"
+              "client/search/filtering-results",
+              "client/search/datasource-filters",
+              "client/search/faceted-filters"
             ]
           },
           {
             "group": "Chat",
             "pages": [
-              "api/client/chat/overview",
-              "api/client/chat/examples"
+              "client/chat/overview",
+              "client/chat/examples"
             ]
           },
           {
@@ -167,56 +117,58 @@
         ]
       },
       {
-        "tab": "Web SDK",
+        "dropdown": "Web SDK",
+        "icon": "browser",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "sdk/web/overview",
-              "sdk/web/3rd-party-cookies"
+              "web/overview",
+              "web/3rd-party-cookies"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "sdk/web/chat",
-              "sdk/web/autocomplete",
-              "sdk/web/modal-search",
-              "sdk/web/sidebar",
-              "sdk/web/recommendations"
+              "web/chat",
+              "web/autocomplete",
+              "web/modal-search",
+              "web/sidebar",
+              "web/recommendations"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
-              "sdk/web/integrations/react",
-              "sdk/web/integrations/zendesk",
-              "sdk/web/integrations/lumapps",
-              "sdk/web/integrations/brightspot"
+              "web/integrations/react",
+              "web/integrations/zendesk",
+              "web/integrations/lumapps",
+              "web/integrations/brightspot"
             ]
           }
         ]
       },
       {
-        "tab": "Actions SDK",
+        "dropdown": "Actions SDK",
+        "icon": "arrow-progress",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Information",
             "pages": [
-              "sdk/actions/overview",
-              "sdk/actions/authentication",
-              "sdk/actions/create-actions",
-              "sdk/actions/faq"
+              "actions/overview",
+              "actions/authentication",
+              "actions/create-actions",
+              "actions/faq"
             ]
           },
           {
-            "group": "Example Actions",
+            "group": "Examples",
             "pages": [
-              "sdk/actions/examples/google-docs-update",
-              "sdk/actions/examples/google-calendar-events",
-              "sdk/actions/examples/zendesk-ticket-redirection",
-              "sdk/actions/examples/jira-issue-creation",
-              "sdk/actions/examples/jira-issue-creation-redirect"
+              "actions/examples/google-docs-update",
+              "actions/examples/google-calendar-events",
+              "actions/examples/zendesk-ticket-redirection",
+              "actions/examples/jira-issue-creation",
+              "actions/examples/jira-issue-creation-redirect"
             ]
           },
           {
@@ -235,27 +187,177 @@
     }
   },
   "logo": {
-    "light": "/images/brand/light.svg",
-    "dark": "/images/brand/dark.svg"
+    "light": "/brand/images/glean-platform-logo-light.svg",
+    "dark": "/brand/images/glean-platform-logo-dark.svg"
   },
   "navbar": {
     "links": [
-      {
-        "label": "Support Portal",
-        "href": "https://support.glean.com"
-      },
-      {
-        "label": "Customer Docs",
-        "href": "https://docs.glean.com"
-      }
+
     ],
     "primary": {
-      "type": "button",
-      "label": "Go to Glean",
-      "href": "https://app.glean.com"
+      "type": "github",
+      "href": "https://github.com/gleanwork/dev-docs"
     }
   },
   "footer": {
+    "links": [
+      {
+        "header": "Product",
+        "items": [
+          {
+            "label": "Work AI Platform",
+            "href": "https://www.glean.com/product/overview"
+          },
+          {
+            "label": "Workplace Search",
+            "href": "https://www.glean.com/product/workplace-search-ai"
+          },
+          {
+            "label": "Assistant",
+            "href": "https://www.glean.com/product/assistant"
+          },
+          {
+            "label": "Agents",
+            "href": "https://www.glean.com/product/ai-agents"
+          },
+          {
+            "label": "Apps",
+            "href": "https://www.glean.com/product/apps"
+          },
+          {
+            "label": "Data Analysis",
+            "href": "https://www.glean.com/product/data-analysis"
+          },
+          {
+            "label": "AI Governance",
+            "href": "https://www.glean.com/product/governance"
+          },
+          {
+            "label": "Prompt Library",
+            "href": "https://www.glean.com/prompt-library"
+          },
+          {
+            "label": "Knowledge Management",
+            "href": "https://www.glean.com/product/knowledge-management"
+          },
+          {
+            "label": "Work Hub",
+            "href": "https://www.glean.com/product/work-hub"
+          },
+          {
+            "label": "Connectors",
+            "href": "https://www.glean.com/connectors"
+          },
+          {
+            "label": "Security",
+            "href": "https://www.glean.com/security"
+          }
+        ]
+      },
+      {
+        "header": "Solutions",
+        "items": [
+          {
+            "label": "All Teams",
+            "href": "https://www.glean.com/solutions/all-teams"
+          },
+          {
+            "label": "Engineering",
+            "href": "https://www.glean.com/solutions/engineering"
+          },
+          {
+            "label": "Sales",
+            "href": "https://www.glean.com/solutions/sales"
+          },
+          {
+            "label": "Support",
+            "href": "https://www.glean.com/solutions/support"
+          },
+          {
+            "label": "People",
+            "href": "https://www.glean.com/solutions/people"
+          },
+          {
+            "label": "Knowledge Management",
+            "href": "https://www.glean.com/solutions/knowledge-management"
+          },
+          {
+            "label": "Retail",
+            "href": "https://www.glean.com/industries/retail"
+          },
+          {
+            "label": "Financial Services",
+            "href": "https://www.glean.com/industries/financial-services"
+          },
+          {
+            "label": "Enterprise Search Software",
+            "href": "https://www.glean.com/enterprise-search-software"
+          }
+        ]
+      },
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "Resources Center",
+            "href": "https://www.glean.com/resources"
+          },
+          {
+            "label": "Product Videos",
+            "href": "https://www.glean.com/resources/product-videos"
+          },
+          {
+            "label": "Guides",
+            "href": "https://www.glean.com/resources/guides"
+          },
+          {
+            "label": "Customer Stories",
+            "href": "https://www.glean.com/resources/customer-stories"
+          },
+          {
+            "label": "Blog",
+            "href": "https://www.glean.com/blog"
+          },
+          {
+            "label": "Webinars",
+            "href": "https://www.glean.com/webinars"
+          },
+          {
+            "label": "Developers",
+            "href": "https://developers.glean.com/"
+          },
+          {
+            "label": "Help Center",
+            "href": "https://help.glean.com/en/"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "About",
+            "href": "https://www.glean.com/about"
+          },
+          {
+            "label": "Careers",
+            "href": "https://www.glean.com/careers"
+          },
+          {
+            "label": "Newsroom",
+            "href": "https://www.glean.com/press"
+          },
+          {
+            "label": "Referrals",
+            "href": "https://www.glean.com/refer-friend"
+          },
+          {
+            "label": "Partners",
+            "href": "https://www.glean.com/partners"
+          }
+        ]
+      }
+    ],
     "socials": {
       "website": "https://www.glean.com",
       "x": "https://twitter.com/glean",

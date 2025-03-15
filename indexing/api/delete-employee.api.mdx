@@ -1,0 +1,71 @@
+---
+id: delete-employee
+title: "Delete employee"
+description: "Delete an employee. Silently succeeds if employee is not present."
+sidebar_label: "Delete employee"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk1vGzcQ/SsEc2gCSCslMILERYHGrVsYBRLDlnuJfeByRxJjLrkluZIVQf+9b8i1LNlFeylgWLvkcD7evHncrWwo6mC6ZLyTp/JXspRIKCeo7azfEFXi2lhyyW5E7LUmaqIw8/22MFE4n0QXKMKqkiOZ1CLK06/yknxnSd6NZKC/eorpzDcbebqV2rsEW35UXWeNVhx98i1696PQSxUipZ9uZr+NP7BJ1EtqFT+lTUfI0dffSCcEep46v9UURVqSGEKKGjGFn+e1SZOr26f+6fJCaGUtXHXBdxSSociBVhRidrqPaZDxggIs5z60KpWl9ycvsvizHBWub2sKAtai8bpvUW9+8TBsTUxGC8Cg+xDI6Q0/p+BtJS7mQtWMpIDxlNOGLy+GjIAO6fsoVCC4dVTJ3Ug+1nPeKmM55+OMZqi8FN7su/ZDxCNbjx4LjCkYt5C7XemWCdRwD499o5XJJEt7opwP21cFbRw/Op9CTyP5MKaHzod0qYJqP6v2X47z4dh5F0sf3k2nL+v58gfbnfzT1plqxIGvk+nblzafQdZPfVr6YL4jx2z28aXZL97NwcyUEWkJ9qhHdj4y8TqVlnh7xidsRArcKSC3lX1AM+QypS6eTibbxgNCtxvXVC0sKVdp305UZybGNfQwWb3F8ZUKRtW2FF8OlMzmqrfMuWHtOelyd0TZFK/XBtn2SdADpoxZ8wY0UgkkSBRa44YJaYjTzsSslb4n11TcvzuuArw0aZPLOCOQLTBieL073L7mwSy5HhoNE8tdrvPyE8kYjAwoj/rVkyicP6iWpeJw9KYviL3n6AizN/dH1nJafaym8omfvzPG4oKxxRkedWzylCmdhYceffYdc/PnfU/Y/TG6r+AGw9n0mhdu3YUTqmkMv4jkC5YqKRF9H3QGF2CX+EsVRd0bm8ZozBCKZWA07CsbPaTTrwxCCiWuzq9nWZayD3KZDEL3MfkWpXK4Dp1VoTYpqFB0gzsI95xHBOB6KTKlKjFbQpzx10ea93aU9YcK1KNBmRibjlkRGcc4VmuWlsGNB7yHEVgEg1MWaXg71Il5Re7CuzFugFag3jVZy78coDjiINnXgdofwdR4KrdI0cNy1wxgmQAV11bFCHE8RH6JC4exAm7W+nWu/xGpAlRECWGhnPmeQ5Yuve7ytSSYQqPjffALPe4BACX9hsv1JcHqFm1/JW6iWpBY9CjY8hjduoww9ws/tPJ2xaXOVUzVUNnaAIyhwch9pZwmrtTgB7eSchvRWeUctJmHEOjz9erAQ2iMQff5PnQLJof1bnHreLhBlPfjFn1ZAiZoZeIWGt9kyOEyZcSH9mQtjpj2FVm+4zKJVIN7KCPmaP14uUSUKVmurV/k6TpWMDTvQLlMCyziJC+ME6TmXRVX5f5gkWxVVi53qPbiQCiPJuzgi+D/+QApasNZTYAuBBNZ5WK2g3R/lc+kG7K2ZG3HznZbq0g3we52vAyRCqyEd0/ynIUQB0g1UDcWyXvalDuDqxjPOD6b257z+K9vHNbU/Q1z+eV6hrP18KnU+oZdBLXGIv8/lXjwGbisvHltK8GhRY+OYJ9DsJDvdn8DmzN+mw==
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete employee"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/deleteemployee"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete an employee. Silently succeeds if employee is not present.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json; charset=UTF-8":{"schema":{"type":"object","description":"Describes the request body of the /deleteemployee API call","properties":{"version":{"type":"integer","format":"int64","description":"Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done."},"employeeEmail":{"description":"The deleted employee's email","type":"string"}},"required":["employeeEmail"],"title":"DeleteEmployeeRequest"}}},"required":true,"x-exportParamName":"DeleteEmployeeRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"},"409":{"description":"Conflict"}}}
+>
+  
+</StatusCodes>
+
+
+      

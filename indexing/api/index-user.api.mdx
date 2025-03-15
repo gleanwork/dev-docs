@@ -1,0 +1,71 @@
+---
+id: index-user
+title: "Index user"
+description: "Adds a datasource user or updates an existing user."
+sidebar_label: "Index user"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVk1v2zgQ/SuEemkBW3aLoEBz2mQTLIIF2iAfe2lyoKSxzIYitSRlxzX83/cNqURSnNMGgSUNyfl4M/OG+6wiXzrVBmVNdpqdVZUXUlQySG87V5LoPDlhnehaCAmLRtCz8kGZOq7l2SwLsvbZ6c/smlyjvIcqnz3OMkf/duTDua122ek+K60JZAK/yrbVqpRsdPHLs+V95ss1NZLfwq4l+GKLX1QGqJ+6eBG/CrgS1iR6G6KAEWFXUbZQpqLn6PjZ9ZUopdbQ0jrbkguKPNvYkPMqGe7NKXhXk8POlXWNDEn09eTIgX/SUWG6poAJ7BaVLbsGscUPi40NI1QKhFx2zpEpd/wenNW5uFoJWXjejc1L9hi6rOg9EoChfALOjqDWUJ4d4MBrPkYO++CQhCP37oDAKH/s0XatynWEJoKioL2qqGLNLGCdxzri1mBFQWn3UAQVp/xNjqboIpFKH7va27uq3rEYDfmOCwO21GrkLj5N/ByFhRiMDVGajM2ObRnZvIMXFpQ/K4PajBcLazVJc4Smp8AgrKT2NPWK+4QrBe/UtNruiBgiiVIM2eGQyl85oIXOePExuoTWCCpoNnvxGtE9lF7QShkVLb9VMKqAPmkjLVdc76zgJnUDTk+OB9fRLHue03NrXbiWTjbfIzbvnORzvkUHp0x+WS6Pk/Xjb9538t7SuazESNfJ8vPxnu9I3FkX1tap36kKT5bfjrf9ac0KLJHAbAj7EUrWWh/rTYY1voZWhwy/3ESAa591DvWXrUNo/elisa8sEmAO84LymvOcl7ZZyFal84vNZxzfSKdkoVPc6UByaiU7zXTQy96WyCXnVqRF8XGr4GgXQJIgO27oT6gZGURFgdnR9LxVEZdM5IxClk9kqpyz9shRgDJU2MUwzgk84BgsfD6Ol2+ZLpOv4009j8aSjuKhMRiMiCUz7s3AzZfPEvVLE1ZcTjln4JoXvug7fLrAjT1IUvsN30PXcT2yI8qs7MRstsy/5ctsqOy/OFkiVikPHNA5FplJZRkmboA4UNp/vCY3suYkTR+gBgRcdSULHsyVYV6L3cYd/sIvIsXsU9aS/bX0ouiUDnNkuDfFvT/r10EOVoABN6riCSluLm/v4uiJOsjEqhJl54MFXXg216JEpCtUcNKl2cCl0POcR+ZA2LE2c3G3BtfgHwivOj2LjE4pZ7N++jA27TB853LL46NXYwHv2AIPOmekhhtW93Gi5+G7sGbeOmoE4t2S1vxkA0kRG4m6RtN7AlNlKbFymnlB7wawlMOQLrX0HgNwjPyaQKzACrhpbbcx/hekElAeIbhaGvU7mkxZ+tiSBQCCS2g2XUfBIccdAKBQfuJwbXIwf0DaP4h7L2sSdYeANffjg4kIc77woI3VGw51JX3I+8i2CmD0CYbvG2kwghCpwgOXDml2otXSGEwu7magj2uUMqhD8JRC9jHVpam5OLQ19YNhlkChfJ03yMsaMBkeNEihslWEHCpDRLxPT6RyD9rYkOZJG4tIVrhrRMQMbV8uEB5hZsz22taxu6ZUiOSNKFA1wMIvomAewFlfcr+pI0sw0TYyUqAZDQvRk+2kuUaXu/97hUwcxS4sACVoli8LLl4iEtf/zAauBw+ueQ5AuN8X0tO904cDi8FqjqnzceDzyJw4QLJi7gKrPtEuzRd2eX7Hpnm77tiFo7sps+7r+Ln+cXuHzUV/p21sxWec3ELIv6cZXmyEJXJzlO0zFEfdAWqsJ5389x/rBAyL
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Index user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/indexuser"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Adds a datasource user or updates an existing user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Describes the request body of the /indexuser API call","properties":{"version":{"type":"integer","format":"int64","description":"Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done."},"datasource":{"type":"string","description":"The datasource for which the user is added"},"user":{"description":"The user to be added or updated","type":"object","properties":{"email":{"type":"string"},"userId":{"description":"To be supplied if the user id in the datasource is not the email","type":"string"},"name":{"type":"string"},"isActive":{"type":"boolean","description":"set to false if the user is a former employee or a bot"}},"required":["email","name"],"title":"DatasourceUserDefinition"}},"required":["datasource","user"],"title":"IndexUserRequest"}}},"required":true,"x-exportParamName":"IndexUserRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"},"409":{"description":"Conflict"}}}
+>
+  
+</StatusCodes>
+
+
+      

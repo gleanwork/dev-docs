@@ -1,0 +1,14 @@
+{
+  "name": "glean-dev-docs",
+  "version": "1.0.0",
+  "description": "Glean Developer Docs",
+  "scripts": {
+    "dev": "mintlify dev"
+  },
+  "keywords": [],
+  "author": "john.agan@glean.com",
+  "license": "ISC",
+  "dependencies": {
+    "mintlify": "^4.0.436"
+  }
+}

@@ -1,0 +1,79 @@
+---
+title: Rendering Search Results
+icon: magnifying-glass
+---
+
+The rendering behavior of the search results from a datasource are determined by 3 ways (in increasing order of preference):
+
+1. Default rendering behavior, based on the datasourceCategory (no further action required)
+2. Customized render config based on requirements (please contact glean support to set this up)
+3. Re-using the rendering configuration of another datasource (eg. gdrive)
+
+## Default rendering behavior based on datasource category
+
+Datasource categories are set for a datasource during the data source setup phase (or `/adddatasource` endpoint). The [field](https://developers.glean.com/docs/indexing_api_datasource_category/) is typically set for all custom data sources. For information on the meaning of each category, refer to this document: [Selecting datasource category](https://developers.glean.com/docs/indexing_api_datasource_category/)
+
+With no further action required from the developer, we will aim to render results from the datasource of the specified datasource categories with information typically surfaced in results from that category.
+
+We have specific default rendering behaviour for the following datasource categories:
+
+- `PUBLISHED_CONTENT`
+- `KNOWLEDGE_HUB`
+
+For other categories, the rendering would be a vanilla icon + title + snippet (see screenshot below).
+
+- The [icon URL](https://developers.glean.com/indexing/tag/Datasources/paths/~1adddatasource/post/#!path=iconUrl&t=request) is fetched from the datasource config (as defined during the /adddatasource call (or) in the datasource setup page in the admin console).
+- The snippets are generated based on the relevance between the query and the provided body text.
+- The title is provided in the [title field](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/title&t=request) while indexing documents.
+
+![rendering-simple-result](./images/rendering-simple-result.png "#width=calc(90% - 10px);vertical-align=top;")
+
+Contact glean support to further customize rendering for your datasource (option 2).
+
+### PUBLISHED_CONTENT
+
+Results from datasources with the datasourceCategory set to `PUBLISHED_CONTENT` would include the [last updated time](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/updatedAt&t=request), [author](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/author&t=request) and [container](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/container&t=request) (if any) in the meta line.
+
+### KNOWLEDGE_HUB
+
+Similar to `PUBLISHED_CONTENT`, datasources with `KNOWLEDGE_HUB` would include the [last updated time](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/updatedAt&t=request), [owner](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/owner&t=request) (instead of author) and [container](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/#!path=documents/container&t=request) (if any) in the meta line.
+
+Datasources with the above 2 categories, typically look like the following:
+
+![rendering-sample-result](./images/rendering-sample-result.png "#width=calc(90% - 10px);vertical-align=top;")
+
+## Customized render config based on requirements
+
+<Info>
+
+Currently, this step requires contacting glean support to get the behaviour support.
+
+</Info>
+
+Examples of requests include:
+
+- I need a custom list of attributes to show up in the ‘meta line’ (ie. the line below the title)
+- I need a different icon to show up for different object types
+
+For now, this will be setup by Glean internally - but in the future we expect to enable admins/developers to configure this themselves via the Glean admin console.
+
+Here is an example of customized rendering for a search result:
+
+![rendering-custom-result](./images/rendering-custom-result.png "#width=calc(90% - 10px);vertical-align=top;")
+
+The example above is for an internal job portal datasource and shows how we can add custom attributes like level, location, job role, engineering manager (as a person field).
+
+## Re-using rendering configuration of another datasource
+
+To do this, you can set the [renderConfigPreset](https://developers.glean.com/indexing/tag/Datasources/paths/~1adddatasource/post/#!path=renderConfigPreset&t=request) in the datasource config (when making /adddatasource calls or setting up a datasource via the admin console).
+
+This field can be set to the name of any datasource supported by glean (in lower case). While it is recommended to contact Glean support to help get this setup - some of the common values used for this field include:
+
+- gdrive
+- jira
+- zendesk
+- salesforce
+
+<Info>
+If you want to go back to using the default rendering behaviour (option 1) OR the custom rendering setup through option 2, you **must unset the renderConfigPreset in the datasource config.**
+</Info>

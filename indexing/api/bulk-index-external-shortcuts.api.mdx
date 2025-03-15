@@ -1,0 +1,71 @@
+---
+id: bulk-index-external-shortcuts
+title: "Bulk index external shortcuts"
+description: "Replaces all the currently indexed shortcuts using paginated batch API calls. Note that this endpoint is used for indexing shortcuts not hosted by Glean. If you want to upload shortcuts that would be hosted by Glean, please use the `/uploadshortcuts` endpoint. For information on what you can do with Golinks, which are Glean-hosted shortcuts, please refer to [this](https://help.glean.com/en/articles/5628838-how-go-links-work) page."
+sidebar_label: "Bulk index external shortcuts"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Bulk index external shortcuts"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/bulkindexshortcuts"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Replaces all the currently indexed shortcuts using paginated batch API calls. Note that this endpoint is used for indexing shortcuts not hosted by Glean. If you want to upload shortcuts that would be hosted by Glean, please use the `/uploadshortcuts` endpoint. For information on what you can do with Golinks, which are Glean-hosted shortcuts, please refer to [this](https://help.glean.com/en/articles/5628838-how-go-links-work) page.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json; charset=UTF-8":{"schema":{"type":"object","description":"Describes the request body of the /bulkindexshortcuts API call","allOf":[{"type":"object","description":"Describes the request body of a bulk upload API call","required":["uploadId"],"properties":{"uploadId":{"type":"string","description":"Unique id that must be used for this bulk upload instance"},"isFirstPage":{"type":"boolean","description":"true if this is the first page of the upload. Defaults to false"},"isLastPage":{"type":"boolean","description":"true if this is the last page of the upload. Defaults to false"},"forceRestartUpload":{"type":"boolean","description":"Flag to discard previous upload attempts and start from scratch. Must be specified with isFirstPage=true"}},"title":"BulkIndexRequest"},{"type":"object","properties":{"shortcuts":{"description":"Batch of shortcuts information","type":"array","items":{"allOf":[{"properties":{"inputAlias":{"type":"string","description":"link text following the viewPrefix as entered by the user. For example, if the view prefix is `go/` and the shortened URL is `go/abc`, then `abc` is the inputAlias."},"description":{"type":"string","description":"A short, plain text blurb to help people understand the intent of the shortcut."},"destinationUrl":{"type":"string","format":"url","description":"destination URL for the shortcut."},"createdBy":{"type":"string","description":"Email of the user who created this shortcut."},"createTime":{"type":"integer","format":"int64","description":"The time the shortcut was created in epoch seconds."},"updatedBy":{"type":"string","description":"Email of the user who last updated this shortcut."},"updateTime":{"type":"integer","format":"int64","description":"The time the shortcut was updated in epoch seconds."}},"title":"ShortcutProperties"},{"type":"object","required":["destinationUrl","intermediateUrl","createdBy","inputAlias"]}],"properties":{"title":{"type":"string","description":"Title of the golink"},"intermediateUrl":{"type":"string","format":"url","description":"The URL from which the user is then redirected to the destination URL."},"decayedVisitScore":{"type":"number","format":"double","description":"decayed visits score for ranking"},"editUrl":{"type":"string","format":"url","description":"The URL using which the user can access the edit page of the shortcut."}},"title":"ExternalShortcut"}}},"required":["shortcuts"]}],"title":"BulkIndexShortcutsRequest"}}},"required":true,"x-exportParamName":"BulkIndexShortcutsRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"},"409":{"description":"Conflict"}}}
+>
+  
+</StatusCodes>
+
+
+      

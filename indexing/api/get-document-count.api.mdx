@@ -1,0 +1,78 @@
+---
+id: get-document-count
+title: "Get document count"
+description: "Fetches document count for the specified custom datasource."
+sidebar_label: "Get document count"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVl1v2zYU/SuE+pIA/kiLYkD9tKbNhmBAGiTuU2IUlHQts6VIjaT8UcP/veeScizbWwcM2NOCwLYo8n6cc++53GYlNY4KGajMJsG1NMCKL5xqgrImm2S/USgW5EVpi7YmE0RhW3zOrRNhQcI3VKi5olIUrQ+2FqUM0tvWFTR6Ns9mqpqJ+OxJPI1LyttqvD1s2I19kKH1s4tFCI2fjLFlSdo25Pyo0iTNqLD1GJ79WJmS1spUX2Sjjh6+BGfbXJNfWBuwNn4V/QwPbobJy2WM2Slk44QyeKgl54gws0EWZOWzyVM2PbaWzQaZoz9b8uHalptsss0KawJw4J+yabQqopXxV89wbTMP+7XkX2HTEAC0+VcqQnaK68f4lANZhrHzIXI4EXYe18YVhT3qCfT397eikFrDWOMYpqDIs6tDsj3HPjjO4Mzxy15hZE0RldUCsJxSrLwwRCWVo2y3SzAox2Xy1PcHgIIKmh3+TuFjZ+IDW3hISeH00fFUZeshrRvrwr10sr5DID8zwMd9Y41P6b65uopZH+X16Q+k+h+Rk3z/a3b6OfWcK8RakTvzftfWOWoUjvYnPShxKYwSnIpg/7H5Imd/z0zKiKnBtrd/hee1LEWPgLdXr8/33Fmk3YaFdeo7qI3b3p1v+2DNHFyEGFNN2I8yyBrrGflGhgWezvDEK09uCS1AxW2z1mns2gvFtrS1VGY3zKmnFC/aMF6+xvGldEpyMycS+ECKbS5bDSL2a6f432BVi/RSXKwU4m2DoDUqy2PHJbCXQZQUyNXKdEUCHdV2E9snl8U3MrFtdjPOomidCpuYxjVJR44xw+Os//qRazPF2t/UFS2zmMdlFqtUPwxGhJTL++GgUjdrWTeaToVhLwg4wPLHrxndlPPV6N3oKutVDIMqbjuh5druuksWsYSJMWKbbcNd/OsLCWz+GM5XMAORLtuCF57NrRGyLBU/7AuZwxQpTp/QTf4X0ou8VToMwUTnigVr0L2X2luBZlsquBRSPNw8TmMfRhtkIvtdcyBVdteASulyFZx0G9HpBeZBaiggDCGMNTQS0wUkEP+tp3mrB1EpKWGbHkrL2DRcBp5x9EO5AkV7Mxbw9j1wvzsjNcKwussTTY3YhTVDjOFaIN8Vac3f7CAZYifRVk/SjmAqLbI06EVUkoMzvTmApRzGSqGl9yNxhDyGOjFWwE1ru4r575FKQHmk4Cpp1PfoMrF00ZAFAHGCDo7fo77AcQsAcGe45HRtCjDeBF7hGiArElWLhDX3DW4HjDDzhS9aWr3kVOfSh1GX2UoBjI5gxL6UhscWRjO+oI/SbESjpTGQQO46oF+CMoM6hKwosC+KhTQVF4e2pno23M0olF+GNXhZACaoYGAKlS0j5DAZIuIdPXFq4frzcjNhbGRpmxARM7QSXRf5dJNYD7WtYncdSxbI60mVqoGFH8eFYYC2vBn5ZRW7mXWxllGqzMtcPBnOp5rVu5b8b25sSQQZuzFqADoO7CLk226mPGVnMwV6u+Cxg3fbbS49fXZ6t+NlqKdjiZ4d5kZUaBwgWUJ2Wb2/0SaNM4Z6OOUIeLtuOZKzC8dusD/xviioCT/dO+tNxvtPj1NszrsbZ21LPuPkCov8Ocnww0bq47yIa9sMjVC1KCu8Tzb57wc2CEW6
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get document count"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/getdocumentcount"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+:::caution deprecated
+
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+
+:::
+
+Fetches document count for the specified custom datasource.
+
+Tip: Use [/debug/\{datasource\}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Describes the request body of the /getdocumentcount API call","properties":{"datasource":{"type":"string","description":"Datasource name for which document count is needed."}},"required":["datasource"],"title":"GetDocumentCountRequest"}}},"required":true,"x-exportParamName":"GetDocumentCountRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","description":"Describes the response body of the /getdocumentcount API call","properties":{"documentCount":{"type":"integer","description":"Number of documents corresponding to the specified custom datasource."}},"title":"GetDocumentCountResponse"}}}},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"},"409":{"description":"Conflict"}}}
+>
+  
+</StatusCodes>
+
+
+      

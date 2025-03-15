@@ -1,0 +1,72 @@
+---
+id: schedules-the-processing-of-group-memberships
+title: "Schedules the processing of group memberships"
+description: "Schedules the immediate processing of all group memberships uploaded through the indexing API. By default the uploaded group memberships will be processed asynchronously but this API can be used to schedule processing of all memberships on demand."
+sidebar_label: "Schedules the processing of group memberships"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVttu2zgQ/RVCfWkBW06LYoHN0ya7wSJYbBOk6VOTB0ocS2wpUiUpX2r433uGVGw5CbAfsEVQS7zM5ZyZM9oVikLtdR+1s8V58bluSQ2GgogtCd11pLSMJHrvagpB20a4pZDGiMa7oRcddRX50Oo+iKE3TipSuIq9ps0mrKINX7u4vS7F5VYoWsrBxLR5uPHS2FrDR3VwjDMybG0Ny9YNwWxFNbANHdiwqKXlwwOfi06EMYtXwp76cBbRdNKq8sEWsyLKJhTnX4tb8p3GJWdD8TgrPP0YKMRLp7bF+a6onY1kIz/Kvje6lgzd4ltg/HYFu+4kP8VtT0DUVd+ojjB/CvRf6a0agR59iApOOFJeW4zBI+pp0DldY2ARB3ryUVNgf0pGGdzga5p4D9Ej+Rfer5cMzUoD+9kTSK+Q4CyAXjqfga6HEF0njn5KcYNA/VoHStge6JzakH5CYlns9wBaR8PB3eblC2P+PV64y1DgIE5u5rTpnY+30svuk+z++xbzFXpQl0H5cHaWsDnJ/uYfPvfxta1LqcTE1sez9y/PfHJRXAyxdV7/JJUy6givCnu9C8x1L2OLt9cpxH4gv8Ibqm1XDN7gaBtjH84Xi51yndR2P6+obAxJW9auW8heL1InLVbvcX0lvZaVGXlPF3KYqbVgbVx7TvsVVo3Im+LtWiNodBFtUNBc7u/As4zoicgdYMfaVARatx1qXlSy/k42sbh/5Czqweu4TWlcEpj2jAteH6fbrCldjnV6aOwVprRKy9yCuWoZjIQrd9Xdsf+uNrLrDT2v9qcqxwVtl463Gd2c81n5e3lWHIvubwZVXE9kCZvc1LJOTU2MEdsceq68Pw4ksPlTON/ATPRODTUvPNhrK6RSml9YhRJ4CFPkOENGN/tvZYCCaRPnYGJ0xZ02G/elCe6pRdFD4u7q831q/WSDbGJ/7Eikyu56UCl9paOXfitGmYL+pjgCEK7brMaluOd2xh/0cjmYWWpxytjmF+UYm/4ohHO55kYezTjAO/Wg8eStNAjDmTFPtCFih4TMe08d1FusCRqBX3aQDSVdZlsTJT2BSTlkadFvqCQPZ5CjA1jaQzBrI0MoxQnyLUGPgFVgUXLrlP8TUhmogBR8I63+mVxmlt725ACA4BKane6jvsDxAAAo1u84XZcDxOB4sG/ElyAbEs2AhA33zYO9f5pM+KGVMytOdSlDLMfM0nwbCUbsK2lr4kw1fnhU2a3ojbQWaspdB/QVKLOoQ2iLBvuibqVtuDiMs82D5W5Gofw278BLC5gggZEp1E4lyGEyJsRHen4MGhyhvVdkeI6kIpLK9Xk2W1qLsYtCno+buXFN6q5TyQJ5E6nSHbAIi7Qwj9CWD2VYNambWRwxbtmCzVp++rlxOq1fjKPncjaZxf/v75Ysmoz1AjUD3QfWiaLdOIi+Fq8PIoh0ywMLB3a7Sgb64s1+z8uQXM+6/ngcNknWcYGQuU+S/51wpPgzkzC/5zD4uBk4nBcfRzwSDnPy9ubzPQ5X40dV5xTf8XKNRf7/vMCDS0SnwZHWdgU6ohlQX9jPNvnfL9vP3po=
+sidebar_class_name: "post api-method"
+info_path: docs/indexing/api/glean-indexing-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Schedules the processing of group memberships"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/processallmemberships"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Schedules the immediate processing of all group memberships uploaded through the indexing API. By default the uploaded group memberships will be processed asynchronously but this API can be used to schedule processing of all memberships on demand.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","description":"Describes the request body of the /processallmemberships API call","properties":{"datasource":{"type":"string","description":"If provided, process group memberships only for this custom datasource. Otherwise all uploaded memberships are processed."}},"title":"ProcessAllMembershipsRequest"}}},"x-exportParamName":"ProcessAllMembershipsRequest"}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK"},"400":{"description":"Bad Request"},"401":{"description":"Not Authorized"}}}
+>
+  
+</StatusCodes>
+
+
+      
