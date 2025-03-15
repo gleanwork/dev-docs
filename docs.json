@@ -11,14 +11,54 @@
   "navigation": {
     "dropdowns": [
       {
-        "dropdown": "Getting Started",
+        "dropdown": "Home",
+        "icon": "house",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "home/overview",
+              "home/changelog",
+              "home/opensource"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "home/authentication/tokens",
+              "home/authentication/oauth",
+              "home/authentication/managing-tokens",
+              "home/authentication/token-rotation",
+              "home/authentication/permissions"
+            ]
+          }
+
+        ]
+      },
+      {
+        "dropdown": "Guides",
         "icon": "book",
         "groups": [
           {
-            "group": "Home",
+            "group": "Authentication",
             "pages": [
-              "home",
-              "getting-started/changelog"
+              "guides/authentication/user-tokens",
+              "guides/authentication/global-tokens",
+              "guides/authentication/python-sdk"
+            ]
+          },
+          {
+            "group": "Indexing",
+            "pages": [
+              "guides/indexing/setup-datasource",
+              "guides/indexing/indexing-documents"
+            ]
+          },
+          {
+            "group": "Clients",
+            "pages": [
+              "guides/client/chatbot",
+              "guides/client/nvidia-enterprise-kb-chatbot"
             ]
           }
         ]
@@ -32,15 +72,7 @@
             "pages": [
               "indexing/overview",
               "indexing/rendering-search-results",
-              "indexing/people-teams-identity",
-              "indexing/examples"
-            ]
-          },
-          {
-            "group": "Authentication",
-            "pages": [
-              "indexing/authentication/managing-tokens",
-              "indexing/authentication/token-rotation"
+              "indexing/people-teams-identity"
             ]
           },
           {
@@ -85,15 +117,6 @@
         "dropdown": "Client APIs",
         "groups": [
           {
-            "group": "Authentication",
-            "pages": [
-              "client/authentication/tokens",
-              "client/authentication/oauth",
-              "client/authentication/permissions",
-              "client/authentication/examples"
-            ]
-          },
-          {
             "group": "Search",
             "pages": [
               "client/search/filtering-results",
@@ -104,9 +127,7 @@
           {
             "group": "Chat",
             "pages": [
-              "client/chat/overview",
-              "client/chat/examples"
-            ]
+              "client/chat/overview"            ]
           },
           {
             "group": "API Reference",
@@ -124,7 +145,8 @@
             "group": "Get Started",
             "pages": [
               "web/overview",
-              "web/3rd-party-cookies"
+              "web/3rd-party-cookies",
+              "web/documentation"
             ]
           },
           {
@@ -192,7 +214,14 @@
   },
   "navbar": {
     "links": [
-
+      {
+        "label": "Help Center",
+        "href": "https://help.glean.com/"
+      },
+      {
+        "label": "Requests & Feedback",
+        "href": "https://github.com/gleanwork/dev-docs/issues/new"
+      }
     ],
     "primary": {
       "type": "github",

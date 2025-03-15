@@ -1,25 +1,26 @@
-# Build an Agentic AI With NVIDIA NIM and Glean
+---
+sidebarTitle: Agentic AI With NVIDIA NIM
+title: Build an Agentic AI With NVIDIA NIM and Glean
+icon: microchip
+---
 
-![NVIDIA + Glean](../../../images/enterprise-kb-chatbot/nvidia-glean.png)
+![NVIDIA + Glean](./images/nvidia-glean.png)
 
 ## Introduction
 
 This article shows you how to create an agent using [NVIDIA NIM™](https://www.nvidia.com/en-us/ai/) and [Glean](https://docs.nvidia.com/glean/index.html) that can answer user questions about an internal company knowledge base. Some example user questions are:
 
-<div style="display:flex">
-    <ul style="flex: 1; padding-left: 1.5rem">
-        <li>"How do I request access to the company VPN?"</li>
-        <li>"What are the steps to submit an expense report?"</li>
-        <li>"What is the process for booking a conference room?"</li>
-        <li>"How do I enroll in the company's health insurance plan?"</li>
-        <li>"What are the guidelines for remote work?"</li>
-        <li>"Where can I find the employee handbook?"</li>
-        <li>"How do I update my personal information in the HR portal?"</li>
-    </ul>
-    <a style="width: 40%" href="../../../images/enterprise-kb-chatbot/chat_interface.png" target="_blank">
-      <img  src="../../../images/enterprise-kb-chatbot/chat_interface.png">
-    </a>
-</div>
+- "How do I request access to the company VPN?"
+- "What are the steps to submit an expense report?"
+- "What is the process for booking a conference room?"
+- "How do I enroll in the company's health insurance plan?"
+- "What are the guidelines for remote work?"
+- "Where can I find the employee handbook?"
+- "How do I update my personal information in the HR portal?"
+
+<Frame>
+<img src="./images/chat_interface.png"/>
+</Frame>
 
 ## Source Code
 
@@ -50,10 +51,10 @@ Before starting with the agent, you should test the LLM and embedding NIM micros
 
 1. Set the following environment variables:
 
-   ```
-   > export GLEAN_API_KEY="YOUR GLEAN API KEY"
-   > export GLEAN_API_BASE_URL="https://your-org.glean.com/rest/api/v1"
-   > export NVIDIA_API_KEY="nvapi-YOUR NVIDIA API KEY"
+   ```bash
+   export GLEAN_API_KEY="YOUR GLEAN API KEY"
+   export GLEAN_API_BASE_URL="https://your-org.glean.com/rest/api/v1"
+   export NVIDIA_API_KEY="nvapi-YOUR NVIDIA API KEY"
    ```
 
 2. Create a python file called `chatbot.py` to instantiate the LLM and embedding model:
@@ -72,7 +73,7 @@ Before starting with the agent, you should test the LLM and embedding NIM micros
    )
    ```
 
-   **NOTE:** You can update this code to use different foundational LLMs, or add the `base_url` parameter if you are using privately hosted NVIDIA NIM microservices.
+   <Note> You can update this code to use different foundational LLMs, or add the `base_url` parameter if you are using privately hosted NVIDIA NIM microservices.</Note>
 
 3. Ask the foundational LLM a test question by modifying `chatbot.py`, adding the following lines and running it:
 
@@ -133,7 +134,6 @@ Each node represents a function responsible for implementing one of the six step
 
 ### Prompt Loading
 
-<!-- Not sure exactly what heading titles should be -->
 
 The source of each function is also available in `glean_example/src/agent.py`. For example, the implementation of `call_bot` is:
 

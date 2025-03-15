@@ -8,10 +8,9 @@ icon: "window-restore"
 Glean does not support OAuth tokens natively. An IdP is required to manage the token creation.
 </Note>
 
-
-### OAuth Access Tokens
 Admins can enable this feature in [Glean's Client API Settings](#navigating-to-client-api-settings). To enable use of OAuth access tokens with our Rest APIs,
 click on the toggle labeled "Allow OAuth token-based access." You will need to provide the following:
+
 1. Your desired OAuth provider (Azure, GSuite, Okta, and OneLogin are supported),
 2. The issuer subdomain, if your provider is not GSuite. This value can be found on the payload of your JWT access tokens, and should have one of the following formats:
    - `https://login.microsoftonline.com/<directory_ID>/v2.0` for Azure
