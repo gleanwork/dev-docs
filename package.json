@@ -5,8 +5,18 @@
   "scripts": {
     "dev": "mintlify dev"
   },
-  "keywords": [],
-  "author": "john.agan@glean.com",
+  "keywords": [
+    "glean",
+    "developer",
+    "docs",
+    "api",
+    "platform",
+    "gleanwork"
+  ],
+  "author": {
+    "name": "John Agan",
+    "email": "john.agan@glean.com"
+  },
   "license": "ISC",
   "dependencies": {
     "mintlify": "^4.0.436"
