@@ -57,3 +57,8 @@
     height: 3rem;
     content:url("/brand/images/glean-logo-dark.svg");
 }
+
+/* space out tight tracking */
+.tracking-tight {
+    letter-spacing: .025em;
+}
