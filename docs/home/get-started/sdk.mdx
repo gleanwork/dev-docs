@@ -1,0 +1,61 @@
+---
+title: "Glean SDKs"
+icon: "code"
+---
+
+## LangChain
+
+Glean has an [official LangChain SDK](https://github.com/gleanwork/langchain-glean) available for Python. You can install it using pip:
+
+```bash
+pip install glean-langchain
+```
+
+## MCP Server
+
+Glean has an [official MCP Server](https://github.com/gleanwork/glean-mcp-server) available for Python. You can install it using pip:
+
+```bash
+pip install glean-mcp-server
+```
+
+
+## Generating SDK
+Glean SDKs can be generated for most popular languages (Python, Java, NodeJS, etc) using [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli).
+
+<Steps>
+
+<Step title="Install openapi-generator-cli">
+
+```bash shell
+npm install -g @openapitools/openapi-generator-cli
+```
+
+</Step>
+
+<Step title="List available languages">
+
+```bash shell
+npx @openapitools/openapi-generator-cli@latest list
+```
+
+</Step>
+
+<Step title="Generate SDK">
+
+<CodeGroup>
+```bash Client API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Client%20API%20SDK%20source/v1/openapi.yaml?branch=main
+```
+
+```bash Indexing API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Indexing%20API%20SDK%20source/v1/openapi.yaml?branch=main
+```
+
+```bash Actions API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main
+```
+</CodeGroup>
+
+</Step>
+</Steps>

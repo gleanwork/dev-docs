@@ -1,17 +1,16 @@
 ---
-title: "Modal Search"
-description: "Add a powerful search modal dialog to your application with minimal code integration"
-icon: "window-maximize"
+title: "Sidebar Search"
+description: "Integrate contextual search, chat, and recommendations in a convenient sidebar interface"
+icon: "sidebar"
 ---
 
-Glean's Modal Search provides a seamless search experience by overlaying a search interface on your existing page. This solution requires minimal implementation effort - just a single line of code to get started.
+The Glean Sidebar provides a unified interface that combines search capabilities, chat functionality, and contextual recommendations, all accessible from a slide-out panel on your page.
 
 <Frame>
-  <img src="./images/introduction/nsr-1.png" alt="Modal Search Initial View" />
-</Frame>
-
-<Frame>
-  <img src="./images/introduction/nsr-2.png" alt="Modal Search Results View" />
+  <div className="grid grid-cols-2 gap-3">
+    <img src="../images/introduction/sidebar-1.png" alt="Sidebar Search Interface" />
+    <img src="../images/introduction/sidebar-2.png" alt="Sidebar Results View" />
+  </div>
 </Frame>
 
 ## Implementation Guide
@@ -32,27 +31,17 @@ Include the JavaScript library in your page's `<head>` section. Replace `GLEAN_A
 
 ### Basic Setup
 
-To implement Modal Search, use the [attach]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/GleanWebSDK.html#attach) method to connect the Glean SDK to a search input element on your page:
+Implementing the Sidebar requires a single method call to [openSidebar]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/GleanWebSDK.html#openSidebar). You can trigger this method in response to user actions, such as clicking a button:
 
 <CodeGroup>
-```html Implementation
-<script>
-  addEventListener('DOMContentLoaded', () => {
-    GleanWebSDK.attach(document.getElementById('search-box'))
-  })
-</script>
+```javascript Implementation
+GleanWebSDK.openSidebar()
 ```
 </CodeGroup>
 
 ## Customization Options
 
-### Component API
-
-The Modal Search implementation can be customized using the [GleanWebSDK.attach]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/GleanWebSDK.html#attach) API. This interface provides options for tailoring the search experience to your specific needs.
-
-### Theming
-
-You can customize the appearance of the Modal Search using [SearchBoxCustomizations]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/SearchBoxCustomizations.html). The theming system is regularly expanded with additional options based on customer needs.
+The Sidebar component can be customized using the [GleanWebSDK.openSidebar]({{process.env.JS_API_TYPEDOCS_URL}}/interfaces/GleanWebSDK.html#attach) API. This interface provides options for tailoring the sidebar experience to match your application's needs.
 
 ## Authentication
 
@@ -81,12 +70,12 @@ You can streamline the authentication process in two ways:
 
 ## Implementation Example
 
-Explore a complete working implementation of the Modal Search component in our interactive demo:
+Experience a complete working implementation of the Sidebar component in our interactive demo:
 
 <Frame>
   <iframe
     src="https://codepen.io/GleanWork/embed/VwWJOjZ?default-tab=js%2Cresult&editable=true"
     style={{width: '100%', height: '500px'}}
-    title="Modal Search | Glean"
+    title="Sidebar | Glean"
   />
 </Frame>

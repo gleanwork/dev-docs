@@ -17,8 +17,9 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/home/overview",
-              "docs/home/changelog"
+              "docs/home/get-started/overview",
+              "docs/home/get-started/changelog",
+              "docs/home/get-started/sdk"
             ]
           },
           {
@@ -132,18 +133,20 @@
         "dropdown": "Client APIs",
         "groups": [
           {
+            "group": "Get Started",
+            "pages": [
+              "docs/client/get-started/overview",
+              "docs/client/get-started/chat",
+              "docs/client/get-started/openapi"
+            ]
+          },
+          {
             "group": "Search",
             "pages": [
               "docs/client/search/filtering-results",
               "docs/client/search/datasource-filters",
-              "docs/client/search/faceted-filters",
-              "docs/client/openapi"
+              "docs/client/search/faceted-filters"
             ]
-          },
-          {
-            "group": "Chat",
-            "pages": [
-              "docs/client/chat/overview"            ]
           },
           {
             "group": "API Reference",
@@ -160,19 +163,19 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/web/overview",
-              "docs/web/3rd-party-cookies",
-              "docs/web/documentation"
+              "docs/web/get-started/overview",
+              "docs/web/get-started/3rd-party-cookies",
+              "docs/web/get-started/documentation"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "docs/web/chat",
-              "docs/web/autocomplete",
-              "docs/web/modal-search",
-              "docs/web/sidebar",
-              "docs/web/recommendations"
+              "docs/web/components/chat",
+              "docs/web/components/autocomplete",
+              "docs/web/components/modal-search",
+              "docs/web/components/sidebar",
+              "docs/web/components/recommendations"
             ]
           }
         ]
@@ -182,13 +185,13 @@
         "icon": "arrow-progress",
         "groups": [
           {
-            "group": "Information",
+            "group": "Get Started",
             "pages": [
-              "docs/actions/overview",
-              "docs/actions/authentication",
-              "docs/actions/create-actions",
-              "docs/actions/faq",
-              "docs/actions/openapi"
+              "docs/actions/get-started/overview",
+              "docs/actions/get-started/authentication",
+              "docs/actions/get-started/create-actions",
+              "docs/actions/get-started/faq",
+              "docs/actions/get-started/openapi"
             ]
           },
           {
