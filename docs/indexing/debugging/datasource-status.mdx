@@ -1,0 +1,103 @@
+---
+title: Datasource Status
+icon: signal
+---
+
+Gather information about the datasource's overall status.
+
+### Sample Request
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://customer-be.glean.com/api/index/v1/debug/gleantest/status \
+  -H 'Authorization: Bearer <Token>'
+```
+
+```python Python
+from glean_indexing_api_client.api import troubleshooting_api
+from pprint import pprint
+# Please refer to the Getting Started page for more details on how to setup api_client
+troubleshoot_api = troubleshooting_api.TroubleshootingApi(api_client)
+try:
+    api_response = troubleshoot_api.debug_datasource_status_post("gleantest")
+    pprint(api_response)
+except glean_indexing_api_client.ApiException as e:
+    print("Exception when calling TroubleshootingApi->debug_datasource_status_post: %s\n" % e)
+```
+
+`documents` contains information about counts, bulk upload history and processing history for documents in the datasource.
+
+`identity` contains information about counts and processing history for users, groups, and memberships in the datasource.
+
+</CodeGroup>
+
+### Sample Response
+
+```json
+{
+  "documents": {
+    "bulkUploadHistory": [
+      {
+        "uploadId": "upload-id-1234567890",
+        "startTime": "2024-02-08T12:00:00.000Z",
+        "endTime": "2024-02-08T12:05:00.000Z",
+        "status": "SUCCESSFUL"
+      }
+    ],
+    "counts": {
+      "uploaded": [
+        {
+          "objectType": "Article",
+          "count": 15
+        }
+      ],
+      "indexed": [
+        {
+          "objectType": "Article",
+          "count": 15
+        }
+      ]
+    },
+    "processingHistory": [
+      {
+        "startTime": "2024-02-08T12:00:00.000Z",
+        "endTime": "2024-02-08T12:00:05.000Z"
+      }
+    ]
+  },
+  "identity": {
+    "processingHistory": [
+      {
+        "startTime": "2024-02-08T12:00:00.000Z",
+        "endTime": "2024-02-08T12:05:00.000Z"
+      }
+    ],
+    "users": {
+      "bulkUploadHistory": [
+        {
+          "uploadId": "upload-users-1234567890",
+          "startTime": "2024-02-08T12:00:00.000Z",
+          "endTime": "2024-02-08T12:05:00.000Z",
+          "status": "SUCCESSFUL"
+        }
+      ],
+      "counts": {
+        "uploaded": 5
+      }
+    },
+    "groups": {
+      "bulkUploadHistory": [],
+      "counts": {
+        "uploaded": 3
+      }
+    },
+    "memberships": {
+      "bulkUploadHistory": [],
+      "counts": {
+        "uploaded": 2
+      }
+    }
+  }
+}
+```

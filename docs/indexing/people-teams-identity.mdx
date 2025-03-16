@@ -1,0 +1,45 @@
+---
+title: People, Teams and Identity
+icon: people
+---
+
+- People are at the core of every organization and one of the key pillars of Glean’s knowledge graph.
+- People data helps enforce permissions, inform ranking and provide better personalization of search results. As such, it forms the basis of a user’s identity within Glean.
+- Leveraging people data, Glean also generates individual [profiles](https://help.glean.com/en/articles/6637625-customizing-your-glean-profile), directory, [org chart](https://www.glean.com/blog/gleans-org-chart-is-the-easiest-way-to-explore-your-company-all-in-one-place) and many more user centric features within the product.
+- In addition, Glean provides the ability to create [team profiles](https://help.glean.com/en/articles/6637852-setting-up-team-pages) with members and leads, project descriptions, collections for team resources, contact information and many more useful features.
+- Both people and teams are indexed within Glean so when search results have a match for one or more of these entities, they will appear in the Glean User Interface as separate datasources.
+
+## Integration Features
+
+- Glean connects to multiple HRIS and identity systems including Okta, GSuite, Azure and [more](https://www.glean.com/connectors) to crawl people, teams and identity information.
+- We also provide indexing APIs to push people and teams information directly to Glean.
+- Any of these datasources, including the indexing API can be used as the primary source of people or teams information.
+- The indexing API can also be used to supplement information crawled from one or more HRIS systems mentioned above.
+
+## Indexing Endpoints
+
+Glean provides individual and bulk upload endpoints for people and teams.
+
+### People
+
+| Endpoint                                                                                                 | Description                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [/indexemployee](https://developers.glean.com/indexing/tag/People/paths/~1indexemployee/post/)           | Index or update information about an individual employee.                                                                                                    |
+| [/bulkindexemployees](https://developers.glean.com/indexing/tag/People/paths/~1bulkindexemployees/post/) | Index or update information about multiple people simultaneously. Bulk indexing supports paginated uploads, and replaces information from a previous upload. |
+| [/deleteemployee](https://developers.glean.com/indexing/tag/People/paths/~1deleteemployee/post/)         | Delete information about an individual employee.                                                                                                             |
+
+### Teams
+
+| Endpoint                                                                                         | Description                         |
+| ------------------------------------------------------------------------------------------------ | ----------------------------------- |
+| [/indexteam](https://developers.glean.com/indexing/tag/People/paths/~1indexteam/post/)           | Index or update an individual team. |
+| [/bulkindexteams](https://developers.glean.com/indexing/tag/People/paths/~1bulkindexteams/post/) | Index or update multiple teams.     |
+| [/deleteteam](https://developers.glean.com/indexing/tag/People/paths/~1deleteteam/post/)         | Delete information about a team.    |
+
+By default, people and teams are updated in the index within an hour of a successful upload. Glean also provides an API ([/processallemployeesandteams](https://developers.glean.com/indexing/tag/People/paths/~1processallemployeesandteams/post/)) to trigger processing of all recently uploaded people and teams immediately after an upload.
+
+:::info Note
+
+It is worth noting that in the push model, you are responsible for enumerating and pushing people and teams information on a periodic basis to Glean. Glean provides a python SDK that makes it easy to push entities using the API.
+
+:::

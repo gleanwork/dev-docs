@@ -1,0 +1,46 @@
+---
+title: Document Count
+icon: hashtag
+---
+
+Get the count of documents in a datasource, optionally filtered by object type.
+
+### Sample Request
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://customer-be.glean.com/api/index/v1/getdocumentcount
+  -H 'Authorization : Bearer <Token>'
+  -d '{
+        "datasource": "gleantest",
+        "objectType": "Article"
+      }'
+```
+
+```python Python
+from glean_indexing_api_client.api import troubleshooting_api
+from glean_indexing_api_client.model.get_document_count_request import GetDocumentCountRequest
+from glean_indexing_api_client.model.get_document_count_response import GetDocumentCountResponse
+from pprint import pprint
+# Please refer to the Getting Started page for more details on how to setup api_client
+troubleshoot_api = troubleshooting_api.TroubleshootingApi(api_client)
+get_document_count_request = GetDocumentCountRequest(
+    datasource="gleantest",
+    object_type="Article"
+)
+try:
+    api_response = troubleshoot_api.getdocumentcount_post(get_document_count_request)
+    pprint(api_response)
+except glean_indexing_api_client.ApiException as e:
+    print("Exception when calling TroubleshootingApi->getdocumentcount_post: %s\n" % e)
+```
+</CodeGroup>
+
+### Sample Response
+
+```json
+{
+  "count": 15
+}
+```
