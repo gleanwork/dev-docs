@@ -230,8 +230,12 @@
         "href": "https://github.com/gleanwork/dev-docs/discussions"
       },
       {
-        "label": "Requests & Feedback",
-        "href": "https://github.com/gleanwork/dev-docs/issues/new"
+        "label": "Report a Bug",
+        "href": "https://github.com/gleanwork/dev-docs/issues/new?template=bug_report.md"
+      },
+      {
+        "label": "Request a Feature",
+        "href": "https://github.com/gleanwork/dev-docs/issues/new?template=feature_request.md"
       }
     ],
     "primary": {
