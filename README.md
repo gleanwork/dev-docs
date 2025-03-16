@@ -35,7 +35,7 @@ The Mintlify dev server supports hot reloading, so changes to the documentation 
 
 The documentation site is organized as follows:
 
-- Each documentation section is contained in its own root directory (e.g., `/indexing/`, `/client/`, `/web/`, `/actions/`)
+- Each documentation section is contained in its own root directory (e.g., `/indexing/`, `/client/`, `/web/`, `/actions/`) under `docs`
 - Related assets such as images and styles should be included within the respective section's subdirectory, not in the root
 - The root directory contains configuration files and shared resources
 - `docs.json` - Mintlify configuration file that controls navigation and site settings

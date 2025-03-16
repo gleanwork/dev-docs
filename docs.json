@@ -17,25 +17,25 @@
           {
             "group": "Get Started",
             "pages": [
-              "home/overview",
-              "home/changelog"
+              "docs/home/overview",
+              "docs/home/changelog"
             ]
           },
           {
             "group": "Authentication",
             "pages": [
-              "home/authentication/tokens",
-              "home/authentication/oauth",
-              "home/authentication/managing-tokens",
-              "home/authentication/token-rotation",
-              "home/authentication/permissions"
+              "docs/home/authentication/tokens",
+              "docs/home/authentication/oauth",
+              "docs/home/authentication/managing-tokens",
+              "docs/home/authentication/token-rotation",
+              "docs/home/authentication/permissions"
             ]
           },
           {
             "group": "Ecosystem",
             "pages": [
-              "home/ecosystem/community",
-              "home/ecosystem/opensource"
+              "docs/home/ecosystem/community",
+              "docs/home/ecosystem/opensource"
             ]
           }
         ]
@@ -47,32 +47,32 @@
           {
             "group": "Authentication",
             "pages": [
-              "guides/authentication/user-tokens",
-              "guides/authentication/global-tokens",
-              "guides/authentication/python-sdk"
+              "docs/guides/authentication/user-tokens",
+              "docs/guides/authentication/global-tokens",
+              "docs/guides/authentication/python-sdk"
             ]
           },
           {
             "group": "Indexing",
             "pages": [
-              "guides/indexing/setup-datasource",
-              "guides/indexing/indexing-documents"
+              "docs/guides/indexing/setup-datasource",
+              "docs/guides/indexing/indexing-documents"
             ]
           },
           {
             "group": "Clients",
             "pages": [
-              "guides/client/chatbot",
-              "guides/client/nvidia-enterprise-kb-chatbot"
+              "docs/guides/client/chatbot",
+              "docs/guides/client/nvidia-enterprise-kb-chatbot"
             ]
           },
           {
             "group": "Browser",
             "pages": [
-              "guides/browser/react",
-              "guides/browser/zendesk",
-              "guides/browser/lumapps",
-              "guides/browser/brightspot"
+              "docs/guides/browser/react",
+              "docs/guides/browser/zendesk",
+              "docs/guides/browser/lumapps",
+              "docs/guides/browser/brightspot"
             ]
           }
         ]
@@ -84,40 +84,40 @@
           {
             "group": "Get Started",
             "pages": [
-              "indexing/overview",
-              "indexing/rendering-search-results",
-              "indexing/people-teams-identity",
-              "indexing/openapi"
+              "docs/indexing/overview",
+              "docs/indexing/rendering-search-results",
+              "docs/indexing/people-teams-identity",
+              "docs/indexing/openapi"
             ]
           },
           {
             "group": "Datasources",
             "pages": [
-              "indexing/datasource/custom-properties",
-              "indexing/datasource/test-datasource",
-              "indexing/datasource/category"
+              "docs/indexing/datasource/custom-properties",
+              "docs/indexing/datasource/test-datasource",
+              "docs/indexing/datasource/category"
             ]
           },
           {
             "group": "Documents",
             "pages": [
-              "indexing/documents/activity",
-              "indexing/documents/permissions",
-              "indexing/documents/bulk-indexing",
-              "indexing/documents/bulk-upload-model",
-              "indexing/documents/document-model",
-              "indexing/documents/supported-mimetypes"
+              "docs/indexing/documents/activity",
+              "docs/indexing/documents/permissions",
+              "docs/indexing/documents/bulk-indexing",
+              "docs/indexing/documents/bulk-upload-model",
+              "docs/indexing/documents/document-model",
+              "docs/indexing/documents/supported-mimetypes"
             ]
           },
           {
             "group": "Debugging",
             "pages": [
-              "indexing/debugging/datasource-config",
-              "indexing/debugging/datasource-status",
-              "indexing/debugging/datasource-document",
-              "indexing/debugging/datasource-user",
-              "indexing/debugging/document-access",
-              "indexing/debugging/document-count"
+              "docs/indexing/debugging/datasource-config",
+              "docs/indexing/debugging/datasource-status",
+              "docs/indexing/debugging/datasource-document",
+              "docs/indexing/debugging/datasource-user",
+              "docs/indexing/debugging/document-access",
+              "docs/indexing/debugging/document-count"
             ]
           },
           {
@@ -134,16 +134,16 @@
           {
             "group": "Search",
             "pages": [
-              "client/search/filtering-results",
-              "client/search/datasource-filters",
-              "client/search/faceted-filters",
-              "client/openapi"
+              "docs/client/search/filtering-results",
+              "docs/client/search/datasource-filters",
+              "docs/client/search/faceted-filters",
+              "docs/client/openapi"
             ]
           },
           {
             "group": "Chat",
             "pages": [
-              "client/chat/overview"            ]
+              "docs/client/chat/overview"            ]
           },
           {
             "group": "API Reference",
@@ -160,19 +160,19 @@
           {
             "group": "Get Started",
             "pages": [
-              "web/overview",
-              "web/3rd-party-cookies",
-              "web/documentation"
+              "docs/web/overview",
+              "docs/web/3rd-party-cookies",
+              "docs/web/documentation"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "web/chat",
-              "web/autocomplete",
-              "web/modal-search",
-              "web/sidebar",
-              "web/recommendations"
+              "docs/web/chat",
+              "docs/web/autocomplete",
+              "docs/web/modal-search",
+              "docs/web/sidebar",
+              "docs/web/recommendations"
             ]
           }
         ]
@@ -184,21 +184,21 @@
           {
             "group": "Information",
             "pages": [
-              "actions/overview",
-              "actions/authentication",
-              "actions/create-actions",
-              "actions/faq",
-              "actions/openapi"
+              "docs/actions/overview",
+              "docs/actions/authentication",
+              "docs/actions/create-actions",
+              "docs/actions/faq",
+              "docs/actions/openapi"
             ]
           },
           {
             "group": "Examples",
             "pages": [
-              "actions/examples/google-docs-update",
-              "actions/examples/google-calendar-events",
-              "actions/examples/zendesk-ticket-redirection",
-              "actions/examples/jira-issue-creation",
-              "actions/examples/jira-issue-creation-redirect"
+              "docs/actions/examples/google-docs-update",
+              "docs/actions/examples/google-calendar-events",
+              "docs/actions/examples/zendesk-ticket-redirection",
+              "docs/actions/examples/jira-issue-creation",
+              "docs/actions/examples/jira-issue-creation-redirect"
             ]
           },
           {
