@@ -1,101 +1,143 @@
 ---
-title: Overview
-description: "Glean Developer Documentation"
+sidebarTitle: Overview
+title: Glean Developer Platform
 icon: "house"
-mode: wide
 ---
 
-<div class="flex flex-col gap-8">
-<section>
-    <div class="text-center">
-        ## Connect enterprise knowledge
+Build powerful AI-driven search, chat, and knowledge applications with Glean's comprehensive API suite
 
-        Connect with 100+ apps via native, push API, and web history-based connectors.
-        Monitor and manage all integrations from Glean's admin console.
+<Frame>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/VqspygBClOg?si=Qv4Jd-gcwYiC0Fwc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</Frame>
+
+Build powerful AI-driven search, chat, and knowledge applications with Glean's comprehensive API suite
+
+<div className="flex flex-col gap-1">
+
+  <section className="api-reference">
+    <div className="text-center mb-8">
+      ## Available APIs
+
+      <p className="text-lg mt-2">
+        Comprehensive documentation for all Glean APIs
+      </p>
+    </div>
+
+    <CardGroup cols={2}>
+      <Card title="Indexing API" icon="database" href="/docs/indexing/overview">
+        Connect and index content from any data source with our powerful Indexing API
+      </Card>
+      <Card title="People & Teams API" icon="users" href="/docs/indexing/people-teams-identity">
+        Add organization data including people info and org structure
+      </Card>
+      <Card title="Search API" icon="magnifying-glass" href="/docs/client/search">
+        Build custom search experiences with our permission-aware Search API
+      </Card>
+      <Card title="Chat API" icon="message" href="/docs/client/chat">
+        Create conversational AI experiences powered by your enterprise data
+      </Card>
+      <Card title="Actions SDK" icon="bolt" href="/docs/actions/overview">
+        Enable your AI assistants to perform actions in third-party applications
+      </Card>
+      <Card title="Web SDK" icon="window" href="/docs/web">
+        Embed Glean's search and chat capabilities into your websites
+      </Card>
+    </CardGroup>
+  </section>
+
+  <section className="use-cases">
+    <div className="text-center mb-8">
+      ## What You Can Build
+
+      <p className="text-lg mt-2">
+        Powerful AI applications powered by your enterprise knowledge
+      </p>
     </div>
 
     <CardGroup cols={3}>
-    <Card title="Connect 100+ SaaS apps" icon="plug" href="https://glean.com/connectors">
-        Glean supports native connector integrations with 100+ popular SaaS apps.
-    </Card>
-    <Card title="Connect custom apps" icon="browser" href="https://developers.glean.com/docs/indexing_api/indexing_api_getting_started/">
-        Use Indexing API to add arbitrary data from custom applications.
-    </Card>
-    <Card title="Connect People, Teams and Identity" icon="people" href="https://developers.glean.com/docs/indexing_api/people_teams_identity/">
-        Add organization data including people info / organization structure using REST APIs.
-    </Card>
+      <Card title="Enterprise Search" icon="magnifying-glass">
+        Build a unified search experience across all your enterprise data
+      </Card>
+      <Card title="Knowledge Assistants" icon="robot">
+        Create AI assistants that understand your company's knowledge
+      </Card>
+      <Card title="Customer Support" icon="headset">
+        Automate support with AI that knows your products and services
+      </Card>
+      <Card title="Employee Onboarding" icon="user-plus">
+        Help new employees find information and get up to speed quickly
+      </Card>
+      <Card title="Sales Enablement" icon="briefcase">
+        Empower sales teams with instant access to relevant information
+      </Card>
+      <Card title="Workflow Automation" icon="gears">
+        Build AI assistants that can take actions across your applications
+      </Card>
     </CardGroup>
-</section>
+  </section>
 
-<section>
-    <div class="text-center">
-        ## Build and customize AI applications
+  <section className="integration-ecosystem">
+    <div className="text-center mb-8">
+      ## Integration Ecosystem
 
-        Build powerful AI applications with Glean's platform capabilities. Generative AI applications can be built and customized from a GUI-based builder.
-        These applications can use all or a subset of connected information.
+      <p className="text-lg mt-2">
+        Connect with 100+ applications or build custom integrations
+      </p>
+    </div>
+
+    <CardGroup cols={2}>
+      <Card title="Pre-built Connectors" icon="plug" href="https://glean.com/connectors">
+        Native integrations with 100+ popular SaaS applications
+      </Card>
+      <Card title="Custom Connectors" icon="code" href="/docs/indexing/documents">
+        Build custom connectors for proprietary data sources
+      </Card>
+      <Card title="Slack Integration" icon="slack" href="/docs/home/ecosystem/slack">
+        Deploy Glean AI assistants directly in Slack
+      </Card>
+      <Card title="Microsoft Teams" icon="microsoft" href="/docs/home/ecosystem/teams">
+        Integrate Glean AI capabilities into Microsoft Teams
+      </Card>
+    </CardGroup>
+  </section>
+
+  <section className="developer-resources">
+    <div className="text-center mb-8">
+      ## Developer Resources
+
+      <p className="text-lg mt-2">
+        Everything you need to get started building with Glean
+      </p>
     </div>
 
     <CardGroup cols={3}>
-    <Card title="Build generative AI applications" icon="code">
-        Build conversational AI experiences for chat, recommendations, and summarization with our platform interface. The purpose, tone, policies, and a variety of other behaviors can be extensively configured.
-    </Card>
-    <Card title="Integrate Conversational Agents with Actions" icon="square-2" href="https://developers.glean.com/docs/actions/introduction/">
-        Utilize Glean Actions SDK to interface with custom or real-time data, and perform actions in third party applications with Glean Chat or any conversational Glean AI App.
-    </Card>
-    <Card title="Query anything with Glean's REST APIs" icon="magnifying-glass" href="https://developers.glean.com/client/overview">
-        Use Glean's permission-aware, personalized APIs to search across or access all of the unstructured information in your enterprise to build your Retrieval Augmented Generation (RAG) system.
-    </Card>
+      <Card title="Quickstart Guides" icon="rocket" href="/docs/guides/getting-started">
+        Get up and running with Glean APIs in minutes
+      </Card>
+      <Card title="API Reference" icon="book" href="/docs/client/openapi">
+        Detailed documentation for all Glean APIs
+      </Card>
+      <Card title="Code Examples" icon="code" href="/docs/actions/examples">
+        Sample code and implementation examples
+      </Card>
+      <Card title="SDKs" icon="puzzle-piece" href="/docs/web">
+        Client libraries for popular programming languages
+      </Card>
+      <Card title="Tutorials" icon="graduation-cap" href="/docs/guides">
+        Step-by-step guides for common use cases
+      </Card>
+      <Card title="Changelog" icon="clock-rotate-left" href="/docs/home/changelog">
+        Stay updated with the latest API changes
+      </Card>
     </CardGroup>
-</section>
+  </section>
 
-<section>
-    <div class="text-center">
-        ## Publish your AI applications anywhere
-
-        Glean AI applications can be published to Slack, Teams, Salesforce, Zendesk and other applications.
-        You can also use our REST APIs to power your own applications with Glean Apps.
+  <section className="cta-section text-center p-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600">
+    <h2 className="text-3xl font-bold mb-4">Ready to Build with Glean?</h2>
+    <p className="text-xl mb-6">Start building AI-powered applications with Glean's developer platform today</p>
+    <div className="flex justify-center">
+      <a href="https://glean.com/request-demo" className="btn-outline-white">Request API Access</a>
     </div>
+  </section>
 
-    <CardGroup cols={3}>
-    <Card title="Glean for Slack" icon="hashtag" href="https://developers.glean.com/#:~:text=when%20tagged%20directly.-,EXPLORE,-Glean%20Web%20SDK">
-        Glean AI Assistant for Slack can automatically answer commonly asked questions or respond to user queries when tagged directly.
-    </Card>
-    <Card title="Glean Web SDK" icon="square-2" href="https://developers.glean.com/#:~:text=Glean%20Web%20SDK.-,EXPLORE,-REST%20API">
-        Embed AI-powered search, chat and recommendations into your website using Glean Web SDK.
-    </Card>
-    <Card title="REST API" icon="magnifying-glass" href="https://developers.glean.com/client/operation/search/">
-        Programmatically interact with Glean Chat & Search APIs to build and deliver rich conversational experiences.
-    </Card>
-    <Card title="Glean for Salesforce, Zendesk, etc" icon="magnifying-glass">
-        Install Glean AI-powered Search & Chat in top SaaS applications.
-    </Card>
-    <Card title="Glean for MS Teams" icon="magnifying-glass">
-        Glean assistant can automatically answer any user questions in Teams. Users can also chat with Glean by tagging Glean directly.
-    </Card>
-    </CardGroup>
-</section>
-
-<section>
-    <div class="text-center">
-        ## Administer and moderate at Enterprise scale
-
-        All administration and moderation operations supported by Glean can be scripted via REST APIs or performed via GUI with Glean's admin console.
-    </div>
-
-    <CardGroup cols={3}>
-    <Card title="Manage access" icon="lock" href="https://developers.glean.com/">
-        Use the Glean admin console UI or REST APIs to manage access, permissions and tokens.
-    </Card>
-    <Card title="Manage company announcements & promoted content" icon="bullhorn" href="https://developers.glean.com/">
-        Use REST APIs to manage announcements and pinned content.
-    </Card>
-    <Card title="Manage deprecated content" icon="file-circle-xmark" href="https://developers.glean.com/">
-        Use REST APIs for document verification to update and flag deprecated content.
-    </Card>
-    </CardGroup>
-</section>
-
-<section class="glean-background">
-    # Put AI to work. At work.
-</section>
 </div>
