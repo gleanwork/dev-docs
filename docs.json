@@ -226,8 +226,8 @@
   "navbar": {
     "links": [
       {
-        "label": "Help Center",
-        "href": "https://help.glean.com/"
+        "label": "Discussions",
+        "href": "https://github.com/gleanwork/dev-docs/discussions"
       },
       {
         "label": "Requests & Feedback",
