@@ -17,26 +17,26 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/home/get-started/overview",
-              "docs/home/get-started/changelog",
-              "docs/home/get-started/sdk"
+              "docs/home/overview",
+              "docs/home/changelog",
+              "docs/home/sdk"
             ]
           },
           {
             "group": "Authentication",
             "pages": [
-              "docs/home/authentication/tokens",
-              "docs/home/authentication/oauth",
-              "docs/home/authentication/managing-tokens",
-              "docs/home/authentication/token-rotation",
-              "docs/home/authentication/permissions"
+              "docs/home/tokens",
+              "docs/home/oauth",
+              "docs/home/managing-tokens",
+              "docs/home/token-rotation",
+              "docs/home/permissions"
             ]
           },
           {
             "group": "Ecosystem",
             "pages": [
-              "docs/home/ecosystem/community",
-              "docs/home/ecosystem/opensource"
+              "docs/home/community",
+              "docs/home/opensource"
             ]
           }
         ]
@@ -135,9 +135,9 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/client/get-started/overview",
-              "docs/client/get-started/chat",
-              "docs/client/get-started/openapi"
+              "docs/client/overview",
+              "docs/client/chat",
+              "docs/client/openapi"
             ]
           },
           {
@@ -163,9 +163,9 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/web/get-started/overview",
-              "docs/web/get-started/3rd-party-cookies",
-              "docs/web/get-started/documentation"
+              "docs/web/overview",
+              "docs/web/3rd-party-cookies",
+              "docs/web/documentation"
             ]
           },
           {
@@ -187,11 +187,11 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/actions/get-started/overview",
-              "docs/actions/get-started/authentication",
-              "docs/actions/get-started/create-actions",
-              "docs/actions/get-started/faq",
-              "docs/actions/get-started/openapi"
+              "docs/actions/overview",
+              "docs/actions/authentication",
+              "docs/actions/create-actions",
+              "docs/actions/faq",
+              "docs/actions/openapi"
             ]
           },
           {
