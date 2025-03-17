@@ -1,5 +1,5 @@
 {
-  "name": "glean-dev-docs",
+  "name": "@gleanwork/dev-docs",
   "version": "1.0.0",
   "description": "Glean Developer Docs",
   "scripts": {
