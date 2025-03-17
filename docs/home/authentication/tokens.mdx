@@ -36,12 +36,12 @@ Since Global tokens are not associated with a specific user, the `X-Scio-Actas` 
 
 ```shell curl
 curl -X POST https://customer-be.glean.com/rest/api/v1/createcollection \
--H 'Authorization: Bearer <token>' \
--H 'X-Scio-Actas: <User email>' \
--d '{
-     "name": "Sample Collection - '$(date +"%Y-%m-%d %H:%M:%S")'",
-     "description": "A brief summary of the collection\'s contents."
-}'
+    -H 'Authorization: Bearer <token>' \
+    -H 'X-Scio-Actas: <User email>' \
+    -d '{
+            "name": "Sample Collection",
+            "description": "A brief summary of the collection"
+        }'
 ```
 
 <Warning>
