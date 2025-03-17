@@ -3,7 +3,7 @@ title: Global Tokens
 icon: "globe"
 ---
 
-Global tokens are special tokens that can be used to authenticate to the Client API on behalf of any user in the system. These tokens are created by Glean and can be used for any user who is a member of the company that has access to the Glean platform. The user email is not set when creating a global token, but the `X-Scio-Actas` HTTP header must be specified when making a request to the Client API, with the email of the user on whose behalf the request is intended to be made.
+This guide explains how to use Global Tokens for authentication with Glean's API. Unlike User Tokens, Global Tokens can authenticate requests on behalf of any user in your organization. The guide provides step-by-step instructions for configuring proper token permissions and making authenticated API requests with the required X-Scio-Actas header.
 
 
 <Steps>
