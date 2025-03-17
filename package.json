@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Glean Developer Docs",
   "scripts": {
-    "dev": "mintlify dev"
+    "dev": "mintlify dev",
+    "test": "mintlify broken-links"
   },
   "keywords": [
     "glean",
