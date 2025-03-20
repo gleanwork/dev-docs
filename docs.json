@@ -7,6 +7,7 @@
     "light": "#d8fd49",
     "dark": "#343CED"
   },
+
   "favicon": "/brand/images/favicon.png",
   "navigation": {
     "dropdowns": [
@@ -17,26 +18,26 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/home/overview",
-              "docs/home/changelog",
-              "docs/home/sdk"
+              "/home",
+              "/home/changelog",
+              "/home/sdk"
             ]
           },
           {
             "group": "Authentication",
             "pages": [
-              "docs/home/tokens",
-              "docs/home/oauth",
-              "docs/home/managing-tokens",
-              "docs/home/token-rotation",
-              "docs/home/permissions"
+              "/home/tokens",
+              "/home/oauth",
+              "/home/managing-tokens",
+              "/home/token-rotation",
+              "/home/permissions"
             ]
           },
           {
             "group": "Ecosystem",
             "pages": [
-              "docs/home/community",
-              "docs/home/opensource"
+              "/home/community",
+              "/home/opensource"
             ]
           }
         ]
@@ -46,34 +47,40 @@
         "icon": "book",
         "groups": [
           {
+            "group": "Get Started",
+            "pages": [
+              "/guides"
+            ]
+          },
+          {
             "group": "Authentication",
             "pages": [
-              "docs/guides/authentication/user-tokens",
-              "docs/guides/authentication/global-tokens",
-              "docs/guides/authentication/python-sdk"
+              "/guides/authentication/user-tokens",
+              "/guides/authentication/global-tokens",
+              "/guides/authentication/python-sdk"
             ]
           },
           {
             "group": "Indexing",
             "pages": [
-              "docs/guides/indexing/setup-datasource",
-              "docs/guides/indexing/indexing-documents"
+              "/guides/indexing/setup-datasource",
+              "/guides/indexing/indexing-documents"
             ]
           },
           {
             "group": "Clients",
             "pages": [
-              "docs/guides/client/chatbot",
-              "docs/guides/client/nvidia-enterprise-kb-chatbot"
+              "/guides/client/chatbot",
+              "/guides/client/nvidia-enterprise-kb-chatbot"
             ]
           },
           {
             "group": "Browser",
             "pages": [
-              "docs/guides/browser/react",
-              "docs/guides/browser/zendesk",
-              "docs/guides/browser/lumapps",
-              "docs/guides/browser/brightspot"
+              "/guides/browser/react",
+              "/guides/browser/zendesk",
+              "/guides/browser/lumapps",
+              "/guides/browser/brightspot"
             ]
           }
         ]
@@ -85,40 +92,40 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/indexing/overview",
-              "docs/indexing/rendering-search-results",
-              "docs/indexing/people-teams-identity",
-              "docs/indexing/openapi"
+              "/indexing",
+              "/indexing/rendering-search-results",
+              "/indexing/people-teams-identity",
+              "/indexing/openapi"
             ]
           },
           {
             "group": "Datasources",
             "pages": [
-              "docs/indexing/datasource/custom-properties",
-              "docs/indexing/datasource/test-datasource",
-              "docs/indexing/datasource/category"
+              "/indexing/datasource/custom-properties",
+              "/indexing/datasource/test-datasource",
+              "/indexing/datasource/category"
             ]
           },
           {
             "group": "Documents",
             "pages": [
-              "docs/indexing/documents/activity",
-              "docs/indexing/documents/permissions",
-              "docs/indexing/documents/bulk-indexing",
-              "docs/indexing/documents/bulk-upload-model",
-              "docs/indexing/documents/document-model",
-              "docs/indexing/documents/supported-mimetypes"
+              "/indexing/documents/activity",
+              "/indexing/documents/permissions",
+              "/indexing/documents/bulk-indexing",
+              "/indexing/documents/bulk-upload-model",
+              "/indexing/documents/document-model",
+              "/indexing/documents/supported-mimetypes"
             ]
           },
           {
             "group": "Debugging",
             "pages": [
-              "docs/indexing/debugging/datasource-config",
-              "docs/indexing/debugging/datasource-status",
-              "docs/indexing/debugging/datasource-document",
-              "docs/indexing/debugging/datasource-user",
-              "docs/indexing/debugging/document-access",
-              "docs/indexing/debugging/document-count"
+              "/indexing/debugging/datasource-config",
+              "/indexing/debugging/datasource-status",
+              "/indexing/debugging/datasource-document",
+              "/indexing/debugging/datasource-user",
+              "/indexing/debugging/document-access",
+              "/indexing/debugging/document-count"
             ]
           },
           {
@@ -135,17 +142,17 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/client/overview",
-              "docs/client/chat",
-              "docs/client/openapi"
+              "/client",
+              "/client/chat",
+              "/client/openapi"
             ]
           },
           {
             "group": "Search",
             "pages": [
-              "docs/client/search/filtering-results",
-              "docs/client/search/datasource-filters",
-              "docs/client/search/faceted-filters"
+              "/client/search/filtering-results",
+              "/client/search/datasource-filters",
+              "/client/search/faceted-filters"
             ]
           },
           {
@@ -163,19 +170,19 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/web/overview",
-              "docs/web/3rd-party-cookies",
-              "docs/web/documentation"
+              "/web",
+              "/web/3rd-party-cookies",
+              "/web/documentation"
             ]
           },
           {
             "group": "Components",
             "pages": [
-              "docs/web/components/chat",
-              "docs/web/components/autocomplete",
-              "docs/web/components/modal-search",
-              "docs/web/components/sidebar",
-              "docs/web/components/recommendations"
+              "/web/components/chat",
+              "/web/components/autocomplete",
+              "/web/components/modal-search",
+              "/web/components/sidebar",
+              "/web/components/recommendations"
             ]
           }
         ]
@@ -187,21 +194,21 @@
           {
             "group": "Get Started",
             "pages": [
-              "docs/actions/overview",
-              "docs/actions/authentication",
-              "docs/actions/create-actions",
-              "docs/actions/faq",
-              "docs/actions/openapi"
+              "/actions",
+              "/actions/authentication",
+              "/actions/create-actions",
+              "/actions/faq",
+              "/actions/openapi"
             ]
           },
           {
             "group": "Examples",
             "pages": [
-              "docs/actions/examples/google-docs-update",
-              "docs/actions/examples/google-calendar-events",
-              "docs/actions/examples/zendesk-ticket-redirection",
-              "docs/actions/examples/jira-issue-creation",
-              "docs/actions/examples/jira-issue-creation-redirect"
+              "/actions/examples/google-docs-update",
+              "/actions/examples/google-calendar-events",
+              "/actions/examples/zendesk-ticket-redirection",
+              "/actions/examples/jira-issue-creation",
+              "/actions/examples/jira-issue-creation-redirect"
             ]
           },
           {
@@ -227,15 +234,15 @@
     "links": [
       {
         "label": "Discussions",
-        "href": "https://github.com/gleanwork/dev-docs/discussions"
+        "href": "https://github.com/gleanwork/dev-/discussions"
       },
       {
         "label": "Report a Bug",
-        "href": "https://github.com/gleanwork/dev-docs/issues/new?template=bug_report.md"
+        "href": "https://github.com/gleanwork/dev-/issues/new?template=bug_report.md"
       },
       {
         "label": "Request a Feature",
-        "href": "https://github.com/gleanwork/dev-docs/issues/new?template=feature_request.md"
+        "href": "https://github.com/gleanwork/dev-/issues/new?template=feature_request.md"
       }
     ],
     "primary": {
