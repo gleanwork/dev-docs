@@ -76,3 +76,8 @@
 .tracking-tight {
     letter-spacing: .025em;
 }
+
+/* remove external link icon for local links */
+/* a[href^="/"][target="_blank"] > div > svg {
+    display: none;
+} */

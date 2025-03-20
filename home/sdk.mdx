@@ -3,7 +3,12 @@ title: "Glean SDKs"
 icon: "code"
 ---
 
-## LangChain
+Glean offers several Software Development Kits (SDKs) to help developers integrate Glean's powerful search and knowledge capabilities into their applications. These SDKs provide language-specific interfaces to Glean's APIs, making it easier to build custom solutions without having to handle the low-level HTTP requests.
+
+This page provides information about our official SDKs and instructions for generating custom SDKs for your preferred programming language.
+
+
+## <Icon icon="python" size="1.5rem" /> LangChain
 
 Glean has an [official LangChain SDK](https://github.com/gleanwork/langchain-glean) available for Python. You can install it using pip:
 
@@ -11,13 +16,42 @@ Glean has an [official LangChain SDK](https://github.com/gleanwork/langchain-gle
 pip install glean-langchain
 ```
 
-## MCP Server
+## <Icon icon="node-js" size="1.5rem" /> MCP Server
 
 Glean has an [official MCP Server](https://github.com/gleanwork/mcp-server) available for TypeScript. You can install it using npm:
 
 ```bash
 npm install -g @gleanwork/mcp-server
 ```
+
+## <Icon icon="python" size="1.5rem" /> Indexing API
+
+The Glean Python SDK provides a simple interface to the Glean Indexing API. This is a convenient way to index documents into Glean from your Python application.
+
+
+<Steps>
+
+<Step title="Install the indexing API python sdk locally">
+
+```shell
+pip install https://app.glean.com/meta/indexing_api_client.zip
+```
+</Step>
+
+<Step title="Set up the API client">
+
+```python
+import glean_indexing_api_client as indexing_api
+# Configure host and Bearer authorization: BearerAuth
+configuration = indexing_api.Configuration(
+  host="http://customer-be.glean.com/api/index/v1", access_token="<YOUR_API_TOKEN>"
+)
+api_client = indexing_api.ApiClient(configuration)
+```
+
+</Step>
+
+</Steps>
 
 
 ## Generating SDK

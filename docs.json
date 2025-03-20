@@ -23,14 +23,14 @@
               "/home/sdk"
             ]
           },
+
           {
-            "group": "Authentication",
+            "group": "Available APIs",
             "pages": [
-              "/home/tokens",
-              "/home/oauth",
-              "/home/managing-tokens",
-              "/home/token-rotation",
-              "/home/permissions"
+              "/home/apis/indexing",
+              "/home/apis/client",
+              "/home/apis/web",
+              "/home/apis/actions"
             ]
           },
           {
@@ -50,14 +50,6 @@
             "group": "Get Started",
             "pages": [
               "/guides"
-            ]
-          },
-          {
-            "group": "Authentication",
-            "pages": [
-              "/guides/authentication/user-tokens",
-              "/guides/authentication/global-tokens",
-              "/guides/authentication/python-sdk"
             ]
           },
           {
@@ -86,7 +78,7 @@
         ]
       },
       {
-        "dropdown": "Indexing APIs",
+        "dropdown": "Indexing API",
         "icon": "file-import",
         "groups": [
           {
@@ -96,6 +88,14 @@
               "/indexing/rendering-search-results",
               "/indexing/people-teams-identity",
               "/indexing/openapi"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "/indexing/authentication/managing-tokens",
+              "/indexing/authentication/token-rotation",
+              "/indexing/authentication/permissions"
             ]
           },
           {
@@ -137,12 +137,14 @@
         ]
       },
       {
-        "dropdown": "Client APIs",
+        "dropdown": "Client API",
+        "icon": "layer-group",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "/client",
+              "/client/authentication",
               "/client/chat",
               "/client/openapi"
             ]
