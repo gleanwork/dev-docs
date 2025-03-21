@@ -1,0 +1,20 @@
+/* increase logo height */
+img.h-7, img.h-6 {
+    height: 2.1rem;
+}
+
+/* change cta button color */
+#topbar-cta-button {
+    border-radius: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgb(var(--primary-dark));
+}
+
+#topbar-cta-button:hover {
+    opacity: 0.9;
+}
+
+#topbar-cta-button div {
+    color: white;
+}

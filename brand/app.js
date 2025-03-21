@@ -7,7 +7,7 @@ document.addEventListener('click', (event) => {
 }, true);
 
 
-const deprecatedWarningText = "This endpoint is deprecated and may be removed at anytime. Please use the new endpoint instead.";
+const deprecatedWarningText = "This endpoint is deprecated and may be removed at anytime.";
 const deprecatedPaths = [
     "/api-reference/setup",
     "/api-reference/troubleshooting/get-user-count",

@@ -1,83 +1,7 @@
-@font-face {
-    font-family: 'Polysans Neutral';
-    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66d22e2c49832621144_PolySans-Neutral.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: 'Polysans Slim';
-    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66da54786325597bf31_PolySans-Slim.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Polysans Neutral Mono';
-    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b5e8b95fd9e34f78a1c7de_PolySans-NeutralMono.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Polysans Median';
-    src: url('https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b5e8b9a5fb33f679d14c62_PolySans-Median.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* increase logo height */
-img.h-7, img.h-6 {
-    height: 2.1rem;
-}
-
-#topbar-cta-button a div {
-    color: rgb(var(--primary-dark));
-}
-#topbar-cta-button a div:is(.dark *) {
-    color: rgb(var(--primary-light));
-}
-
-
-/* increase footer width */
-#footer .max-w-\[984px\] {
-    max-width: 90%;
-}
-
-/* brings social icons closer to logo in footer */
-#footer .justify-between.md\:gap-y-24 {
-    justify-content: start;
-    gap: 2rem;
-}
-
-/* change footer logo to official light logo */
-#footer a img.dark\:hidden {
-    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/images/glean-logo-light.svg");
-}
-
-/* change footer logo to official dark logo */
-#footer a img.dark\:block {
-    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/images/glean-logo-dark.svg");
-}
-
-/* remove footer links on mobile */
-@media screen and (max-width: 768px) {
-    #footer .min-h-\[76px\] {
-        min-height: 0;
-    }
-    #footer .min-h-\[76px\] > :nth-child(2) {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    #footer a img {
-        height: 3rem;
-    }
+/* smooth anchor hover transition */
+a {
+    transition: color 0.3s ease-in-out;
 }
 
 /* space out tight tracking */
@@ -85,11 +9,7 @@ img.h-7, img.h-6 {
     letter-spacing: .025em;
 }
 
-/* remove external link icon for local links */
-/* a[href^="/"][target="_blank"] > div > svg {
-    display: none;
-} */
-
+/* increase content area max-width */
 @media (min-width: 1536px) {
     .\32xl\:max-w-2xl {
         max-width: 65.5rem;

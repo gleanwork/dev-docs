@@ -22,8 +22,15 @@
             "group": "Get Started",
             "pages": [
               "/home",
-              "/changelog",
-              "/sdk"
+              "/changelog"
+            ]
+          },
+          {
+            "group": "Ecosystem",
+            "pages": [
+              "/sdk",
+              "/home/opensource",
+              "/home/community"
             ]
           },
           {
@@ -32,13 +39,6 @@
               "/home/feedback/discussions",
               "/home/feedback/bugs",
               "/home/feedback/features"
-            ]
-          },
-          {
-            "group": "Ecosystem",
-            "pages": [
-              "/home/community",
-              "/home/opensource"
             ]
           }
         ]
@@ -219,6 +219,10 @@
   },
   "navbar": {
     "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/gleanwork/dev-docs"
+      },
       {
         "label": "Status",
         "href": "https://status.glean.com"

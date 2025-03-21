@@ -1,0 +1,36 @@
+/* increase footer width */
+#footer .max-w-\[984px\] {
+    max-width: 90%;
+}
+
+/* brings social icons closer to logo in footer */
+#footer .justify-between.md\:gap-y-24 {
+    justify-content: start;
+    gap: 2rem;
+}
+
+/* change footer logo to official light logo */
+#footer a img.dark\:hidden {
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/images/glean-logo-light.svg");
+}
+
+/* change footer logo to official dark logo */
+#footer a img.dark\:block {
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/images/glean-logo-dark.svg");
+}
+
+/* remove footer links on mobile */
+@media screen and (max-width: 768px) {
+    #footer .min-h-\[76px\] {
+        min-height: 0;
+    }
+    #footer .min-h-\[76px\] > :nth-child(2) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #footer a img {
+        height: 3rem;
+    }
+}
