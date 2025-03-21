@@ -1,36 +1,37 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "willow",
   "name": "Glean Developer Portal",
   "colors": {
     "primary": "#343CED",
     "light": "#d8fd49",
     "dark": "#343CED"
   },
-
+  "logo": {
+    "light": "/brand/images/glean-developer-logo-light.svg",
+    "dark": "/brand/images/glean-developer-logo-dark.svg"
+  },
   "favicon": "/brand/images/favicon.png",
   "navigation": {
-    "dropdowns": [
+    "tabs": [
       {
-        "dropdown": "Home",
+        "tab": "Home",
         "icon": "house",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "/home",
-              "/home/changelog",
-              "/home/sdk"
+              "/changelog",
+              "/sdk"
             ]
           },
-
           {
-            "group": "Available APIs",
+            "group": "Feedback",
             "pages": [
-              "/home/apis/indexing",
-              "/home/apis/client",
-              "/home/apis/web",
-              "/home/apis/actions"
+              "/home/feedback/discussions",
+              "/home/feedback/bugs",
+              "/home/feedback/features"
             ]
           },
           {
@@ -43,42 +44,7 @@
         ]
       },
       {
-        "dropdown": "Guides",
-        "icon": "book",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "/guides"
-            ]
-          },
-          {
-            "group": "Indexing",
-            "pages": [
-              "/guides/indexing/setup-datasource",
-              "/guides/indexing/indexing-documents"
-            ]
-          },
-          {
-            "group": "Clients",
-            "pages": [
-              "/guides/client/chatbot",
-              "/guides/client/nvidia-enterprise-kb-chatbot"
-            ]
-          },
-          {
-            "group": "Browser",
-            "pages": [
-              "/guides/browser/react",
-              "/guides/browser/zendesk",
-              "/guides/browser/lumapps",
-              "/guides/browser/brightspot"
-            ]
-          }
-        ]
-      },
-      {
-        "dropdown": "Indexing API",
+        "tab": "Indexing API",
         "icon": "file-import",
         "groups": [
           {
@@ -88,6 +54,13 @@
               "/indexing/rendering-search-results",
               "/indexing/people-teams-identity",
               "/indexing/openapi"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "/indexing/guides/setup-datasource",
+              "/indexing/guides/indexing-documents"
             ]
           },
           {
@@ -137,7 +110,7 @@
         ]
       },
       {
-        "dropdown": "Client API",
+        "tab": "Client API",
         "icon": "layer-group",
         "groups": [
           {
@@ -147,6 +120,13 @@
               "/client/authentication",
               "/client/chat",
               "/client/openapi"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "/client/guides/chatbot",
+              "/client/guides/nvidia-enterprise-kb-chatbot"
             ]
           },
           {
@@ -166,7 +146,7 @@
         ]
       },
       {
-        "dropdown": "Web SDK",
+        "tab": "Web SDK",
         "icon": "browser",
         "groups": [
           {
@@ -186,11 +166,20 @@
               "/web/components/sidebar",
               "/web/components/recommendations"
             ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "/web/guides/react",
+              "/web/guides/zendesk",
+              "/web/guides/lumapps",
+              "/web/guides/brightspot"
+            ]
           }
         ]
       },
       {
-        "dropdown": "Actions SDK",
+        "tab": "Actions SDK",
         "icon": "arrow-progress",
         "groups": [
           {
@@ -228,28 +217,21 @@
       ]
     }
   },
-  "logo": {
-    "light": "/brand/images/glean-platform-logo-light.svg",
-    "dark": "/brand/images/glean-platform-logo-dark.svg"
-  },
   "navbar": {
     "links": [
       {
-        "label": "Discussions",
-        "href": "https://github.com/gleanwork/dev-/discussions"
+        "label": "Status",
+        "href": "https://status.glean.com"
       },
       {
-        "label": "Report a Bug",
-        "href": "https://github.com/gleanwork/dev-/issues/new?template=bug_report.md"
-      },
-      {
-        "label": "Request a Feature",
-        "href": "https://github.com/gleanwork/dev-/issues/new?template=feature_request.md"
+        "label": "Support",
+        "href": "https://support.glean.com"
       }
     ],
     "primary": {
-      "type": "github",
-      "href": "https://github.com/gleanwork/dev-docs"
+      "type": "button",
+      "label": "Open Glean",
+      "href": "https://app.glean.com"
     }
   },
   "footer": {

@@ -31,9 +31,17 @@
 }
 
 /* increase logo height */
-#sidebar img.h-6 {
-    height: 2rem;
+img.h-7, img.h-6 {
+    height: 2.1rem;
 }
+
+#topbar-cta-button a div {
+    color: rgb(var(--primary-dark));
+}
+#topbar-cta-button a div:is(.dark *) {
+    color: rgb(var(--primary-light));
+}
+
 
 /* increase footer width */
 #footer .max-w-\[984px\] {
@@ -81,3 +89,9 @@
 /* a[href^="/"][target="_blank"] > div > svg {
     display: none;
 } */
+
+@media (min-width: 1536px) {
+    .\32xl\:max-w-2xl {
+        max-width: 65.5rem;
+    }
+}

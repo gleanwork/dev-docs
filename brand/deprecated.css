@@ -1,0 +1,13 @@
+/* hack until mintlify supports deprecations */
+
+a[href*="/api-reference/setup"],
+a[href*="/api-reference/troubleshooting/get-user-count"],
+a[href*="/api-reference/troubleshooting/get-document-count"],
+a[href*="/api-reference/troubleshooting/get-document-upload-and-indexing-status"],
+a[href*="/api-reference/people/bulk-index-employees-1"],
+a[href*="/api-reference/answers/create-answer-board"],
+a[href*="/api-reference/answers/delete-answer-board"],
+a[href*="/api-reference/answers/update-answer-board"],
+a[href*="/api-reference/answers/read-answer-board"] {
+    text-decoration: line-through;
+}
