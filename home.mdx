@@ -2,10 +2,30 @@
 sidebarTitle: Welcome
 title: Glean Developer Platform
 icon: "hand-wave"
+mode: "wide"
 ---
 
-Build powerful AI-driven search, chat, and knowledge applications with Glean's comprehensive API suite
+import {GleanGo} from "/snippets/glean-go.mdx";
 
+<Frame>
+<img src="https://cdn.prod.website-files.com/613513981b0efaf850830620/67dc5316d044bc388d75f40e_image1%20(11).webp" alt="Glean Developer Platform" />
+</Frame>
+
+## Welcome to Glean's Developer Platform
+
+Glean provides powerful APIs and SDKs that enable developers to integrate AI-powered search, chat, and knowledge management capabilities into their applications. Whether you're building internal tools, enhancing your company's knowledge base, or creating custom search experiences, our developer platform offers the building blocks you need.
+
+### Why Build with Glean?
+
+- **Enterprise-grade search** - Access the same powerful search engine that powers Glean's flagship products
+- **AI-powered capabilities** - Leverage advanced LLMs to create intelligent applications
+- **Flexible integration options** - Use our RESTful APIs or client SDKs for your preferred language
+- **Comprehensive documentation** - Find everything you need to get started quickly
+
+Explore our documentation to learn how to implement Glean's capabilities in your applications and workflows.
+
+
+---
 
 ## Available APIs
 
@@ -32,6 +52,42 @@ Comprehensive documentation for all Glean APIs
     </Card>
 </CardGroup>
 
+---
+
+<GleanGo />
+
+---
+
+## New: Glean Supports Model Context Protocol (MCP)
+
+<div class="flex mb-4 gap-6">
+  <div class="mr-5">
+    <p>
+      Glean now supports the <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol (MCP)</a>,
+      an open standard that enables secure, two-way connections between AI models and enterprise data.
+    </p>
+    <p>
+      With MCP support, you can:
+    </p>
+    <ul>
+      <li>Connect Glean's enterprise search capabilities directly to AI assistants</li>
+      <li>Build agents that can securely access and reason over your organization's knowledge</li>
+      <li>Create seamless workflows between Glean and other MCP-compatible tools</li>
+    </ul>
+    <a href="/mcp" className="button">Learn more about Glean's MCP integration</a>
+  </div>
+  <div class="flex items-center justify-center bg-white rounded-md p-6 border border-gray-100" style={{width: "45%"}}>
+    <img
+      src="https://avatars.githubusercontent.com/u/182288589?v=4"
+      alt="Model Context Protocol Logo"
+      style={{maxWidth: "150px", height: "auto"}}
+    />
+  </div>
+</div>
+
+---
+
+
 ## What You Can Build
 
 Powerful AI applications powered by your enterprise knowledge
@@ -56,35 +112,3 @@ Powerful AI applications powered by your enterprise knowledge
     Build AI assistants that can take actions across your applications
     </Card>
 </CardGroup>
-
-
-## Developer Resources
-
-Everything you need to get started building with Glean
-
-<CardGroup cols={3}>
-    <Card title="Quickstart Guides" icon="rocket" href="/docs/guides">
-    Get up and running with Glean APIs in minutes
-    </Card>
-    <Card title="API Reference" icon="book" href="/docs/client/openapi">
-    Detailed documentation for all Glean APIs
-    </Card>
-    <Card title="Code Examples" icon="code" href="/docs/actions/examples">
-    Sample code and implementation examples
-    </Card>
-    <Card title="SDKs" icon="puzzle-piece" href="/docs/web">
-    Client libraries for popular programming languages
-    </Card>
-    <Card title="Tutorials" icon="graduation-cap" href="/docs/guides">
-    Step-by-step guides for common use cases
-    </Card>
-    <Card title="Changelog" icon="clock-rotate-left" href="/docs/home/changelog">
-    Stay updated with the latest API changes
-    </Card>
-</CardGroup>
-
-<Tip>
-Start building AI-powered applications with Glean's developer platform today.
-
-<a href="https://glean.com/request-demo">Request API Access</a>
-</Tip>

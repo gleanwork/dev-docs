@@ -26,9 +26,10 @@
             ]
           },
           {
-            "group": "Ecosystem",
+            "group": "Tools",
             "pages": [
               "/sdk",
+              "/mcp",
               "/home/opensource",
               "/home/community"
             ]
