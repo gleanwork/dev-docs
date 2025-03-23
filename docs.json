@@ -29,7 +29,7 @@
             "group": "Tools",
             "pages": [
               "/sdk",
-              "/mcp",
+              "/agent-integrations",
               "/home/opensource",
               "/home/community"
             ]

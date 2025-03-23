@@ -1,0 +1,15 @@
+export const CustomIcon = ({ icon = '', width = '1.5rem', height = '1.5rem', className = '' }) => (
+  <svg
+    className={`inline bg-gray-800 dark:bg-gray-100 ${className}`}
+    style={{
+      maskImage: `url(${icon})`,
+      WebkitMaskImage: `url(${icon})`,
+      maskRepeat: 'no-repeat',
+      maskPosition: 'center',
+      width,
+      height,
+      display: 'inline-block',
+      verticalAlign: 'text-bottom',
+    }}
+  />
+);
