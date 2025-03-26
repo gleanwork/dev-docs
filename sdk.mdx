@@ -1,0 +1,78 @@
+---
+title: "Glean SDKs"
+icon: "code"
+---
+
+Glean offers several Software Development Kits (SDKs) to help developers integrate Glean's powerful search and knowledge capabilities into their applications. These SDKs provide language-specific interfaces to Glean's APIs, making it easier to build custom solutions without having to handle the low-level HTTP requests.
+
+This page provides information about our official SDKs and instructions for generating custom SDKs for your preferred programming language.
+
+## <Icon icon="python" size="1.5rem" /> Indexing API
+
+The Glean Python SDK provides a simple interface to the Glean Indexing API. This is a convenient way to index documents into Glean from your Python application.
+
+
+<Steps>
+
+<Step title="Install the indexing API python sdk locally">
+
+```shell
+pip install https://app.glean.com/meta/indexing_api_client.zip
+```
+</Step>
+
+<Step title="Set up the API client">
+
+```python
+import glean_indexing_api_client as indexing_api
+# Configure host and Bearer authorization: BearerAuth
+configuration = indexing_api.Configuration(
+  host="http://customer-be.glean.com/api/index/v1", access_token="<YOUR_API_TOKEN>"
+)
+api_client = indexing_api.ApiClient(configuration)
+```
+
+</Step>
+
+</Steps>
+
+
+## Generating SDK
+Glean SDKs can be generated for most popular languages (Python, Java, NodeJS, etc) using [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli).
+
+<Steps>
+
+<Step title="Install openapi-generator-cli">
+
+```bash shell
+npm install -g @openapitools/openapi-generator-cli
+```
+
+</Step>
+
+<Step title="List available languages">
+
+```bash shell
+npx @openapitools/openapi-generator-cli@latest list
+```
+
+</Step>
+
+<Step title="Generate SDK">
+
+<CodeGroup>
+```bash Client API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Client%20API%20SDK%20source/v1/openapi.yaml?branch=main
+```
+
+```bash Indexing API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Indexing%20API%20SDK%20source/v1/openapi.yaml?branch=main
+```
+
+```bash Actions API
+npx @openapitools/openapi-generator-cli generate -g go -i https://api.redocly.com/registry/bundle/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main
+```
+</CodeGroup>
+
+</Step>
+</Steps>

@@ -1,0 +1,70 @@
+---
+title: Datasource Document
+icon: file
+---
+
+Gives various information that would help in debugging issues related to a particular document. For example, it gives information about the document's upload and indexing status, the document's permissions, etc.
+
+### Sample Request
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://customer-be.glean.com/api/index/v1/debug/{datasource}/document
+  -H 'Authorization : Bearer <Token>'
+  -d '{
+        "objectType": "Article",
+        "docId": "art123"
+      }'
+```
+
+```python Python
+from glean_indexing_api_client.api import troubleshooting_api
+from glean_indexing_api_client.model.debug_document_request import DebugDocumentRequest
+from glean_indexing_api_client.model.debug_document_response import DebugDocumentResponse
+from pprint import pprint
+# Please refer to the Getting Started page for more details on how to setup api_client
+troubleshoot_api = troubleshooting_api.TroubleshootingApi(api_client)
+debug_document_request = DebugDocumentRequest(
+    datasource="gleantest",
+    object_type="Article",
+    doc_id="art123"
+)
+try:
+    api_response = troubleshoot_api.debug_datasource_document_post(debug_document_request)
+    pprint(api_response)
+except glean_indexing_api_client.ApiException as e:
+    print("Exception when calling TroubleshootingApi->debug_datasource_document_post: %s\n" % e)
+```
+</CodeGroup>
+
+### Sample Response
+
+```json
+{
+  "documentStatus": {
+    "uploadStatus": "UPLOADED",
+    "indexStatus": "INDEXED",
+    "uploadTime": "2024-02-08T12:00:00.000Z",
+    "indexTime": "2024-02-08T12:05:00.000Z"
+  },
+  "permissions": {
+    "allowAnonymousAccess": false,
+    "allowedUsers": [
+      {
+        "email": "user1@example.com"
+      },
+      {
+        "email": "user2@example.com"
+      }
+    ],
+    "allowedGroups": [
+      {
+        "id": "group1"
+      }
+    ],
+    "deniedUsers": [],
+    "deniedGroups": []
+  }
+}
+```

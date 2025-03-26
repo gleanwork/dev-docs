@@ -1,0 +1,50 @@
+---
+title: Activity
+icon: wave-pulse
+---
+
+We allow the option of allowing developers to push activity information for documents (VIEW, EDIT etc.) - that will be used for better ranking of documents for search.
+
+## Getting started with the activity endpoint
+
+First note that, the [activity endpoint](https://developers.glean.com/client/operation/activity/) needs to be called with a **client API** bearer token (as opposed to an indexing API bearer token for other endpoints). This is because, we expect activity to be provided server-to-server on a per-user basis (eg. when a user views a document from a custom datasource, you may report this view back to us from your server).
+
+For pushing activity for any user from your organization, we need a _Global_ client API token scoped to _ACTIVITY_.
+
+To fetch a scoped client API token, please follow the instructions in the [Authentication page for Client API](https://developers.glean.com/docs/client_api_scopes/).
+
+### Making your first request
+
+Below is a sample activity request for a given user (who needs to be specified in the **X-Scio-Actas** param).
+
+We record 2 view events: One for https://example.com/doc1 and another for https://example.com/doc2. We specify the datasource in the params field (so it is correctly matched to the relevant document) and optionally, we also mention the duration of the view if available.
+
+```bash cURL
+curl -i -X POST \
+  'https://customer-be.glean.com/rest/api/v1/activity' \
+  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Scio-Actas: user-whose-activity-is-being-reported@example.com' \
+  -d '{
+    "events": [
+      {
+        "url": "https://example.com/doc1",
+        "action": "VIEW",
+        "timestamp": "2023-04-05T04:56:07.000Z"
+        "params": {
+            "datasource": "testdatasource"
+        }
+      },
+      {
+        "url": "https://example.com/doc2",
+        "action": "VIEW",
+        "timestamp": "2023-04-04T04:56:07.000Z",
+        "params": {
+          "duration": 20,
+          "referrer": "https://example.com/document"
+          "datasource": "testdatasource2"
+        }
+      }
+    ]
+  }'
+```

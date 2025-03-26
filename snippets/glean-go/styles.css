@@ -1,0 +1,49 @@
+
+.text-color-bright-green {
+    color: var(--bright-green)
+}
+
+.featured-resource-24_content-wrap {
+    z-index: 2;
+    flex-flow: column;
+    align-items: flex-start;
+    width: 48%;
+    max-width: 36rem;
+    display: flex;
+    position: relative
+}
+
+.featured-resource-24_content-wrap.is-glean-live {
+    width: 80%;
+    max-width: 38rem;
+    max-height: none
+}
+
+.featured-resource-24_heading {
+    color: var(--white);
+    letter-spacing: .02rem;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.featured-resource-24_subtext-2 {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0
+}
+
+.home-featured-resource-24_wrap {
+    background-color: var(--primary-ultramarine);
+    color: var(--white);
+    background-image: url(https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/678e15f33497456539f1b404_Glean%20GO%20Heor%20BG.webp);
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5rem 5.625rem 3.5rem 4rem;
+    display: flex;
+    position: relative;
+    overflow: hidden
+}

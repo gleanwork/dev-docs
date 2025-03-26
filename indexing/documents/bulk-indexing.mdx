@@ -1,0 +1,131 @@
+---
+title: "Bulk Indexing"
+icon: files
+---
+
+Bulk index documents endpoint is used to index all the documents of a custom
+datasource using a series of `/bulkindexdocuments` requests with a common
+`uploadId`. Bulk indexing fully replaces the entire list of documents stored
+in Glean. After a successful bulk upload, all documents that were not a part of
+the most recent upload are deleted asynchronously.
+
+There are similar bulk indexing endpoints for other objects like users, groups,
+employees, and teams as well.
+
+## Choosing `/indexdocuments` vs `/bulkindexdocuments`
+
+When deciding between `/indexdocuments` and `/bulkindexdocuments`, it's
+important to understand their primary functions and use cases:
+
+- `/bulkindexdocuments`: This endpoint is designed for completely refreshing
+  the datasource. It deletes all existing documents and replaces them with the new
+  ones provided. Use this endpoint when you need to replace the existing corpus and
+  upload all documents anew.
+- `/indexdocuments`: This endpoint is intended for incremental updates. It
+  allows you to add a batch of new documents or update existing ones without
+  affecting the other documents in the index. Choose this option when you want to
+  keep the existing documents intact while adding or updating specific documents.
+
+When to use each endpoint:
+
+- Use `/bulkindexdocuments`:
+  - When you need to perform a full refresh of the datasource.
+  - When all existing documents need to be replaced with a new set of documents.
+- Use `/indexdocuments`:
+  - When you need to add new documents to the existing index.
+  - When you need to update specific documents while keeping the rest of the
+    index unchanged.
+
+By selecting the appropriate endpoint based on your needs, you can efficiently
+manage your document indexing process.
+
+## Making your first successful request to `/bulkindexdocuments`
+
+Here is a sample request to the `/bulkindexdocuments` endpoint.
+
+<CodeGroup>
+
+```bash cURL
+ curl -X POST  https://customer-be.glean.com/api/index/v1/bulkindexdocuments \
+  -H 'Authorization: Basic <Token>' \
+  -d '
+{
+  "uploadId": "test-upload-id",
+  "isFirstPage": true,
+  "isLastPage": true,
+  "forceRestartUpload": true,
+  "datasource": "gleantest",
+  "documents": [
+    {
+      "datasource": "gleantest",
+      "objectType": "EngineeringDoc",
+      "id": "test-doc-1",
+      "title": "How to bulk index documents",
+      "body": {
+        "mimeType": "text/plain",
+        "textContent": "This doc will help you make your first successful bulk index document request"
+      },
+      "permissions": {
+        "allowedUsers": [
+          {
+            "email": "myuser@bluesky.test",
+            "datasourceUserId": "myuser-datasource-id",
+            "name": "My User"
+          }
+        ],
+        "allowAllDatasourceUsersAccess": true
+      },
+      "viewURL": "https://www.glean.engineering.co.in/test-doc-1",
+      "customProperties": [
+        {
+          "name": "Org",
+          "value": "Infrastructure"
+        }
+      ]
+    }
+  ]
+}'
+```
+
+```python Python
+import glean_indexing_api_client
+from glean_indexing_api_client.api import documents_api
+from glean_indexing_api_client.model.bulk_index_documents_request import BulkIndexDocumentsRequest
+from pprint import pprint
+
+# Please refer to the Getting Started page for more details on how to setup api_client
+document_api = documents_api.DocumentsApi(api_client)
+
+documents=[DocumentDefinition(
+    datasource="gleantest",
+    object_type="EngineeringDoc",
+    title="How to bulk index documents",
+    id="test-doc-1",
+    view_url="https://www.glean.engineering.co.in/test-doc-1",
+    body=ContentDefinition(mime_type="text/plain", text_content="This doc will help you make your first successful bulk index document request"),
+    permissions=DocumentPermissionsDefinition(
+      allow_anonymous_access=True
+    ))]
+
+bulk_index_documents_request = BulkIndexDocumentsRequest(
+  upload_id="test-upload-id", datasource="gleantest", documents=documents, is_first_page=True, is_last_page=True, force_restart_upload=True)
+
+# example passing only required values which don't have defaults set
+try:
+    document_api.bulkindexdocuments_post(bulk_index_documents_request)
+except glean_indexing_api_client.ApiException as e:
+    print("Exception when calling DocumentsApi->bulkindexdocuments_post: %s\n" % e)
+```
+
+</CodeGroup>
+
+Let's look at the different fields you need to successfully index documents to
+Glean. Note that this is just a sample request with minimal fields required to index content. For
+exhaustive list of fields, please
+refer [here](https://developers.glean.com/indexing/tag/Documents/paths/~1bulkindexdocuments/post/).
+
+## Next steps
+
+- You can check the status of your document using our debugging/troubleshooting APIs. Please refer [here](https://developers.glean.com/docs/indexing_api_troubleshooting/) for documentation on how to use these APIs.
+- For the indexed document to show up in Glean UI, the datasource must be enabled for search. For now, Glean will need to enable it internally, but in future this will be made available via Glean Admin Console. Once these steps are done, you should be able to search for the indexed document in Glean when logged in as the user having permissions to view the documents.
+- Note that it takes around 15-20 minutes for the documents to be indexed and appear on your Glean UI.

@@ -1,0 +1,34 @@
+---
+title: Overview
+description: "Learn how actions can automate tasks and enhance Glean Chat functionality"
+icon: circle-info
+---
+
+Actions can supercharge your Glean Chat and help automate a lot of your work!
+
+Out of the box, Glean Chat can answer user's queries by finding and retrieving the right information from the hundreds of documents indexed with Glean. On top of this, using actions, companies can now enable Glean Chat to also perform actions on behalf of the user or answer questions based on company information not indexed with Glean.
+
+Using actions you can:
+
+1. Make Glean Chat perform actions by simply chatting with it, e.g. user can ask Glean Chat to create a jira ticket for a certain feature, and it will do so with the right information pre-filled.
+
+2. Give Glean Chat the ability to retrieve information from specific data sources that may or may not already be indexed with glean, e.g. a company database
+
+## How does it work?
+
+Actions can be created by anyone with a Glean admin or app developer role. Once the action is created, the creator can deploy the action to Glean Chat or Glean Apps.
+
+Once the action is deployed to Glean Chat:
+Whenever users chat with Glean Chat, the system will go through the list of available actions and figure out if any of them should be used to resolve this user's query. For example, if a user messages to Glean Chat - "I need access to Salesforce" - the Glean Chat system will go through a list of actions and find an action that best matches this user's query and then perform the action defined in that action. In this case, it would find a support ticket creation action, using which it would create a request for salesforce access with this user's information automatically filled in.
+
+For user query: "I need access to Salesforce", chat automatically creates a support ticket with the right assignee and information, and responds to user like this:
+
+![jira-confirm](/actions/images/jira-confirm.png)
+
+Users can review the pre-filled information and confirm, after which the ticket will be created.
+
+How are these actions performed in an external application once the user confirms?
+The action is performed by making requests to the APIs defined while creating the action.
+Note: Glean respects the supported authorization while making these requests.
+
+Alternatively, the action can also be deployed to Glean Apps, instead of Glean Chat. In this case, the action becomes available in the actions directory and any Glean App creator can choose to use this action in their Glean App. Then, for any user chatting with that Glean App, the chat will use the action in a similar way as described for Glean Chat above.

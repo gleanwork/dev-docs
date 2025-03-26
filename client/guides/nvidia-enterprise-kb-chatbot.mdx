@@ -1,0 +1,239 @@
+---
+sidebarTitle: Agentic AI With NVIDIA NIM
+title: Build an Agentic AI With NVIDIA NIM and Glean
+icon: microchip
+---
+
+![NVIDIA + Glean](./images/nvidia-glean.png)
+
+## Introduction
+
+This article shows you how to create an agent using [NVIDIA NIM™](https://www.nvidia.com/en-us/ai/) and [Glean](https://docs.nvidia.com/glean/index.html) that can answer user questions about an internal company knowledge base. Some example user questions are:
+
+- "How do I request access to the company VPN?"
+- "What are the steps to submit an expense report?"
+- "What is the process for booking a conference room?"
+- "How do I enroll in the company's health insurance plan?"
+- "What are the guidelines for remote work?"
+- "Where can I find the employee handbook?"
+- "How do I update my personal information in the HR portal?"
+
+<Frame>
+<img src="./images/chat_interface.png"/>
+</Frame>
+
+## Source Code
+
+The source to this example is available on [NVIDIA's Generative AI Examples GitHub Repo](https://github.com/NVIDIA/GenerativeAIExamples/tree/main/community/chat-and-rag-glean).
+
+## Architecture
+
+This application uses:
+
+- NVIDIA NIM microservices for foundational LLMs and embedding models
+- Glean for storing the corporate knowledge base
+- Glean Search API for accessing the Glean knowledge base
+- Chroma DB for storing cached query results and performing RAG
+- LangGraph for creating an agent
+
+Because both Glean and NVIDIA NIM microservices can be deployed in a private environment, you can deploy this enterprise chatbot while ensuring that all data remains securely within your control.
+
+## Prerequisites
+
+- Python with the [`langchain_nvidia_ai_endpoints` module](https://pypi.org/project/langchain-nvidia-ai-endpoints/)
+- A Glean deployment
+- A [Glean API key](/docs/home/tokens)
+- An [NVIDIA API Key](https://build.nvidia.com/explore/discover).
+
+## Test connection to NIM microservices
+
+Before starting with the agent, you should test the LLM and embedding NIM microservices. Perform the following steps to configure your environment and create an application to test your connectivity:
+
+1. Set the following environment variables:
+
+   ```bash
+   export GLEAN_API_KEY="YOUR GLEAN API KEY"
+   export GLEAN_API_BASE_URL="https://your-org.glean.com/rest/api/v1"
+   export NVIDIA_API_KEY="nvapi-YOUR NVIDIA API KEY"
+   ```
+
+2. Create a python file called `chatbot.py` to instantiate the LLM and embedding model:
+
+   ```python
+   import os
+   from langchain_nvidia_ai_endpoints import ChatNVIDIA, NVIDIAEmbeddings
+
+   model = ChatNVIDIA(
+       model="meta/llama-3.3-70b-instruct", api_key=os.getenv("NVIDIA_API_KEY")
+   )
+   embeddings = NVIDIAEmbeddings(
+       model="nvidia/llama-3.2-nv-embedqa-1b-v2",
+       api_key=os.getenv("NVIDIA_API_KEY"),
+       truncate="NONE",
+   )
+   ```
+
+   <Note> You can update this code to use different foundational LLMs, or add the `base_url` parameter if you are using privately hosted NVIDIA NIM microservices.</Note>
+
+3. Ask the foundational LLM a test question by modifying `chatbot.py`, adding the following lines and running it:
+
+   ```python
+   response = model.invoke("How do I request access to the company VPN?")
+   print(response.content)
+   ```
+
+While the model is able to interpret your question and formulate a response, it does not have access to any information about company-specific policies.
+
+## How the agent adds contextual information
+
+To add company-specific information, your application must consider contextual information. To do this, you can use the `glean_example/src/agent.py` file.
+
+`agent.py` uses a [LangGraph](https://www.langchain.com/langgraph) agent to go through the following phases:
+
+1. The LLM interprets the user's question and adds any relevant context. Most free form questions can be passed directly to the Glean Search API.
+2. Adds relevant context about the user and then query the Glean knowledge base using the Glean search API to get the most relevant supporting documents.
+3. Embeds those supporting documents into a local vector DB.
+4. Uses a retriever model to fetch the most relevant supporting document based on the user's original question.
+5. Takes the most relevant supporting document and add it to the LLM by adding it to the LLM's prompt (RAG).
+6. Asks the LLM to summarize the results and answer the user's question with this new relevant context.
+
+The following sections explain some core concepts of the `agent.py` application's code:
+
+### LangGraph Agent Creation
+
+This code is responsible for creating the agent:
+
+```python
+class InfoBotState(BaseModel):
+    messages: List[Tuple[str, str]] = None
+    glean_query_required: Optional[bool] = None
+    glean_results: Optional[List[str]] = None
+    db: Optional[Any] = None
+    answer_candidate: Optional[str] = None
+
+graph = StateGraph(InfoBotState)
+graph.add_node("determine_user_intent", determine_user_intent)
+graph.add_node("call_glean", call_glean)
+graph.add_node("add_embeddings", add_embeddings)
+graph.add_node("answer_candidates", answer_candidates)
+graph.add_node("summarize_answer", summarize_answer)
+graph.add_edge(START, "determine_user_intent")
+graph.add_conditional_edges(
+    "determine_user_intent",
+    route_glean,
+    {"call_glean": "call_glean", "summarize_answer": "summarize_answer"}
+)
+graph.add_edge("call_glean", "add_embeddings")
+graph.add_edge("add_embeddings", "answer_candidates")
+graph.add_edge("answer_candidates", "summarize_answer")
+graph.add_edge("summarize_answer", END)
+agent = graph.compile()
+```
+
+Each node represents a function responsible for implementing one of the six steps in our process. The `InfoBotState` is a special type of dictionary that will hold all of the information the agent needs through each step of the process.
+
+### Prompt Loading
+
+
+The source of each function is also available in `glean_example/src/agent.py`. For example, the implementation of `call_bot` is:
+
+```python
+def summarize_answer(state: InfoBotState):
+    """the main agent responsible for taking all the context and answering the question"""
+    logger.info("Generate final answer")
+
+    llm = PROMPT_ANSWER | model
+
+    response = llm.invoke(
+        {
+            "messages": state.messages,
+            "glean_search_result_documents": state.glean_results,
+            "answer_candidate": state.answer_candidate,
+        }
+    )
+    state.messages.append(("agent", response.content))
+    return state
+```
+
+This function takes the LLM NIM and invokes it with a specific prompt and the information available in the agent state. The prompt tells the agent what to do, injecting the relevant information from the agent state. You can see the prompts in the file `glean_example/src/prompts.py`. For example, the `PROMPT_ANSWER` is:
+
+```text
+You are the final part of an agent graph. Your job is to answer the user's question based on the information below. Include a url citation in your answer.
+
+Message History: {messages}
+
+All Supporting Documents from Glean:
+
+{glean_search_result_documents}
+
+Content from the most relevant document that you should prioritize:
+
+{answer_candidate}
+
+Answer:
+
+Citation Url:
+```
+
+### Glean Search
+
+A main part of this agent is the step that calls the Glean Search API. This RESTful request is implemented in the file `glean_example/src/glean_utils/utils.py`:
+
+```python
+def glean_search(query, api_key, base_url, **kwargs):
+    endpoint = f"{base_url}/search"
+
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+
+    payload = {
+        "query": query,
+        "pageSize": kwargs.get("page_size", 10),
+        "requestOptions": {},
+    }
+
+    # Add optional parameters
+    if "cursor" in kwargs:
+        payload["cursor"] = kwargs["cursor"]
+
+    if "facet_filters" in kwargs:
+        payload["requestOptions"]["facetFilters"] = kwargs["facet_filters"]
+
+    if "timeout_millis" in kwargs:
+        payload["timeoutMillis"] = kwargs["timeout_millis"]
+
+    try:
+        response = requests.post(endpoint, json=payload, headers=headers)
+        response.raise_for_status()
+
+        data = response.json()
+
+        result = {
+            "status_code": response.status_code,
+            "request_id": data.get("requestID"),
+            "results": data.get("results", []),
+            "facet_results": data.get("facetResults", []),
+            "cursor": data.get("cursor"),
+            "has_more_results": data.get("hasMoreResults", False),
+            "tracking_token": data.get("trackingToken"),
+            "backend_time_millis": data.get("backendTimeMillis"),
+        }
+
+        return result
+
+    except requests.exceptions.RequestException as e:
+        raise e
+```
+
+## Run the Agent
+
+To try out the agent, you can replace the code in `chatbot.py` with the following code to load the `glean_example` source code and invoke the full agent:
+
+```python
+from glean_example.src.agent import agent
+
+msg = "What's the latest on the new API project?"
+history = []
+history.append(("user", msg))
+response = agent.invoke({"messages": history})
+print(response["messages"][-1][1])
+```

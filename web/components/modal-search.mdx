@@ -1,0 +1,92 @@
+---
+title: "Modal Search"
+description: "Add a powerful search modal dialog to your application with minimal code integration"
+icon: "window-maximize"
+---
+
+Glean's Modal Search provides a seamless search experience by overlaying a search interface on your existing page. This solution requires minimal implementation effort - just a single line of code to get started.
+
+<Frame>
+  <img src="../images/introduction/nsr-1.png" alt="Modal Search Initial View" />
+</Frame>
+
+<Frame>
+  <img src="../images/introduction/nsr-2.png" alt="Modal Search Results View" />
+</Frame>
+
+## Implementation Guide
+
+### Adding the JavaScript Client
+
+Include the JavaScript library in your page's `<head>` section. Replace `GLEAN_APP_DOMAIN` with your company's Glean web app domain (typically `app.glean.com` or `your-company.glean.com` for custom subdomains).
+
+<Info>
+  The Glean web app domain differs from your company's Glean backend domain (which typically follows the format `your-company-be.glean.com`).
+</Info>
+
+<CodeGroup>
+```html HTML
+<script defer src="https://{GLEAN_APP_DOMAIN}/embedded-search-latest.min.js"></script>
+```
+</CodeGroup>
+
+### Basic Setup
+
+To implement Modal Search, use the [attach](https://app.glean.com/meta/browser_api/interfaces/GleanWebSDK.html#attach) method to connect the Glean SDK to a search input element on your page:
+
+<CodeGroup>
+```html Implementation
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    GleanWebSDK.attach(document.getElementById('search-box'))
+  })
+</script>
+```
+</CodeGroup>
+
+## Customization Options
+
+### Component API
+
+The Modal Search implementation can be customized using the [GleanWebSDK.attach](https://app.glean.com/meta/browser_api/interfaces/GleanWebSDK.html#attach) API. This interface provides options for tailoring the search experience to your specific needs.
+
+### Theming
+
+You can customize the appearance of the Modal Search using [SearchBoxCustomizations](https://app.glean.com/meta/browser_api/interfaces/SearchBoxCustomizations.html). The theming system is regularly expanded with additional options based on customer needs.
+
+## Authentication
+
+<Note>
+  Authentication involves two default steps that users must complete upon first usage. However, both steps can be optimized for a smoother user experience.
+</Note>
+
+### Default Authentication Flow
+1. Email Address Entry
+2. SSO Authentication
+
+### Optimizing Authentication
+
+You can streamline the authentication process in two ways:
+
+1. **Skip Email Entry**: Implement the [backend](https://app.glean.com/meta/browser_api/interfaces/SearchOptions.html#backend) parameter to bypass the email entry step.
+
+2. **Skip SSO Authentication**: Configure a [server-to-server handshake](https://docs.google.com/document/d/12q1oQWwhkLQyIHXKE7OF6XtvJZ5av50Wd_NKUbRh5u4/edit) and provide the user's auth token via [Options.authToken](https://app.glean.com/meta/browser_api/interfaces/Options.html#authToken).
+
+<Warning>
+  When implementing auth token authentication:
+  - You must configure an [onAuthTokenRequired](https://app.glean.com/meta/browser_api/interfaces/Options.html#onAuthTokenRequired) callback
+  - This callback handles token refresh when expiration approaches
+  - Server-to-server authentication becomes mandatory if third-party cookies are blocked in the user's browser
+</Warning>
+
+## Implementation Example
+
+Explore a complete working implementation of the Modal Search component in our interactive demo:
+
+<Frame>
+  <iframe
+    src="https://codepen.io/GleanWork/embed/VwWJOjZ?default-tab=js%2Cresult&editable=true"
+    style={{width: '100%', height: '500px'}}
+    title="Modal Search | Glean"
+  />
+</Frame>

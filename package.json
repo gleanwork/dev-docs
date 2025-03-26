@@ -1,0 +1,25 @@
+{
+  "name": "@gleanwork/dev-docs",
+  "version": "1.0.0",
+  "description": "Glean Developer Docs",
+  "scripts": {
+    "dev": "mintlify dev",
+    "test": "mintlify broken-links"
+  },
+  "keywords": [
+    "glean",
+    "developer",
+    "docs",
+    "api",
+    "platform",
+    "gleanwork"
+  ],
+  "author": {
+    "name": "John Agan",
+    "email": "john.agan@glean.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "mintlify": "^4.0.436"
+  }
+}

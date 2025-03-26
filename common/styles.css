@@ -1,0 +1,137 @@
+:root {
+    --bright-green: #d8fd49;
+    --light-green: #c3ff9e;
+    --primary-ultramarine: #343ced;
+    --blue-500: #343ced;
+    --blue-600: #131bd4;
+    --white: #fff;
+    --black: #333;
+}
+
+/* increase content area max-width */
+@media (min-width: 1536px) {
+    body :is(.\32xl\:max-w-2xl) {
+        max-width: 65rem;
+    }
+}
+
+/*********************************
+ * Base Styles
+ *********************************/
+
+/* smooth anchor hover transition */
+a {
+    transition: color 0.3s ease-in-out;
+}
+
+/* space out tight tracking */
+.tracking-tight {
+    letter-spacing: .025em;
+}
+
+
+.button {
+    background-color: var(--blue-500);
+    color: var(--white);
+    text-align: center;
+    border: 1px solid #0000;
+    border-radius: 4rem;
+    justify-content: center;
+    align-items: center;
+    padding: .625rem 2rem;
+    font-family: Polysans Neutral,sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: all .25s ease-in-out;
+    display: flex;
+    overflow: hidden
+}
+
+.button:hover {
+    background-color: var(--blue-600);
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.button.is-green:hover {
+    background-color: var(--light-green)
+}
+
+.button.is-green:focus {
+    outline-color: var(--white-2);
+    border-style: solid;
+    outline-width: 1px
+}
+
+.button.is-green, .button.is-green:is(.dark *) {
+    background-color: var(--bright-green);
+    color: var(--black);
+}
+
+/*********************************
+* Header
+*********************************/
+
+/* increase logo height */
+img.h-7, img.h-6 {
+    height: 2.1rem;
+}
+
+/* change cta button color */
+#topbar-cta-button {
+    border-radius: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgb(var(--primary-dark));
+}
+
+#topbar-cta-button:hover {
+    opacity: 0.9;
+}
+
+#topbar-cta-button div {
+    color: white;
+}
+
+/*********************************
+* Footer
+*********************************/
+
+/* increase footer width */
+#footer .max-w-\[984px\] {
+    max-width: 90%;
+}
+
+/* brings social icons closer to logo in footer */
+#footer .justify-between.md\:gap-y-24 {
+    justify-content: start;
+    gap: 2rem;
+}
+
+/* change footer logo to official light logo */
+#footer a img.dark\:hidden {
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/common/brand/glean-logo-light.svg");
+}
+
+/* change footer logo to official dark logo */
+#footer a img.dark\:block {
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/common/brand/glean-logo-dark.svg");
+}
+
+/* remove footer links on mobile */
+@media screen and (max-width: 768px) {
+    #footer .min-h-\[76px\] {
+        min-height: 0;
+    }
+    #footer .min-h-\[76px\] > :nth-child(2) {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #footer a img {
+        height: 3rem;
+    }
+}
