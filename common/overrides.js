@@ -1,23 +1,48 @@
+/********************************
+ * Mintlify Link Overrides
+ ********************************/
+
 // Prevent local links from opening in new tabs
 document.addEventListener('click', (event) => {
     const target = event.target.closest('a');
-    if (target && target.getAttribute('href').startsWith('/') && target.target === '_blank') {
+    if (!target) return;
+
+    const href = target.getAttribute('href');
+    if (!href) return;
+
+    // Check if the link is a local link and has a target attribute
+    if (href.startsWith('/') && target.target === '_blank') {
         target.removeAttribute('target');
     }
+
+    // Check if href ends with /[type]/openapi and redirect to the appropriate OAS URL
+    const openapiMatch = href.match(/\/([^\/]+)\/openapi$/);
+    if (openapiMatch) {
+        const type = openapiMatch[1];
+        target.setAttribute('href', `/oas/${type}`);
+        target.setAttribute('target', '_blank');
+    }
+
 }, true);
 
 
+
+
+/********************************
+ * Deprecated Endpoint Warning
+ ********************************/
+
 const deprecatedWarningText = "This endpoint is deprecated and may be removed at anytime.";
 const deprecatedPaths = [
-    "/api-reference/setup",
-    "/api-reference/troubleshooting/get-user-count",
-    "/api-reference/troubleshooting/get-document-count",
-    "/api-reference/troubleshooting/get-document-upload-and-indexing-status",
-    "/api-reference/people/bulk-index-employees-1",
-    "/api-reference/answers/create-answer-board",
-    "/api-reference/answers/delete-answer-board",
-    "/api-reference/answers/update-answer-board",
-    "/api-reference/answers/read-answer-board"
+    "/actions/api/setup",
+    "/indexing/api/troubleshooting/get-user-count",
+    "/indexing/api/troubleshooting/get-document-count",
+    "/indexing/api/troubleshooting/get-document-upload-and-indexing-status",
+    "/indexing/api/people/bulk-index-employees-1",
+    "/client/api/answers/create-answer-board",
+    "/client/api/answers/delete-answer-board",
+    "/client/api/answers/update-answer-board",
+    "/client/api/answers/read-answer-board"
 ];
 
 // Add deprecated warning

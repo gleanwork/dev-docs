@@ -397,6 +397,20 @@
       "youtube": "https://www.youtube.com/channel/UCY0JDJWRBXrR0m1SqWPVB9A"
     }
   },
+  "redirects": [
+    {
+      "source": "/oas/client",
+      "destination": "https://api.redoc.ly/registry/assets/glean/Glean%20Client%20API/v1/public/client_rest.yaml?branch=main"
+    },
+    {
+      "source": "/oas/indexing",
+      "destination": "https://api.redoc.ly/registry/assets/glean/Glean%20Indexing%20API/v1/public/indexing.yaml?branch=main"
+    },
+    {
+      "source": "/oas/actions",
+      "destination": "https://api.redocly.com/registry/assets/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main"
+    }
+  ],
   "fonts": {
     "heading": {
       "family": "Polysans Neutral",
