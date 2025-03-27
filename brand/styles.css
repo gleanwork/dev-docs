@@ -127,12 +127,12 @@ img.h-7, img.h-6 {
 
 /* change footer logo to official light logo */
 #footer a img.dark\:hidden {
-    content:url("https://developers.glean.com/brand/glean-logo-light.svg");
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/glean-logo-light.svg");
 }
 
 /* change footer logo to official dark logo */
 #footer a img.dark\:block {
-    content:url("https://developers.glean.com/brand/glean-logo-dark.svg");
+    content:url("https://mintlify.s3.us-west-1.amazonaws.com/glean-dd126214/brand/glean-logo-dark.svg");
 }
 
 /* remove footer links on mobile */
