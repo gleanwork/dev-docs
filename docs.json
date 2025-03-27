@@ -409,6 +409,10 @@
     {
       "source": "/oas/actions",
       "destination": "https://api.redocly.com/registry/assets/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main"
+    },
+    {
+      "source": "/indexing_api/indexing_api_datasource_category",
+      "destination": "/indexing/datasource/category"
     }
   ],
   "fonts": {
