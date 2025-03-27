@@ -74,6 +74,21 @@ a {
 * Header
 *********************************/
 
+/* hides header links added from docs.json */
+@media (max-width: 1060px) {
+    #navbar-transition-willow div:nth-child(2) {
+        display: none;
+    }
+}
+
+/* hides CTA button and dark/light mode toggle */
+@media (max-width: 1250px) {
+    #topbar-cta-button,
+    #navbar-transition-willow div:nth-child(3) {
+        display: none;
+    }
+}
+
 /* increase logo height */
 img.h-7, img.h-6 {
     height: 2.1rem;
