@@ -18,7 +18,7 @@ First, a Glean admin at https://app.glean.com/admin/setup/gleanassistant must se
 ## Authentication
 Glean’s Chat API uses the standard HTTP Authorization header to transmit the bearer token, similar to Glean’s Client REST API authentication methods.
 
-`‘CHAT’` scoped bearer tokens are required to interact with Glean’s Chat API and can be generated from the admin console. More details about token permissions, scopes and generation can be found [here](https://developers.glean.com/docs/client_api/client_api_scopes/).
+`CHAT` scoped bearer tokens are required to interact with Glean’s Chat API and can be generated from the admin console. More details about token permissions, scopes and generation can be found [here](https://developers.glean.com/docs/client_api/client_api_scopes/).
 
 Please note that all samples in the document assume the usage of a user-permissioned token.
 For a global-permissioned token, you would need to add an additional ‘X-Scio-Actas’ HTTP header to make the request on behalf of another user in your company. You can learn about making your first request [here](https://developers.glean.com/docs/client_api/client_api_first_request/).
