@@ -26,8 +26,6 @@ document.addEventListener('click', (event) => {
 }, true);
 
 
-
-
 /********************************
  * Deprecated Endpoint Warning
  ********************************/
