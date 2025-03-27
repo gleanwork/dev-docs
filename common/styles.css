@@ -150,3 +150,27 @@ img.h-7, img.h-6 {
         height: 3rem;
     }
 }
+
+/* Banner for WIP */
+#sidebar {
+    top: 0;
+    transition: top 0.3s ease-in-out;
+}
+#navbar-transition-willow {
+    margin-top: 0;
+    transition: margin-top 0.3s ease-in-out;
+}
+#banner {
+    height: 0;
+    transition: height 0.3s ease-in-out;
+}
+
+#sidebar:is(.slow *) {
+    top: 2.5rem;
+}
+#navbar-transition-willow:is(.slow *) {
+    margin-top: 2.5rem;
+}
+#banner:is(.slow *) {
+    height: 2.5rem;
+}

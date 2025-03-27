@@ -424,5 +424,8 @@
       "format": "woff2",
       "source": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/66b4a66d22e2c49832621144_PolySans-Neutral.woff2"
     }
+  },
+  "banner": {
+    "content": "🚧 This section is loading a little slowly. We're working on a fix now!"
   }
 }

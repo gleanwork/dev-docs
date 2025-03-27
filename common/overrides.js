@@ -67,3 +67,21 @@ function addDeprecatedWarning() {
 // Listen for route changes and update the document title
 window.next.router.events.on('routeChangeComplete', addDeprecatedWarning);
 addDeprecatedWarning();
+
+
+/*********************************
+ * Banner
+ *********************************/
+document.addEventListener('click', (event) => {
+    const target = event.target.closest('a');
+    if (!target) return;
+
+    const href = target.getAttribute('href');
+    if (!href) return;
+
+    if (href.startsWith('/client/api')) {
+        document.body.classList.add('slow');
+    } else {
+        document.body.classList.remove('slow');
+    }
+});
