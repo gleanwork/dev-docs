@@ -32,7 +32,7 @@ When creating a datasource, the key fields you need to set are the following:
 | --- | --- |
 | `name` | A unique identifier used to refer to the datasource. |
 | `displayName` | The datasource name shown in search results in the UI. |
-| `datasourceCategory` | The type of this datasource. This affects how results are ranked. More details on how to select a category can be inferred from [Datasource category](/docs/indexing/datasource/category) documentation. |
+| `datasourceCategory` | The type of this datasource. This affects how results are ranked. More details on how to select a category can be inferred from [Datasource Categories](/indexing/datasource/category) documentation. |
 | `urlRegex` | A regex that captures the view URLs of documents in the datasource as accurately as possible. Avoid regexes that are too broad, and will capture URLs from other datasources, or regexes that are too narrow, and will not capture documents from this datasource. |
 | `isUserReferencedByEmail` | This should be set to true if you want to refer to user identities using emails directly. If you have your own notion of user ids, this can be set to false. This affects how Glean interprets permissions attached to documents. |
 
@@ -95,3 +95,5 @@ except indexing_api.ApiException as e:
 
 You can learn about more datasource customization options at
 [here](https://developers.glean.com/indexing/tag/Datasources/paths/~1adddatasource/post/)
+
+For more information about datasource categories, see [Datasource Categories](/indexing/datasource/category).
