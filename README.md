@@ -14,7 +14,7 @@ This repository contains the source code for [developers.glean.com](https://deve
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/gleanwork/glean-developers-site.git
+git clone https://github.com/gleanwork/glean-developer-site.git
 cd dev-docs
 pnpm install
 ```
@@ -61,7 +61,7 @@ Contributions to improve the documentation are always welcome! Please see [CONTR
 
 ### Reporting Issues
 
-If you find any bugs or have feature requests, please create an issue in the [gleanwork/glean-developers-site](https://github.com/gleanwork/glean-developers-site) repository.
+If you find any bugs or have feature requests, please create an issue in the [gleanwork/glean-developer-site](https://github.com/gleanwork/glean-developer-site) repository.
 
 ### Pull Requests
 
