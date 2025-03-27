@@ -2,15 +2,15 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "willow",
   "name": "Glean Developer Portal",
-  "favicon": "/common/brand/favicon.png",
+  "favicon": "/brand/favicon.png",
   "colors": {
     "primary": "#343CED",
     "light": "#d8fd49",
     "dark": "#343CED"
   },
   "logo": {
-    "light": "/common/brand/glean-developer-logo-light.svg",
-    "dark": "/common/brand/glean-developer-logo-dark.svg"
+    "light": "/brand/glean-developer-logo-light.svg",
+    "dark": "/brand/glean-developer-logo-dark.svg"
   },
   "navigation": {
     "tabs": [
