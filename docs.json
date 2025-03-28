@@ -472,11 +472,7 @@
       "destination": "/indexing/debugging"
     },
     {
-      "source": "/docs/indexing_api_bulk_indexing/#bulk-upload-model",
-      "destination": "/indexing/documents/bulk-upload-model"
-    },
-    {
-      "source": "/docs/indexing_api_bulk_indexing/#choosing-indexdocuments-vs-bulkindexdocuments",
+      "source": "/docs/indexing_api_bulk_indexing",
       "destination": "/indexing/documents/bulk-indexing"
     },
     {
