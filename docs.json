@@ -492,10 +492,6 @@
       "destination": "/indexing/datasource/category"
     },
     {
-      "source": "/docs/indexing_api_datasource_category",
-      "destination": "/indexing/datasource/category"
-    },
-    {
       "source": "/docs/indexing_api_permissions",
       "destination": "/indexing/authentication/permissions"
     },
