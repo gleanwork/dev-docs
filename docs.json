@@ -428,52 +428,52 @@
       "destination": "https://api.redocly.com/registry/assets/glean/Glean%20Tools%20API%20-%20Early%20Access/v1/openapi/public/tools_rest.yaml?branch=main"
     },
     {
-      "source": "/client/overview/*",
-      "destination": "/client/*"
+      "source": "/client/overview",
+      "destination": "/client"
     },
     {
-      "source": "/client_platform_preview/overview/*",
-      "destination": "/client/*"
+      "source": "/client_platform_preview/overview",
+      "destination": "/client"
     },
     {
-      "source": "/docs/actions/getting_started/*",
-      "destination": "/actions/*"
+      "source": "/docs/actions/getting_started",
+      "destination": "/actions"
     },
     {
-      "source": "/docs/browser_api/*",
-      "destination": "/web/*"
+      "source": "/docs/browser_api",
+      "destination": "/web"
     },
     {
-      "source": "/docs/browser_api/chat/*",
-      "destination": "/web/components/chat/*"
+      "source": "/docs/browser_api/chat",
+      "destination": "/web/components/chat"
     },
     {
-      "source": "/docs/browser_api/third_party_cookies/*",
-      "destination": "/web/3rd-party-cookies/*"
+      "source": "/docs/browser_api/third_party_cookies",
+      "destination": "/web/3rd-party-cookies"
     },
     {
-      "source": "/docs/client_api/*",
-      "destination": "/client/*"
+      "source": "/docs/client_api",
+      "destination": "/client"
     },
     {
-      "source": "/docs/client_api/client_api_scopes/*",
-      "destination": "/client/authentication#scopes/*"
+      "source": "/docs/client_api/client_api_scopes",
+      "destination": "/client/authentication#scopes"
     },
     {
       "source": "/docs/client_api/client_api_scopes/,",
       "destination": "/client/authentication#scopes"
     },
     {
-      "source": "/docs/client_api_scopes/*",
-      "destination": "/client/authentication#scopes/*"
+      "source": "/docs/client_api_scopes",
+      "destination": "/client/authentication#scopes"
     },
     {
-      "source": "/docs/facets_and_operators_for_custom_datasources/*",
-      "destination": "/indexing/datasource/custom-properties#operators-and-facets/*"
+      "source": "/docs/facets_and_operators_for_custom_datasources",
+      "destination": "/indexing/datasource/custom-properties#operators-and-facets"
     },
     {
-      "source": "/docs/indexing_api/indexing_api_troubleshooting/*",
-      "destination": "/indexing/debugging/*"
+      "source": "/docs/indexing_api/indexing_api_troubleshooting",
+      "destination": "/indexing/debugging"
     },
     {
       "source": "/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-document",
@@ -492,44 +492,44 @@
       "destination": "/indexing/documents/bulk-indexing"
     },
     {
-      "source": "/docs/indexing_api_datasource_category/*",
-      "destination": "/indexing/datasource/category/*"
+      "source": "/docs/indexing_api_datasource_category",
+      "destination": "/indexing/datasource/category"
     },
     {
-      "source": "/docs/indexing_api_token_rotation/*",
-      "destination": "/indexing/authentication/token-rotation/*"
+      "source": "/docs/indexing_api_token_rotation",
+      "destination": "/indexing/authentication/token-rotation"
     },
     {
-      "source": "/docs/indexing_api/*",
-      "destination": "/indexing/*"
+      "source": "/docs/indexing_api",
+      "destination": "/indexing"
     },
     {
-      "source": "/docs/indexing_api/indexing_api_datasource_category/*",
-      "destination": "/indexing/datasource/category/*"
+      "source": "/docs/indexing_api/indexing_api_datasource_category",
+      "destination": "/indexing/datasource/category"
     },
     {
-      "source": "/docs/indexing_api_datasource_category/*",
-      "destination": "/indexing/datasource/category/*"
+      "source": "/docs/indexing_api_datasource_category",
+      "destination": "/indexing/datasource/category"
     },
     {
-      "source": "/docs/indexing_api_permissions/*",
-      "destination": "/indexing/authentication/permissions/*"
+      "source": "/docs/indexing_api_permissions",
+      "destination": "/indexing/authentication/permissions"
     },
     {
-      "source": "/docs/indexing_api_tokens/*",
-      "destination": "/indexing/authentication/managing-tokens/*"
+      "source": "/docs/indexing_api_tokens",
+      "destination": "/indexing/authentication/managing-tokens"
     },
     {
-      "source": "/docs/rendering_search_results/*",
-      "destination": "/indexing/rendering-search-results/*"
+      "source": "/docs/rendering_search_results",
+      "destination": "/indexing/rendering-search-results"
     },
     {
-      "source": "/indexing/overview/*",
-      "destination": "/indexing/*"
+      "source": "/indexing/overview",
+      "destination": "/indexing"
     },
     {
-      "source": "/indexing/tag/Datasources/paths/~1adddatasource/post/*",
-      "destination": "/indexing/api/datasources/add-or-update-datasource/*"
+      "source": "/indexing/tag/Datasources/paths/~1adddatasource/post",
+      "destination": "/indexing/api/datasources/add-or-update-datasource"
     }
   ]
 }
