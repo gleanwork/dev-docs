@@ -460,10 +460,6 @@
       "destination": "/client/authentication#scopes"
     },
     {
-      "source": "/docs/client_api/client_api_scopes/,",
-      "destination": "/client/authentication#scopes"
-    },
-    {
       "source": "/docs/client_api_scopes",
       "destination": "/client/authentication#scopes"
     },
