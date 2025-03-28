@@ -429,7 +429,7 @@
     },
     {
       "source": "/client/overview",
-      "destination": "/client"
+      "destination": "https://developers.glean.com/client"
     },
     {
       "source": "/client_platform_preview/overview",
