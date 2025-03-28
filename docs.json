@@ -429,7 +429,7 @@
     },
     {
       "source": "/client/overview",
-      "destination": "https://developers.glean.com/client"
+      "destination": "/client"
     },
     {
       "source": "/client_platform_preview/overview",
@@ -462,6 +462,14 @@
     {
       "source": "/docs/client_api_scopes",
       "destination": "/client/authentication#scopes"
+    },
+    {
+      "source": "/docs/client_api/chat_api",
+      "destination": "/client/chat"
+    },
+    {
+      "source": "/docs/indexing_api/indexing_api_getting_started",
+      "destination": "/indexing"
     },
     {
       "source": "/docs/facets_and_operators_for_custom_datasources",
