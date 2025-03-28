@@ -472,14 +472,6 @@
       "destination": "/indexing/debugging"
     },
     {
-      "source": "/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-document",
-      "destination": "/indexing/debugging/datasource-document"
-    },
-    {
-      "source": "/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status",
-      "destination": "/indexing/debugging/datasource-status"
-    },
-    {
       "source": "/docs/indexing_api_bulk_indexing/#bulk-upload-model",
       "destination": "/indexing/documents/bulk-upload-model"
     },
